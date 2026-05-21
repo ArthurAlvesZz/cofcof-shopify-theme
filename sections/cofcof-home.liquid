@@ -1,0 +1,931 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign primary_cta_url = section.settings.primary_cta_link
+  if primary_cta_url == blank
+    assign primary_cta_url = '/pages/assinatura'
+  endif
+
+  assign secondary_cta_url = section.settings.secondary_cta_link
+  if secondary_cta_url == blank
+    assign secondary_cta_url = routes.all_products_collection_url
+  endif
+
+  assign final_cta_url = section.settings.final_cta_link
+  if final_cta_url == blank
+    assign final_cta_url = primary_cta_url
+  endif
+-%}
+
+{%- style -%}
+  .cofcof-home-{{ section.id }} {
+    --cofcof-ink: #171412;
+    --cofcof-espresso: #241a15;
+    --cofcof-roast: #493229;
+    --cofcof-cream: #f3ede4;
+    --cofcof-muted: #cdbfac;
+    --cofcof-gold: #c18f4e;
+    --cofcof-leaf: #566d5a;
+    --cofcof-line: rgba(243, 237, 228, 0.18);
+    background: var(--cofcof-ink);
+    color: var(--cofcof-cream);
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-page-width {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding-inline: 20px;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 680px;
+    display: grid;
+    align-items: center;
+    padding: 92px 0 72px;
+    background:
+      linear-gradient(115deg, rgba(23, 20, 18, 0.94) 0%, rgba(36, 26, 21, 0.88) 46%, rgba(73, 50, 41, 0.72) 100%),
+      radial-gradient(circle at 72% 35%, rgba(193, 143, 78, 0.22), transparent 34%);
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-hero__media {
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-hero__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-hero__fallback {
+    width: 100%;
+    height: 100%;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 58px),
+      linear-gradient(90deg, #171412, #493229 58%, #566d5a);
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-eyebrow {
+    margin: 0 0 18px;
+    color: var(--cofcof-gold);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .cofcof-home-{{ section.id }} h1,
+  .cofcof-home-{{ section.id }} h2,
+  .cofcof-home-{{ section.id }} h3 {
+    color: inherit;
+    letter-spacing: 0;
+    margin: 0;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-hero__title {
+    max-width: 780px;
+    font-size: clamp(4.4rem, 7vw, 8.8rem);
+    line-height: 0.92;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-hero__text {
+    max-width: 620px;
+    margin: 24px 0 0;
+    color: var(--cofcof-muted);
+    font-size: 1.8rem;
+    line-height: 1.65;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 34px;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-button {
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--cofcof-gold);
+    border-radius: 6px;
+    padding: 0 24px;
+    color: var(--cofcof-ink);
+    background: var(--cofcof-gold);
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-button:hover {
+    transform: translateY(-1px);
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-button--secondary {
+    background: transparent;
+    color: var(--cofcof-cream);
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-section {
+    padding: 84px 0;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-section--warm {
+    background: #211813;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-section--light {
+    background: var(--cofcof-cream);
+    color: var(--cofcof-ink);
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(260px, 0.7fr);
+    gap: 36px;
+    align-items: end;
+    margin-bottom: 36px;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-heading h2 {
+    font-size: clamp(3rem, 4vw, 5.4rem);
+    line-height: 1;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-heading p,
+  .cofcof-home-{{ section.id }} .cofcof-copy {
+    color: currentColor;
+    opacity: 0.75;
+    font-size: 1.6rem;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-grid {
+    display: grid;
+    gap: 18px;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-grid--benefits {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-grid--three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-card {
+    border: 1px solid var(--cofcof-line);
+    border-radius: 8px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-section--light .cofcof-card {
+    border-color: rgba(23, 20, 18, 0.14);
+    background: #fffaf2;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-card__icon {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 18px;
+    background: rgba(193, 143, 78, 0.16);
+    color: var(--cofcof-gold);
+    font-weight: 800;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-card h3 {
+    font-size: 1.9rem;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-card p {
+    margin: 0;
+    color: currentColor;
+    opacity: 0.72;
+    font-size: 1.45rem;
+    line-height: 1.55;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-split {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.7fr);
+    gap: 44px;
+    align-items: center;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-panel {
+    border: 1px solid var(--cofcof-line);
+    border-radius: 8px;
+    padding: 34px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-panel ul {
+    margin: 24px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-panel li {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-top: 1px solid var(--cofcof-line);
+    color: var(--cofcof-muted);
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-products {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-product-fallback {
+    min-height: 280px;
+    display: grid;
+    place-items: center;
+    padding: 28px;
+    border: 1px solid rgba(23, 20, 18, 0.14);
+    border-radius: 8px;
+    background:
+      linear-gradient(160deg, rgba(86, 109, 90, 0.16), transparent 45%),
+      #fffaf2;
+    text-align: center;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-quote {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 22px;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-quote blockquote {
+    margin: 0;
+    color: currentColor;
+    font-size: 1.8rem;
+    line-height: 1.55;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-quote cite {
+    color: var(--cofcof-gold);
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-faq {
+    display: grid;
+    gap: 12px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .cofcof-home-{{ section.id }} details {
+    border: 1px solid var(--cofcof-line);
+    border-radius: 8px;
+    padding: 18px 22px;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .cofcof-home-{{ section.id }} summary {
+    cursor: pointer;
+    font-weight: 800;
+  }
+
+  .cofcof-home-{{ section.id }} details p {
+    margin: 14px 0 0;
+    color: var(--cofcof-muted);
+    line-height: 1.6;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-final {
+    text-align: center;
+    padding: 86px 20px;
+    background:
+      linear-gradient(115deg, rgba(23, 20, 18, 0.96), rgba(73, 50, 41, 0.82)),
+      var(--cofcof-roast);
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-final h2 {
+    max-width: 820px;
+    margin: 0 auto;
+    font-size: clamp(3.2rem, 5vw, 6rem);
+    line-height: 1;
+  }
+
+  .cofcof-home-{{ section.id }} .cofcof-final p {
+    max-width: 620px;
+    margin: 20px auto 0;
+    color: var(--cofcof-muted);
+    font-size: 1.7rem;
+    line-height: 1.65;
+  }
+
+  @media screen and (max-width: 989px) {
+    .cofcof-home-{{ section.id }} .cofcof-heading,
+    .cofcof-home-{{ section.id }} .cofcof-split {
+      grid-template-columns: 1fr;
+    }
+
+    .cofcof-home-{{ section.id }} .cofcof-grid--benefits,
+    .cofcof-home-{{ section.id }} .cofcof-products {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .cofcof-home-{{ section.id }} .cofcof-grid--three {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    .cofcof-home-{{ section.id }} .cofcof-hero {
+      min-height: 620px;
+      padding: 72px 0 56px;
+    }
+
+    .cofcof-home-{{ section.id }} .cofcof-hero__title {
+      font-size: 4.2rem;
+    }
+
+    .cofcof-home-{{ section.id }} .cofcof-grid--benefits,
+    .cofcof-home-{{ section.id }} .cofcof-products {
+      grid-template-columns: 1fr;
+    }
+
+    .cofcof-home-{{ section.id }} .cofcof-section {
+      padding: 60px 0;
+    }
+  }
+{%- endstyle -%}
+
+<div class="cofcof-home-{{ section.id }}">
+  <section class="cofcof-hero">
+    <div class="cofcof-hero__media" aria-hidden="true">
+      {%- if section.settings.hero_image != blank -%}
+        {{
+          section.settings.hero_image
+          | image_url: width: 2200
+          | image_tag: loading: 'eager', widths: '750, 1100, 1500, 2200', sizes: '100vw'
+        }}
+      {%- else -%}
+        <div class="cofcof-hero__fallback"></div>
+      {%- endif -%}
+    </div>
+
+    <div class="cofcof-page-width">
+      <div class="cofcof-hero__content">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="cofcof-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        <h1 class="cofcof-hero__title">{{ section.settings.hero_title }}</h1>
+        {%- if section.settings.hero_text != blank -%}
+          <div class="cofcof-hero__text rte">{{ section.settings.hero_text }}</div>
+        {%- endif -%}
+        <div class="cofcof-actions">
+          <a class="cofcof-button" href="{{ primary_cta_url }}">{{ section.settings.primary_cta_label | escape }}</a>
+          <a class="cofcof-button cofcof-button--secondary" href="{{ secondary_cta_url }}">
+            {{ section.settings.secondary_cta_label | escape }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cofcof-section cofcof-section--warm">
+    <div class="cofcof-page-width">
+      <div class="cofcof-heading">
+        <h2>{{ section.settings.benefits_title }}</h2>
+        <p>{{ section.settings.benefits_text }}</p>
+      </div>
+      <div class="cofcof-grid cofcof-grid--benefits">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'benefit' -%}
+            <div class="cofcof-card" {{ block.shopify_attributes }}>
+              <span class="cofcof-card__icon">{{ block.settings.icon | escape }}</span>
+              <h3>{{ block.settings.title | escape }}</h3>
+              <p>{{ block.settings.text | escape }}</p>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  <section class="cofcof-section">
+    <div class="cofcof-page-width">
+      <div class="cofcof-split">
+        <div>
+          <p class="cofcof-eyebrow">{{ section.settings.subscription_eyebrow | escape }}</p>
+          <h2>{{ section.settings.subscription_title }}</h2>
+          <div class="cofcof-copy rte">{{ section.settings.subscription_text }}</div>
+          <div class="cofcof-actions">
+            <a class="cofcof-button" href="{{ primary_cta_url }}">{{ section.settings.subscription_cta_label | escape }}</a>
+          </div>
+        </div>
+        <div class="cofcof-panel">
+          <h3>{{ section.settings.subscription_panel_title | escape }}</h3>
+          <ul>
+            <li>{{ section.settings.subscription_item_1 | escape }}</li>
+            <li>{{ section.settings.subscription_item_2 | escape }}</li>
+            <li>{{ section.settings.subscription_item_3 | escape }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cofcof-section cofcof-section--light">
+    <div class="cofcof-page-width">
+      <div class="cofcof-heading">
+        <h2>{{ section.settings.products_title }}</h2>
+        <p>{{ section.settings.products_text }}</p>
+      </div>
+      <div class="cofcof-products">
+        {%- if section.settings.featured_collection != blank and section.settings.featured_collection.products.size > 0 -%}
+          {%- for product in section.settings.featured_collection.products limit: 4 -%}
+            {% render 'card-product',
+              card_product: product,
+              media_aspect_ratio: 'square',
+              image_shape: 'default',
+              show_secondary_image: false,
+              show_vendor: false,
+              show_rating: false,
+              lazy_load: true,
+              skip_styles: false
+            %}
+          {%- endfor -%}
+        {%- else -%}
+          {%- for i in (1..4) -%}
+            <div class="cofcof-product-fallback">
+              <div>
+                <p class="cofcof-eyebrow">COFCOF</p>
+                <h3>Cafe especial</h3>
+                <p>Selecione uma colecao no editor Shopify para mostrar produtos reais aqui.</p>
+              </div>
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+      <div class="cofcof-actions">
+        <a class="cofcof-button cofcof-button--secondary" href="{{ secondary_cta_url }}">
+          {{ section.settings.products_cta_label | escape }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cofcof-section cofcof-section--warm">
+    <div class="cofcof-page-width">
+      <div class="cofcof-heading">
+        <h2>{{ section.settings.testimonials_title }}</h2>
+        <p>{{ section.settings.testimonials_text }}</p>
+      </div>
+      <div class="cofcof-grid cofcof-grid--three">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'testimonial' -%}
+            <div class="cofcof-card cofcof-quote" {{ block.shopify_attributes }}>
+              <blockquote>{{ block.settings.quote | escape }}</blockquote>
+              <cite>{{ block.settings.author | escape }}</cite>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  <section class="cofcof-section">
+    <div class="cofcof-page-width">
+      <div class="cofcof-split">
+        <div>
+          <p class="cofcof-eyebrow">{{ section.settings.brand_eyebrow | escape }}</p>
+          <h2>{{ section.settings.brand_title }}</h2>
+        </div>
+        <div class="cofcof-copy rte">{{ section.settings.brand_text }}</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cofcof-section cofcof-section--warm">
+    <div class="cofcof-page-width">
+      <div class="cofcof-heading">
+        <h2>{{ section.settings.faq_title }}</h2>
+        <p>{{ section.settings.faq_text }}</p>
+      </div>
+      <div class="cofcof-faq">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'faq' -%}
+            <details {{ block.shopify_attributes }}>
+              <summary>{{ block.settings.question | escape }}</summary>
+              <p>{{ block.settings.answer | escape }}</p>
+            </details>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  <section class="cofcof-final">
+    <h2>{{ section.settings.final_title }}</h2>
+    <p>{{ section.settings.final_text }}</p>
+    <div class="cofcof-actions" style="justify-content:center">
+      <a class="cofcof-button" href="{{ final_cta_url }}">{{ section.settings.final_cta_label | escape }}</a>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "CofCof home premium",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Imagem do hero"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Texto pequeno do hero",
+      "default": "COFCOF.CO"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "hero_title",
+      "label": "Titulo do hero",
+      "default": "Cafe especial para uma rotina mais gostosa."
+    },
+    {
+      "type": "richtext",
+      "id": "hero_text",
+      "label": "Texto do hero",
+      "default": "<p>Assinatura e compra de cafes selecionados, com curadoria, torra cuidadosa e entrega pensada para quem leva cafe a serio.</p>"
+    },
+    {
+      "type": "text",
+      "id": "primary_cta_label",
+      "label": "Texto do CTA principal",
+      "default": "Conhecer assinatura"
+    },
+    {
+      "type": "url",
+      "id": "primary_cta_link",
+      "label": "Link do CTA principal"
+    },
+    {
+      "type": "text",
+      "id": "secondary_cta_label",
+      "label": "Texto do CTA secundario",
+      "default": "Ver cafes"
+    },
+    {
+      "type": "url",
+      "id": "secondary_cta_link",
+      "label": "Link do CTA secundario"
+    },
+    {
+      "type": "header",
+      "content": "Beneficios"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "benefits_title",
+      "label": "Titulo",
+      "default": "O cafe certo, no ritmo da sua casa."
+    },
+    {
+      "type": "textarea",
+      "id": "benefits_text",
+      "label": "Texto",
+      "default": "Da escolha dos graos ao recebimento, a experiencia CofCof foi desenhada para ser simples, bonita e consistente."
+    },
+    {
+      "type": "header",
+      "content": "Assinatura"
+    },
+    {
+      "type": "text",
+      "id": "subscription_eyebrow",
+      "label": "Texto pequeno",
+      "default": "Assinatura"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subscription_title",
+      "label": "Titulo",
+      "default": "Receba cafe especial sem precisar lembrar de comprar."
+    },
+    {
+      "type": "richtext",
+      "id": "subscription_text",
+      "label": "Texto",
+      "default": "<p>Escolha sua frequencia, ajuste quando quiser e mantenha cafe fresco sempre por perto. Uma assinatura com cara de cuidado, nao de piloto automatico.</p>"
+    },
+    {
+      "type": "text",
+      "id": "subscription_cta_label",
+      "label": "Texto do CTA",
+      "default": "Montar minha assinatura"
+    },
+    {
+      "type": "text",
+      "id": "subscription_panel_title",
+      "label": "Titulo do painel",
+      "default": "Como funciona"
+    },
+    {
+      "type": "text",
+      "id": "subscription_item_1",
+      "label": "Item 1",
+      "default": "Voce escolhe o plano e a frequencia."
+    },
+    {
+      "type": "text",
+      "id": "subscription_item_2",
+      "label": "Item 2",
+      "default": "A CofCof prepara a curadoria do cafe."
+    },
+    {
+      "type": "text",
+      "id": "subscription_item_3",
+      "label": "Item 3",
+      "default": "A entrega chega no seu ritmo, sem complicacao."
+    },
+    {
+      "type": "header",
+      "content": "Produtos"
+    },
+    {
+      "type": "collection",
+      "id": "featured_collection",
+      "label": "Colecao em destaque"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "products_title",
+      "label": "Titulo",
+      "default": "Cafes para descobrir agora."
+    },
+    {
+      "type": "textarea",
+      "id": "products_text",
+      "label": "Texto",
+      "default": "Conecte uma colecao no editor para destacar cafes, kits ou planos da loja sem mexer no codigo."
+    },
+    {
+      "type": "text",
+      "id": "products_cta_label",
+      "label": "Texto do CTA",
+      "default": "Ver todos os cafes"
+    },
+    {
+      "type": "header",
+      "content": "Prova social"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "testimonials_title",
+      "label": "Titulo",
+      "default": "Uma experiencia pensada para virar ritual."
+    },
+    {
+      "type": "textarea",
+      "id": "testimonials_text",
+      "label": "Texto",
+      "default": "Use estes campos para depoimentos reais quando tiver provas sociais da marca."
+    },
+    {
+      "type": "header",
+      "content": "Marca"
+    },
+    {
+      "type": "text",
+      "id": "brand_eyebrow",
+      "label": "Texto pequeno",
+      "default": "Sobre a CofCof"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "brand_title",
+      "label": "Titulo",
+      "default": "Cafe especial com presenca, curadoria e calor."
+    },
+    {
+      "type": "richtext",
+      "id": "brand_text",
+      "label": "Texto",
+      "default": "<p>A CofCof existe para aproximar pessoas de cafes melhores, com uma linguagem sofisticada, humana e direta. Uma marca para quem quer beber melhor todos os dias.</p>"
+    },
+    {
+      "type": "header",
+      "content": "FAQ"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "faq_title",
+      "label": "Titulo",
+      "default": "Perguntas frequentes"
+    },
+    {
+      "type": "textarea",
+      "id": "faq_text",
+      "label": "Texto",
+      "default": "Respostas simples para reduzir duvidas antes da compra ou assinatura."
+    },
+    {
+      "type": "header",
+      "content": "CTA final"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "final_title",
+      "label": "Titulo",
+      "default": "Seu proximo cafe pode ser muito melhor."
+    },
+    {
+      "type": "textarea",
+      "id": "final_text",
+      "label": "Texto",
+      "default": "Comece pela assinatura ou escolha um cafe da loja. A home agora guia o cliente sem depender de redirecionamento automatico."
+    },
+    {
+      "type": "text",
+      "id": "final_cta_label",
+      "label": "Texto do CTA",
+      "default": "Comecar agora"
+    },
+    {
+      "type": "url",
+      "id": "final_cta_link",
+      "label": "Link do CTA"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Beneficio",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Simbolo curto",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titulo",
+          "default": "Cafe especial"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Texto",
+          "default": "Graos escolhidos para uma xicara mais aromatica, limpa e memoravel."
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "name": "Depoimento",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Depoimento",
+          "default": "Um cafe bonito, equilibrado e facil de encaixar na rotina."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Autor",
+          "default": "Cliente CofCof"
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "Pergunta frequente",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Pergunta",
+          "default": "Posso alterar minha assinatura?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Resposta",
+          "default": "Sim. A proposta e manter uma experiencia flexivel, com ajustes de frequencia e plano conforme a necessidade da loja."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "CofCof home premium",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "01",
+            "title": "Cafe especial",
+            "text": "Graos selecionados para uma xicara mais limpa, aromatica e elegante."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "02",
+            "title": "Torra cuidadosa",
+            "text": "Perfil pensado para preservar docura, corpo e equilibrio."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "03",
+            "title": "Origem",
+            "text": "Curadoria com foco em procedencia e consistencia."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "04",
+            "title": "Praticidade",
+            "text": "Compra e assinatura com menos friccao para o cliente."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "05",
+            "title": "Entrega",
+            "text": "Cafe chegando no ritmo certo, sem depender de improviso."
+          }
+        },
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "A assinatura deixa a rotina mais simples e a experiencia mais premium.",
+            "author": "Assinante CofCof"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Uma marca de cafe que parece cuidadosa desde a primeira tela.",
+            "author": "Cliente CofCof"
+          }
+        },
+        {
+          "type": "faq"
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "A home ainda leva para a pagina de assinatura?",
+            "answer": "Sim. Os CTAs podem apontar para /pages/assinatura, mas a pagina inicial agora tem conteudo proprio e editavel."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Preciso cadastrar imagens agora?",
+            "answer": "Nao. A section tem fallback visual premium, mas imagens reais da marca deixam a conversao mais forte."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
