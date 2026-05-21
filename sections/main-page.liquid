@@ -33,9 +33,10 @@
         assign video_card_01_src = 'video-1.mp4' | asset_url
         assign video_card_02_src = 'video-2.mp4' | asset_url
         assign video_card_03_src = 'video-3.mp4' | asset_url
+        assign hero_background_video_src = 'cofcof-hero-background.mp4' | asset_url
         capture hero_background_video
           echo '<div class="cofcof-hero-video-bg" aria-hidden="true"><video autoplay muted loop playsinline preload="metadata"><source src="'
-          echo video_card_01_src
+          echo hero_background_video_src
           echo '" type="video/mp4"></video></div>'
         endcapture
         capture video_card_01_bg
