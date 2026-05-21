@@ -30,9 +30,9 @@
         assign video_card_01_image = 'cofcof-video-card-01.jpg' | asset_url
         assign video_card_02_image = 'cofcof-video-card-02.jpg' | asset_url
         assign video_card_03_image = 'cofcof-video-card-03.jpg' | asset_url
-        assign video_card_01_bg = '<div class="vv-bg" role="img" aria-label="Por que esse café é especial?" style="background-image:url(' | append: video_card_01_image | append: ');background-size:cover;background-position:center;animation:none"></div>'
-        assign video_card_02_bg = '<div class="vv-bg" role="img" aria-label="Por que custa mais?" style="background-image:url(' | append: video_card_02_image | append: ');background-size:cover;background-position:center;animation:none"></div>'
-        assign video_card_03_bg = '<div class="vv-bg" role="img" aria-label="Como chega até mim?" style="background-image:url(' | append: video_card_03_image | append: ');background-size:cover;background-position:center;animation:none"></div>'
+        assign video_card_01_bg = '<div class="vv-bg" style="animation:none"><img src="' | append: video_card_01_image | append: '" alt="Por que esse café é especial?" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>'
+        assign video_card_02_bg = '<div class="vv-bg" style="animation:none"><img src="' | append: video_card_02_image | append: '" alt="Por que custa mais?" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>'
+        assign video_card_03_bg = '<div class="vv-bg" style="animation:none"><img src="' | append: video_card_03_image | append: '" alt="Como chega até mim?" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>'
         assign page_content = page_content | replace_first: '<div class="vv-bg"></div>', video_card_01_bg
         assign page_content = page_content | replace_first: '<div class="vv-bg"></div>', video_card_02_bg
         assign page_content = page_content | replace_first: '<div class="vv-bg"></div>', video_card_03_bg
