@@ -19,7 +19,17 @@
     {{ page.title | escape }}
   </h1>
   <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-    {{ page.content }}
+    {%- liquid
+      assign page_content = page.content
+
+      if page.handle == 'assinatura'
+        assign page_content = page_content | replace: 'href="LINK_CHECKOUT_GERAL"', 'href="#planos"'
+        assign page_content = page_content | replace: 'href="LINK_CHECKOUT_ESSENCIAL"', 'href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Quero%20assinar%20o%20plano%20Essencial%20da%20CofCof."'
+        assign page_content = page_content | replace: 'href="LINK_CHECKOUT_CLASSICO"', 'href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Quero%20assinar%20o%20plano%20Cl%C3%A1ssico%20da%20CofCof."'
+        assign page_content = page_content | replace: 'href="LINK_CHECKOUT_FAMILIA"', 'href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Quero%20assinar%20o%20plano%20Fam%C3%ADlia%20da%20CofCof."'
+      endif
+    -%}
+    {{ page_content }}
   </div>
 </div>
 
