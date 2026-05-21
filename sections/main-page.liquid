@@ -57,6 +57,54 @@
         assign page_content = page_content | replace_first: '<div class="vv-bg"></div>', video_card_01_bg
         assign page_content = page_content | replace_first: '<div class="vv-bg"></div>', video_card_02_bg
         assign page_content = page_content | replace_first: '<div class="vv-bg"></div>', video_card_03_bg
+        capture assinatura_visibility_css
+          echo '<style>'
+          echo '.section-'
+          echo section.id
+          echo '-padding .nv-l{color:var(--sand,#f6f1eb)!important}.section-'
+          echo section.id
+          echo '-padding .nv-l:hover{color:var(--sand,#f6f1eb)!important;opacity:.86}.section-'
+          echo section.id
+          echo '-padding .nv-r a,.section-'
+          echo section.id
+          echo '-padding .mo a{color:rgba(246,241,235,.68)!important}.section-'
+          echo section.id
+          echo '-padding .nv-r a:hover,.section-'
+          echo section.id
+          echo '-padding .mo a:hover{color:var(--sand,#f6f1eb)!important}.section-'
+          echo section.id
+          echo '-padding .nv-c,.section-'
+          echo section.id
+          echo '-padding .mo-c,.section-'
+          echo section.id
+          echo '-padding .btn-os,.section-'
+          echo section.id
+          echo '-padding .btn-ds,.section-'
+          echo section.id
+          echo '-padding .pl-btn,.section-'
+          echo section.id
+          echo '-padding .lnk{color:var(--sand,#f6f1eb)!important}.section-'
+          echo section.id
+          echo '-padding .btn-sd{color:var(--black,#0a0a0a)!important}.section-'
+          echo section.id
+          echo '-padding .btn-sd:hover{color:var(--sand,#f6f1eb)!important}.section-'
+          echo section.id
+          echo '-padding .nv-c:hover,.section-'
+          echo section.id
+          echo '-padding .mo-c:hover,.section-'
+          echo section.id
+          echo '-padding .btn-os:hover,.section-'
+          echo section.id
+          echo '-padding .btn-ds:hover,.section-'
+          echo section.id
+          echo '-padding .pl-btn:hover{color:var(--black,#0a0a0a)!important}.section-'
+          echo section.id
+          echo '-padding .pl.feat .pl-btn,.section-'
+          echo section.id
+          echo '-padding .pl.feat .pl-btn:hover{color:var(--sand,#f6f1eb)!important}'
+          echo '</style>'
+        endcapture
+        assign page_content = page_content | append: assinatura_visibility_css
       endif
 
       if page.handle == 'nossos-cafes' or page.handle == 'empresas' or page.handle == 'quem-somos' or page.handle == 'contato'
