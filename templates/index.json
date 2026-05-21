@@ -1,1 +1,11 @@
-{"sections":{"cofcof-redirect":{"type":"custom-liquid","settings":{"custom_liquid":"location.replace","color_scheme":"","padding_top":40,"padding_bottom":52}}},"order":["cofcof-redirect"]}
+{
+  "sections": {
+    "main": {
+      "type": "cofcof-home",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

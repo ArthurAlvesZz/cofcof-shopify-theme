@@ -21,6 +21,9 @@
   <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
     {%- liquid
       assign page_content = page.content
+      assign page_content = page_content | replace: 'href="/pages/aonde-encontrar"', 'href="/pages/onde-encontrar"'
+      assign page_content = page_content | replace: '>Aonde Encontrar<', '>Onde Encontrar<'
+      assign page_content = page_content | replace: 'href="/pages/assinatura" class="nv-l"', 'href="/" class="nv-l"'
 
       if page.handle == 'assinatura'
         assign page_content = page_content | replace: 'href="LINK_CHECKOUT_GERAL"', 'href="#planos"'

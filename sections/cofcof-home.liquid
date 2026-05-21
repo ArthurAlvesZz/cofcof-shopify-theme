@@ -1,0 +1,55 @@
+<section class="cof-home">
+  <style>
+    .cof-home{--black:#0a0a0a;--sand:#f6f1eb;--muted:rgba(246,241,235,.62);--gold:#c9a263;--line:rgba(246,241,235,.14);font-family:'DM Sans',Helvetica,sans-serif;background:var(--black);color:var(--sand);min-height:100vh;overflow:hidden}
+    .cof-home a{color:inherit;text-decoration:none}.cof-home__wrap{max-width:1280px;margin:0 auto;padding:0 28px}.cof-home__nav{height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.cof-home__brand{font-family:Montserrat,sans-serif;font-weight:800;letter-spacing:.08em}.cof-home__links{display:flex;gap:26px;align-items:center}.cof-home__links a{font:700 11px/1 Montserrat,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}.cof-home__links a:hover{color:var(--sand)}.cof-home__cta{border:1px solid var(--sand);padding:12px 18px;color:var(--sand)!important}.cof-home__hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:56px;align-items:center;min-height:calc(100vh - 68px);padding:72px 0}.cof-home__eyebrow{font:700 11px/1.4 Montserrat,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}.cof-home h1{font:800 clamp(48px,8vw,104px)/.88 Montserrat,sans-serif;letter-spacing:0;margin:28px 0 26px;text-transform:uppercase}.cof-home__copy{max-width:620px;color:var(--muted);font-size:17px;line-height:1.8}.cof-home__actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}.cof-home__button{border:1px solid var(--sand);padding:15px 22px;font:800 11px/1 Montserrat,sans-serif;letter-spacing:.18em;text-transform:uppercase}.cof-home__button--solid{background:var(--sand);color:var(--black)!important}.cof-home__panel{border:1px solid var(--line);background:linear-gradient(150deg,rgba(201,162,99,.16),rgba(246,241,235,.04));padding:32px}.cof-home__stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.cof-home__stat{border:1px solid var(--line);padding:22px;min-height:132px}.cof-home__stat strong{display:block;font:800 30px/1 Montserrat,sans-serif;margin-bottom:10px}.cof-home__stat span{color:var(--muted);font-size:13px;line-height:1.5}.cof-home__cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border-top:1px solid var(--line)}.cof-home__card{background:#111;padding:28px;min-height:210px}.cof-home__card h2{font:800 18px/1.2 Montserrat,sans-serif;text-transform:uppercase;margin:16px 0 12px}.cof-home__card p{color:var(--muted);font-size:14px;line-height:1.65;margin:0 0 20px}.cof-home__card a{font:800 11px/1 Montserrat,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}@media(max-width:900px){.cof-home__links{display:none}.cof-home__hero{grid-template-columns:1fr;gap:32px;padding:54px 0}.cof-home__cards{grid-template-columns:1fr 1fr}}@media(max-width:620px){.cof-home__wrap{padding:0 20px}.cof-home h1{font-size:46px}.cof-home__stats,.cof-home__cards{grid-template-columns:1fr}.cof-home__actions{flex-direction:column}.cof-home__button{text-align:center}}
+  </style>
+  <div class="cof-home__wrap">
+    <nav class="cof-home__nav" aria-label="Navegacao principal">
+      <a class="cof-home__brand" href="/">COFCOF.CO</a>
+      <div class="cof-home__links">
+        <a href="/">Home</a><a href="/pages/assinatura">Assinatura</a><a href="/pages/nossos-cafes">Cafes</a><a href="/pages/origem">Origem</a><a href="/pages/onde-encontrar">Onde Encontrar</a><a href="/pages/empresas">Empresas</a><a href="/pages/quem-somos">Quem Somos</a><a href="/pages/contato">Contato</a><a class="cof-home__cta" href="/pages/assinatura#planos">Assinar</a>
+      </div>
+    </nav>
+    <div class="cof-home__hero">
+      <div>
+        <div class="cof-home__eyebrow">{{ section.settings.eyebrow }}</div>
+        <h1>{{ section.settings.heading }}</h1>
+        <p class="cof-home__copy">{{ section.settings.text }}</p>
+        <div class="cof-home__actions">
+          <a class="cof-home__button cof-home__button--solid" href="{{ section.settings.primary_link | default: '/pages/assinatura#planos' }}">{{ section.settings.primary_label }}</a>
+          <a class="cof-home__button" href="{{ section.settings.secondary_link | default: '/pages/nossos-cafes' }}">{{ section.settings.secondary_label }}</a>
+        </div>
+      </div>
+      <div class="cof-home__panel">
+        <div class="cof-home__stats">
+          <div class="cof-home__stat"><strong>86+</strong><span>Pontuacao SCA em lotes selecionados.</span></div>
+          <div class="cof-home__stat"><strong>7 dias</strong><span>Torra sob demanda ate chegar na sua rotina.</span></div>
+          <div class="cof-home__stat"><strong>8 lotes</strong><span>Curadoria de cafes especiais do Cerrado Mineiro.</span></div>
+          <div class="cof-home__stat"><strong>100%</strong><span>Rastreabilidade de origem e processo.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cof-home__cards">
+    <article class="cof-home__card"><div class="cof-home__eyebrow">01</div><h2>Assinatura</h2><p>Cafe especial recorrente, torrado sob demanda e entregue na sua porta.</p><a href="/pages/assinatura">Conhecer planos</a></article>
+    <article class="cof-home__card"><div class="cof-home__eyebrow">02</div><h2>Cafes</h2><p>Lotes selecionados com origem, safra e perfil sensorial claros.</p><a href="/pages/nossos-cafes">Ver cafes</a></article>
+    <article class="cof-home__card"><div class="cof-home__eyebrow">03</div><h2>Origem</h2><p>Do Cerrado Mineiro para a xicara, com processo documentado.</p><a href="/pages/origem">Ver origem</a></article>
+    <article class="cof-home__card"><div class="cof-home__eyebrow">04</div><h2>Onde Encontrar</h2><p>Parceiros, cafeterias e pontos que trabalham com CofCof.</p><a href="/pages/onde-encontrar">Abrir mapa</a></article>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CofCof Home",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Chamada pequena", "default": "Cafe especial do Cerrado Mineiro" },
+    { "type": "text", "id": "heading", "label": "Titulo", "default": "O melhor cafe do Brasil voce ainda nao provou." },
+    { "type": "textarea", "id": "text", "label": "Texto", "default": "Cafes especiais selecionados, torrados sob demanda e entregues com rastreabilidade para quem quer transformar cafe em ritual." },
+    { "type": "text", "id": "primary_label", "label": "CTA principal", "default": "Assinar agora" },
+    { "type": "url", "id": "primary_link", "label": "Link CTA principal" },
+    { "type": "text", "id": "secondary_label", "label": "CTA secundario", "default": "Ver cafes" },
+    { "type": "url", "id": "secondary_link", "label": "Link CTA secundario" }
+  ],
+  "presets": [{ "name": "CofCof Home" }]
+}
+{% endschema %}
