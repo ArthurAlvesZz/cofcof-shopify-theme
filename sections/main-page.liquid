@@ -30,12 +30,33 @@
         assign page_content = page_content | replace: 'href="LINK_CHECKOUT_ESSENCIAL"', 'href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Quero%20assinar%20o%20plano%20Essencial%20da%20CofCof."'
         assign page_content = page_content | replace: 'href="LINK_CHECKOUT_CLASSICO"', 'href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Quero%20assinar%20o%20plano%20Cl%C3%A1ssico%20da%20CofCof."'
         assign page_content = page_content | replace: 'href="LINK_CHECKOUT_FAMILIA"', 'href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Quero%20assinar%20o%20plano%20Fam%C3%ADlia%20da%20CofCof."'
-        assign video_card_01_image = 'cofcof-video-card-01.jpg' | asset_url
-        assign video_card_02_image = 'cofcof-video-card-02.jpg' | asset_url
-        assign video_card_03_image = 'cofcof-video-card-03.jpg' | asset_url
-        assign video_card_01_bg = '<div class="vv-bg" style="animation:none"><img src="' | append: video_card_01_image | append: '" alt="Por que esse café é especial?" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>'
-        assign video_card_02_bg = '<div class="vv-bg" style="animation:none"><img src="' | append: video_card_02_image | append: '" alt="Por que custa mais?" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>'
-        assign video_card_03_bg = '<div class="vv-bg" style="animation:none"><img src="' | append: video_card_03_image | append: '" alt="Como chega até mim?" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>'
+        assign video_card_01_poster = 'cofcof-video-card-01.jpg' | asset_url
+        assign video_card_02_poster = 'cofcof-video-card-02.jpg' | asset_url
+        assign video_card_03_poster = 'cofcof-video-card-03.jpg' | asset_url
+        assign video_card_01_src = 'video-1.mp4' | asset_url
+        assign video_card_02_src = 'video-2.mp4' | asset_url
+        assign video_card_03_src = 'video-3.mp4' | asset_url
+        capture video_card_01_bg
+          echo '<div class="vv-bg" style="animation:none"><video class="vv-media" autoplay muted loop playsinline preload="metadata" poster="'
+          echo video_card_01_poster
+          echo '" aria-label="Por que esse café é especial?" style="width:100%;height:100%;object-fit:cover;display:block"><source src="'
+          echo video_card_01_src
+          echo '" type="video/mp4"></video></div>'
+        endcapture
+        capture video_card_02_bg
+          echo '<div class="vv-bg" style="animation:none"><video class="vv-media" autoplay muted loop playsinline preload="metadata" poster="'
+          echo video_card_02_poster
+          echo '" aria-label="Por que custa mais?" style="width:100%;height:100%;object-fit:cover;display:block"><source src="'
+          echo video_card_02_src
+          echo '" type="video/mp4"></video></div>'
+        endcapture
+        capture video_card_03_bg
+          echo '<div class="vv-bg" style="animation:none"><video class="vv-media" autoplay muted loop playsinline preload="metadata" poster="'
+          echo video_card_03_poster
+          echo '" aria-label="Como chega até mim?" style="width:100%;height:100%;object-fit:cover;display:block"><source src="'
+          echo video_card_03_src
+          echo '" type="video/mp4"></video></div>'
+        endcapture
         assign page_content = page_content | replace_first: '<div class="vv-bg"></div>', video_card_01_bg
         assign page_content = page_content | replace_first: '<div class="vv-bg"></div>', video_card_02_bg
         assign page_content = page_content | replace_first: '<div class="vv-bg"></div>', video_card_03_bg
