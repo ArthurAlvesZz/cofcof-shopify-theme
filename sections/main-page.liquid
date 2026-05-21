@@ -40,21 +40,21 @@
           echo '" type="video/mp4"></video></div>'
         endcapture
         capture video_card_01_bg
-          echo '<div class="vv-bg" style="animation:none"><video class="vv-media" autoplay muted loop playsinline preload="metadata" poster="'
+          echo '<div class="vv-bg" style="animation:none"><video class="vv-media" muted loop playsinline preload="metadata" poster="'
           echo video_card_01_poster
           echo '" aria-label="Por que esse café é especial?" style="width:100%;height:100%;object-fit:cover;display:block"><source src="'
           echo video_card_01_src
           echo '" type="video/mp4"></video></div>'
         endcapture
         capture video_card_02_bg
-          echo '<div class="vv-bg" style="animation:none"><video class="vv-media" autoplay muted loop playsinline preload="metadata" poster="'
+          echo '<div class="vv-bg" style="animation:none"><video class="vv-media" muted loop playsinline preload="metadata" poster="'
           echo video_card_02_poster
           echo '" aria-label="Por que custa mais?" style="width:100%;height:100%;object-fit:cover;display:block"><source src="'
           echo video_card_02_src
           echo '" type="video/mp4"></video></div>'
         endcapture
         capture video_card_03_bg
-          echo '<div class="vv-bg" style="animation:none"><video class="vv-media" autoplay muted loop playsinline preload="metadata" poster="'
+          echo '<div class="vv-bg" style="animation:none"><video class="vv-media" muted loop playsinline preload="metadata" poster="'
           echo video_card_03_poster
           echo '" aria-label="Como chega até mim?" style="width:100%;height:100%;object-fit:cover;display:block"><source src="'
           echo video_card_03_src
@@ -113,16 +113,22 @@
           echo section.id
           echo '-padding .hero-main>.fi{position:relative;z-index:1}.section-'
           echo section.id
-          echo '-padding .cofcof-hero-video-bg{position:absolute;inset:-40px -28px;z-index:0;overflow:hidden;pointer-events:none;opacity:.16}.section-'
+          echo '-padding .cofcof-hero-video-bg{position:absolute;inset:-40px -28px;z-index:0;overflow:hidden;pointer-events:none;opacity:.08}.section-'
           echo section.id
           echo '-padding .cofcof-hero-video-bg video{width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.05)}.section-'
           echo section.id
           echo '-padding .cofcof-hero-video-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.86),rgba(10,10,10,.38) 48%,rgba(10,10,10,.82))}'
           echo '</style>'
         endcapture
+        capture assinatura_video_interaction_script
+          echo '<script>(function(){var root=document.querySelector(".section-'
+          echo section.id
+          echo '-padding");if(!root)return;var cards=root.querySelectorAll(".vt");function play(card){var video=card&&card.querySelector(".vv-media");if(!video)return;root.querySelectorAll(".vv-media").forEach(function(item){if(item!==video){item.pause();item.currentTime=0;}});video.muted=true;video.play().catch(function(){});}function stop(card){var video=card&&card.querySelector(".vv-media");if(!video)return;video.pause();video.currentTime=0;}cards.forEach(function(card){card.addEventListener("mouseenter",function(){play(card);});card.addEventListener("mouseleave",function(){stop(card);});card.addEventListener("touchstart",function(){play(card);},{passive:true});card.addEventListener("pointerdown",function(event){if(event.pointerType==="touch"){play(card);}});});})();</script>'
+        endcapture
         assign hero_main_open_with_video = '<div class="bx hero-main">' | append: hero_background_video
         assign page_content = page_content | replace_first: '<div class="bx hero-main">', hero_main_open_with_video
         assign page_content = page_content | append: assinatura_visibility_css
+        assign page_content = page_content | append: assinatura_video_interaction_script
       endif
 
       if page.handle == 'nossos-cafes' or page.handle == 'empresas' or page.handle == 'quem-somos' or page.handle == 'contato'
