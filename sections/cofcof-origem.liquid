@@ -1,0 +1,68 @@
+<section class="cof-origin">
+  <style>
+    .cof-origin{--black:#0a0a0a;--sand:#f6f1eb;--muted:rgba(246,241,235,.64);--gold:#c9a263;--line:rgba(246,241,235,.14);font-family:'DM Sans',Helvetica,sans-serif;background:var(--black);color:var(--sand);min-height:100vh}.cof-origin a{color:inherit;text-decoration:none}.cof-origin__wrap{max-width:1240px;margin:0 auto;padding:0 28px}.cof-origin__nav{height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.cof-origin__brand{font-family:Montserrat,sans-serif;font-weight:800;letter-spacing:.08em}.cof-origin__links{display:flex;gap:24px;align-items:center}.cof-origin__links a{font:700 11px/1 Montserrat,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}.cof-origin__links a[aria-current=true],.cof-origin__links a:hover{color:var(--sand)}.cof-origin__hero{padding:86px 0 64px;display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:58px}.cof-origin__eyebrow{font:700 11px/1.4 Montserrat,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}.cof-origin h1{font:800 clamp(42px,7vw,92px)/.9 Montserrat,sans-serif;text-transform:uppercase;margin:24px 0}.cof-origin__lead{color:var(--muted);font-size:18px;line-height:1.8;max-width:760px}.cof-origin__panel{border:1px solid var(--line);padding:28px;background:linear-gradient(145deg,rgba(201,162,99,.14),rgba(246,241,235,.03))}.cof-origin__panel dl{margin:0}.cof-origin__panel dt{font:700 10px/1 Montserrat,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:22px}.cof-origin__panel dt:first-child{margin-top:0}.cof-origin__panel dd{margin:8px 0 0;color:var(--sand);font-weight:700}.cof-origin__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border-top:1px solid var(--line)}.cof-origin__card{background:#111;padding:34px;min-height:250px}.cof-origin__card h2{font:800 20px/1.2 Montserrat,sans-serif;text-transform:uppercase;margin:18px 0 14px}.cof-origin__card p{color:var(--muted);line-height:1.7}.cof-origin__cta{padding:60px 28px;text-align:center;border-top:1px solid var(--line)}.cof-origin__cta a{display:inline-block;border:1px solid var(--sand);padding:16px 24px;font:800 11px/1 Montserrat,sans-serif;letter-spacing:.18em;text-transform:uppercase}@media(max-width:900px){.cof-origin__links{display:none}.cof-origin__hero{grid-template-columns:1fr}.cof-origin__grid{grid-template-columns:1fr}}@media(max-width:620px){.cof-origin__wrap{padding:0 20px}.cof-origin h1{font-size:43px}}
+  </style>
+  <div class="cof-origin__wrap">
+    <nav class="cof-origin__nav" aria-label="Navegacao principal">
+      <a class="cof-origin__brand" href="/">COFCOF.CO</a>
+      <div class="cof-origin__links">
+        <a href="/">Home</a><a href="/pages/assinatura">Assinatura</a><a href="/pages/nossos-cafes">Cafes</a><a aria-current="true" href="/pages/origem">Origem</a><a href="/pages/onde-encontrar">Onde Encontrar</a><a href="/pages/empresas">Empresas</a><a href="/pages/quem-somos">Quem Somos</a><a href="/pages/contato">Contato</a>
+      </div>
+    </nav>
+    <div class="cof-origin__hero">
+      <div>
+        <div class="cof-origin__eyebrow">{{ section.settings.eyebrow }}</div>
+        <h1>{{ section.settings.heading }}</h1>
+        <p class="cof-origin__lead">{{ section.settings.text }}</p>
+      </div>
+      <aside class="cof-origin__panel">
+        <dl>
+          <dt>Regiao</dt><dd>{{ section.settings.region }}</dd>
+          <dt>Altitude</dt><dd>{{ section.settings.altitude }}</dd>
+          <dt>Safra</dt><dd>{{ section.settings.harvest }}</dd>
+          <dt>Qualidade</dt><dd>{{ section.settings.quality }}</dd>
+        </dl>
+      </aside>
+    </div>
+  </div>
+  <div class="cof-origin__grid">
+    {% for block in section.blocks %}
+      <article class="cof-origin__card" {{ block.shopify_attributes }}>
+        <div class="cof-origin__eyebrow">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
+        <h2>{{ block.settings.title }}</h2>
+        <p>{{ block.settings.text }}</p>
+      </article>
+    {% endfor %}
+  </div>
+  <div class="cof-origin__cta"><a href="{{ section.settings.cta_link | default: '/pages/assinatura#planos' }}">{{ section.settings.cta_label }}</a></div>
+</section>
+
+{% schema %}
+{
+  "name": "CofCof Origem",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Chamada pequena", "default": "Origem CofCof" },
+    { "type": "text", "id": "heading", "label": "Titulo", "default": "Do Cerrado Mineiro para a sua xicara." },
+    { "type": "textarea", "id": "text", "label": "Texto principal", "default": "A CofCof nasce da escolha por cafes especiais com origem clara, processo respeitado e torra sob demanda. Cada lote carrega a assinatura de quem planta, colhe, seleciona e prepara o cafe para chegar fresco." },
+    { "type": "text", "id": "region", "label": "Regiao", "default": "Cerrado Mineiro" },
+    { "type": "text", "id": "altitude", "label": "Altitude", "default": "1100 - 1250m" },
+    { "type": "text", "id": "harvest", "label": "Safra", "default": "2025 / Arabica" },
+    { "type": "text", "id": "quality", "label": "Qualidade", "default": "86+ SCA" },
+    { "type": "text", "id": "cta_label", "label": "Texto CTA", "default": "Conhecer assinatura" },
+    { "type": "url", "id": "cta_link", "label": "Link CTA" }
+  ],
+  "blocks": [
+    { "type": "highlight", "name": "Destaque", "settings": [
+      { "type": "text", "id": "title", "label": "Titulo", "default": "Cerrado Mineiro" },
+      { "type": "textarea", "id": "text", "label": "Texto", "default": "Uma regiao reconhecida por altitude, clima definido e produtores que tratam qualidade como rotina." }
+    ] }
+  ],
+  "presets": [
+    { "name": "CofCof Origem", "blocks": [
+      { "type": "highlight", "settings": { "title": "Cerrado Mineiro", "text": "Regiao com terroir reconhecido, estacoes bem definidas e vocacao para cafes de alta pontuacao." } },
+      { "type": "highlight", "settings": { "title": "Processo", "text": "Colheita, selecao, secagem e beneficiamento pensados para preservar dulcor, corpo e complexidade." } },
+      { "type": "highlight", "settings": { "title": "Torra", "text": "A torra acontece sob demanda para reduzir estoque parado e entregar cafe no ponto certo." } }
+    ] }
+  ]
+}
+{% endschema %}

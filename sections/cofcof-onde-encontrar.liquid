@@ -1,0 +1,123 @@
+<section class="cof-locator" data-cofcof-locator>
+  <style>
+    .cof-locator{--black:#0a0a0a;--sand:#f6f1eb;--muted:rgba(246,241,235,.64);--gold:#c9a263;--line:rgba(246,241,235,.14);font-family:'DM Sans',Helvetica,sans-serif;background:var(--black);color:var(--sand);min-height:100vh}.cof-locator a{color:inherit;text-decoration:none}.cof-locator__wrap{max-width:1240px;margin:0 auto;padding:0 28px}.cof-locator__nav{height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.cof-locator__brand{font-family:Montserrat,sans-serif;font-weight:800;letter-spacing:.08em}.cof-locator__links{display:flex;gap:24px;align-items:center}.cof-locator__links a{font:700 11px/1 Montserrat,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}.cof-locator__links a[aria-current=true],.cof-locator__links a:hover{color:var(--sand)}.cof-locator__hero{padding:76px 0 40px}.cof-locator__eyebrow{font:700 11px/1.4 Montserrat,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}.cof-locator h1{font:800 clamp(42px,7vw,86px)/.9 Montserrat,sans-serif;text-transform:uppercase;margin:22px 0}.cof-locator__lead{max-width:760px;color:var(--muted);font-size:18px;line-height:1.8}.cof-locator__tools{display:flex;gap:12px;margin:30px 0 0}.cof-locator__search{width:min(100%,520px);background:#111;border:1px solid var(--line);color:var(--sand);padding:15px 16px;border-radius:0}.cof-locator__grid{display:grid;grid-template-columns:420px minmax(0,1fr);gap:22px;padding-bottom:70px}.cof-locator__list{display:grid;gap:12px;align-content:start}.cof-locator__card{background:#111;border:1px solid var(--line);padding:20px;text-align:left;color:var(--sand);cursor:pointer}.cof-locator__card[hidden]{display:none}.cof-locator__card.is-active{border-color:var(--gold)}.cof-locator__card h2{font:800 16px/1.2 Montserrat,sans-serif;text-transform:uppercase;margin:8px 0}.cof-locator__meta,.cof-locator__addr,.cof-locator__desc{color:var(--muted);font-size:14px;line-height:1.55}.cof-locator__actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px}.cof-locator__actions a{font:800 10px/1 Montserrat,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}.cof-locator__map{min-height:560px;border:1px solid var(--line);background:#111;position:sticky;top:20px}.cof-locator__fallback{padding:24px;color:var(--muted);line-height:1.6}.cof-locator .leaflet-container{background:#111}.cof-locator .leaflet-popup-content-wrapper,.cof-locator .leaflet-popup-tip{background:#111;color:var(--sand)}@media(max-width:940px){.cof-locator__links{display:none}.cof-locator__grid{grid-template-columns:1fr}.cof-locator__map{position:relative;min-height:380px}}@media(max-width:620px){.cof-locator__wrap{padding:0 20px}.cof-locator h1{font-size:42px}.cof-locator__tools{display:block}.cof-locator__search{width:100%}}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <div class="cof-locator__wrap">
+    <nav class="cof-locator__nav" aria-label="Navegacao principal">
+      <a class="cof-locator__brand" href="/">COFCOF.CO</a>
+      <div class="cof-locator__links">
+        <a href="/">Home</a><a href="/pages/assinatura">Assinatura</a><a href="/pages/nossos-cafes">Cafes</a><a href="/pages/origem">Origem</a><a aria-current="true" href="/pages/onde-encontrar">Onde Encontrar</a><a href="/pages/empresas">Empresas</a><a href="/pages/quem-somos">Quem Somos</a><a href="/pages/contato">Contato</a>
+      </div>
+    </nav>
+    <div class="cof-locator__hero">
+      <div class="cof-locator__eyebrow">{{ section.settings.eyebrow }}</div>
+      <h1>{{ section.settings.heading }}</h1>
+      <p class="cof-locator__lead">{{ section.settings.text }}</p>
+      <div class="cof-locator__tools"><input class="cof-locator__search" type="search" placeholder="Buscar por nome, cidade, bairro ou estado" aria-label="Buscar parceiros"></div>
+    </div>
+    <div class="cof-locator__grid">
+      <div class="cof-locator__list">
+        {% assign partner_count = 0 %}
+        {% for block in section.blocks %}
+          {% if block.settings.active %}
+            {% assign partner_count = partner_count | plus: 1 %}
+            <article class="cof-locator__card" data-name="{{ block.settings.name | escape }}" data-type="{{ block.settings.type | escape }}" data-city="{{ block.settings.city | escape }}" data-state="{{ block.settings.state | escape }}" data-neighborhood="{{ block.settings.neighborhood | escape }}" data-address="{{ block.settings.address | escape }}" data-lat="{{ block.settings.latitude | escape }}" data-lng="{{ block.settings.longitude | escape }}" {{ block.shopify_attributes }}>
+              <div class="cof-locator__eyebrow">{{ block.settings.type }}</div><h2>{{ block.settings.name }}</h2>
+              <div class="cof-locator__meta">{{ block.settings.neighborhood }} · {{ block.settings.city }} / {{ block.settings.state }}</div>
+              <div class="cof-locator__addr">{{ block.settings.address }}</div>
+              {% if block.settings.description != blank %}<p class="cof-locator__desc">{{ block.settings.description }}</p>{% endif %}
+              <div class="cof-locator__actions">
+                <a data-route href="#">Ver rota</a>{% if block.settings.whatsapp != blank %}<a href="{{ block.settings.whatsapp }}" target="_blank" rel="noopener">WhatsApp</a>{% endif %}{% if block.settings.instagram != blank %}<a href="{{ block.settings.instagram }}" target="_blank" rel="noopener">Instagram</a>{% endif %}
+              </div>
+            </article>
+          {% endif %}
+        {% endfor %}
+        {% if partner_count == 0 %}
+          <article class="cof-locator__card" data-name="CofCof.co" data-type="Referencia" data-city="Uberlandia" data-state="MG" data-neighborhood="Cerrado Mineiro" data-address="Uberlandia, MG" data-lat="-18.9128" data-lng="-48.2755"><div class="cof-locator__eyebrow">Referencia</div><h2>CofCof.co</h2><div class="cof-locator__meta">Cerrado Mineiro · Uberlandia / MG</div><div class="cof-locator__addr">Uberlandia, MG</div><p class="cof-locator__desc">Adicione parceiros reais pelo editor do tema usando blocos desta secao.</p><div class="cof-locator__actions"><a data-route href="#">Ver rota</a></div></article>
+        {% endif %}
+      </div>
+      <div class="cof-locator__map" data-map><div class="cof-locator__fallback">Carregando mapa. Se ele nao aparecer, use a lista de parceiros e o botao de rota.</div></div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script>
+    (() => {
+      const root = document.currentScript.closest('[data-cofcof-locator]');
+      if (!root) return;
+      const init = () => {
+        const cards = [...root.querySelectorAll('.cof-locator__card')];
+        const search = root.querySelector('.cof-locator__search');
+        const mapEl = root.querySelector('[data-map]');
+        const partners = cards.map((card, index) => {
+          const lat = parseFloat(card.dataset.lat);
+          const lng = parseFloat(card.dataset.lng);
+          const route = card.querySelector('[data-route]');
+          const query = lat && lng ? `${lat},${lng}` : card.dataset.address;
+          if (route) route.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+          return { card, index, lat, lng, name: card.dataset.name, address: card.dataset.address };
+        });
+        let map = null;
+        let markers = [];
+        const usable = partners.filter((p) => Number.isFinite(p.lat) && Number.isFinite(p.lng));
+        if (window.L && mapEl && usable.length) {
+          map = L.map(mapEl, { scrollWheelZoom: false });
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap' }).addTo(map);
+          const bounds = [];
+          usable.forEach((p) => {
+            const marker = L.marker([p.lat, p.lng]).addTo(map).bindPopup(`<strong>${p.name}</strong><br>${p.address}`);
+            markers[p.index] = marker;
+            bounds.push([p.lat, p.lng]);
+          });
+          map.fitBounds(bounds, { padding: [36, 36], maxZoom: 14 });
+        } else if (mapEl) {
+          mapEl.innerHTML = '<div class="cof-locator__fallback">Mapa indisponivel no momento. Use a lista de parceiros e o botao de rota.</div>';
+        }
+        cards.forEach((card, index) => card.addEventListener('click', (event) => {
+          if (event.target.closest('a')) return;
+          cards.forEach((item) => item.classList.remove('is-active'));
+          card.classList.add('is-active');
+          const marker = markers[index];
+          if (map && marker) { map.setView(marker.getLatLng(), Math.max(map.getZoom(), 14)); marker.openPopup(); }
+        }));
+        if (search) search.addEventListener('input', () => {
+          const term = search.value.trim().toLowerCase();
+          cards.forEach((card) => {
+            const haystack = [card.dataset.name, card.dataset.type, card.dataset.city, card.dataset.state, card.dataset.neighborhood, card.dataset.address].join(' ').toLowerCase();
+            card.hidden = term && !haystack.includes(term);
+          });
+        });
+      };
+      const waitForLeaflet = () => window.L ? init() : setTimeout(waitForLeaflet, 120);
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', waitForLeaflet, { once: true }); else waitForLeaflet();
+    })();
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "CofCof Onde Encontrar",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Chamada pequena", "default": "Onde encontrar" },
+    { "type": "text", "id": "heading", "label": "Titulo", "default": "Encontre CofCof perto de voce." },
+    { "type": "textarea", "id": "text", "label": "Texto", "default": "Consulte cafeterias, parceiros e pontos selecionados. Edite os parceiros desta pagina pelos blocos da secao no editor do tema." }
+  ],
+  "blocks": [
+    { "type": "partner", "name": "Parceiro", "settings": [
+      { "type": "checkbox", "id": "active", "label": "Ativo", "default": true },
+      { "type": "text", "id": "name", "label": "Nome", "default": "Parceiro CofCof" },
+      { "type": "text", "id": "type", "label": "Tipo", "default": "Cafeteria" },
+      { "type": "text", "id": "city", "label": "Cidade", "default": "Uberlandia" },
+      { "type": "text", "id": "state", "label": "Estado", "default": "MG" },
+      { "type": "text", "id": "neighborhood", "label": "Bairro", "default": "Centro" },
+      { "type": "text", "id": "address", "label": "Endereco", "default": "Uberlandia, MG" },
+      { "type": "text", "id": "latitude", "label": "Latitude", "default": "-18.9128" },
+      { "type": "text", "id": "longitude", "label": "Longitude", "default": "-48.2755" },
+      { "type": "url", "id": "whatsapp", "label": "WhatsApp" },
+      { "type": "url", "id": "instagram", "label": "Instagram" },
+      { "type": "textarea", "id": "description", "label": "Descricao curta", "default": "Ponto parceiro CofCof." }
+    ] }
+  ],
+  "presets": [{ "name": "CofCof Onde Encontrar" }]
+}
+{% endschema %}

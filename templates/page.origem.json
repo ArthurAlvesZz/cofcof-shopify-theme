@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "cofcof-origem",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

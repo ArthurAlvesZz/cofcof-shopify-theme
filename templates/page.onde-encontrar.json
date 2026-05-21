@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "cofcof-onde-encontrar",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
