@@ -27,6 +27,15 @@
         assign page_content = page_content | replace: 'href="LINK_CHECKOUT_ESSENCIAL"', 'href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Quero%20assinar%20o%20plano%20Essencial%20da%20CofCof."'
         assign page_content = page_content | replace: 'href="LINK_CHECKOUT_CLASSICO"', 'href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Quero%20assinar%20o%20plano%20Cl%C3%A1ssico%20da%20CofCof."'
         assign page_content = page_content | replace: 'href="LINK_CHECKOUT_FAMILIA"', 'href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Quero%20assinar%20o%20plano%20Fam%C3%ADlia%20da%20CofCof."'
+        assign video_card_01_image = 'cofcof-video-card-01.jpg' | asset_url
+        assign video_card_02_image = 'cofcof-video-card-02.jpg' | asset_url
+        assign video_card_03_image = 'cofcof-video-card-03.jpg' | asset_url
+        assign video_card_01_bg = '<div class="vv-bg" role="img" aria-label="Por que esse café é especial?" style="background-image:url(' | append: video_card_01_image | append: ');background-size:cover;background-position:center;animation:none"></div>'
+        assign video_card_02_bg = '<div class="vv-bg" role="img" aria-label="Por que custa mais?" style="background-image:url(' | append: video_card_02_image | append: ');background-size:cover;background-position:center;animation:none"></div>'
+        assign video_card_03_bg = '<div class="vv-bg" role="img" aria-label="Como chega até mim?" style="background-image:url(' | append: video_card_03_image | append: ');background-size:cover;background-position:center;animation:none"></div>'
+        assign page_content = page_content | replace_first: '<div class="vv-bg"></div>', video_card_01_bg
+        assign page_content = page_content | replace_first: '<div class="vv-bg"></div>', video_card_02_bg
+        assign page_content = page_content | replace_first: '<div class="vv-bg"></div>', video_card_03_bg
       endif
 
       if page.handle == 'nossos-cafes' or page.handle == 'empresas' or page.handle == 'quem-somos' or page.handle == 'contato'
