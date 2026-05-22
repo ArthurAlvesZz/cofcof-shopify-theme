@@ -1,0 +1,96 @@
+<div class="cof-b2b" data-cofcof-b2b>
+  <style>
+    .cof-b2b{--black:#0a0a0a;--sand:#f6f1eb;--muted:rgba(246,241,235,.66);--gold:#c9a263;--line:rgba(246,241,235,.14);font-family:'DM Sans',Helvetica,sans-serif;background:var(--black);color:var(--sand);padding:86px 0}.cof-b2b *{box-sizing:border-box}.cof-b2b a{color:inherit;text-decoration:none}.cof-b2b__wrap{max-width:1240px;margin:0 auto;padding:0 28px}.cof-b2b__head{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,420px);gap:42px;align-items:end;margin-bottom:42px}.cof-b2b__eyebrow{font:800 11px/1.4 Montserrat,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}.cof-b2b h2{font:800 clamp(38px,6vw,76px)/.9 Montserrat,sans-serif;text-transform:uppercase;margin:20px 0}.cof-b2b__lead{font-size:17px;line-height:1.75;color:var(--muted);max-width:680px}.cof-b2b__note{border:1px solid var(--line);background:#111;padding:24px;color:var(--muted);line-height:1.65}.cof-b2b__grid{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:22px}.cof-b2b__panel,.cof-b2b__result{border:1px solid var(--line);background:#111;padding:26px}.cof-b2b__field{margin-bottom:22px}.cof-b2b label{display:block;font:800 10px/1 Montserrat,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}.cof-b2b input,.cof-b2b select{width:100%;background:#080808;border:1px solid var(--line);color:var(--sand);padding:14px 13px;border-radius:0}.cof-b2b input:focus-visible,.cof-b2b select:focus-visible,.cof-b2b a:focus-visible{outline:2px solid var(--sand);outline-offset:4px}.cof-b2b__types{display:flex;flex-wrap:wrap;gap:9px}.cof-b2b__type{border:1px solid var(--line);background:#080808;color:var(--muted);padding:11px 13px;font:800 10px/1 Montserrat,sans-serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}.cof-b2b__type.is-active{background:var(--gold);border-color:var(--gold);color:var(--black)}.cof-b2b__row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.cof-b2b__kg{font:800 clamp(48px,7vw,82px)/.86 Montserrat,sans-serif;color:var(--sand);letter-spacing:-.03em;margin:18px 0 8px}.cof-b2b__meta{color:var(--muted);line-height:1.65}.cof-b2b__package{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:22px 0}.cof-b2b__package strong{display:block;color:var(--gold);font:800 18px/1.2 Montserrat,sans-serif;text-transform:uppercase;margin-top:6px}.cof-b2b__cta{display:block;text-align:center;background:var(--gold);color:var(--black)!important;padding:17px 20px;font:900 11px/1 Montserrat,sans-serif;letter-spacing:.18em;text-transform:uppercase}.cof-b2b__cta:hover{background:var(--sand)}.cof-b2b__facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);margin-top:34px}.cof-b2b__fact{background:#111;padding:22px}.cof-b2b__fact strong{display:block;font:800 12px/1.35 Montserrat,sans-serif;text-transform:uppercase;margin-bottom:8px}.cof-b2b__fact span{color:var(--muted);font-size:13px;line-height:1.55}@media(max-width:920px){.cof-b2b__head,.cof-b2b__grid{grid-template-columns:1fr}.cof-b2b__facts{grid-template-columns:1fr 1fr}}@media(max-width:620px){.cof-b2b{padding:62px 0}.cof-b2b__wrap{padding:0 20px}.cof-b2b__row,.cof-b2b__facts{grid-template-columns:1fr}.cof-b2b h2{font-size:38px}}
+  </style>
+  <div class="cof-b2b__wrap">
+    <div class="cof-b2b__head">
+      <div>
+        <div class="cof-b2b__eyebrow">Empresas · B2B · Revenda</div>
+        <h2>Cafe especial para a operacao da sua empresa.</h2>
+        <p class="cof-b2b__lead">Adapte volume, recorrencia e perfil do cafe para escritorios, cafeterias, clinicas, hoteis, restaurantes, coworkings e revendas.</p>
+      </div>
+      <aside class="cof-b2b__note">Use a calculadora para estimar consumo mensal e iniciar uma conversa comercial com dados mais claros.</aside>
+    </div>
+    <div class="cof-b2b__grid">
+      <div class="cof-b2b__panel">
+        <div class="cof-b2b__field">
+          <label>Tipo de negocio</label>
+          <div class="cof-b2b__types" role="list">
+            <button class="cof-b2b__type is-active" type="button" data-type="escritorio" data-cups="2" data-days="22">Escritorio</button>
+            <button class="cof-b2b__type" type="button" data-type="cafeteria" data-cups="3" data-days="26">Cafeteria</button>
+            <button class="cof-b2b__type" type="button" data-type="restaurante" data-cups="2" data-days="26">Restaurante</button>
+            <button class="cof-b2b__type" type="button" data-type="hotel" data-cups="2" data-days="30">Hotel</button>
+            <button class="cof-b2b__type" type="button" data-type="revenda" data-cups="3" data-days="26">Revenda</button>
+          </div>
+        </div>
+        <div class="cof-b2b__row">
+          <div class="cof-b2b__field">
+            <label>Pessoas/clientes por dia</label>
+            <input data-people type="number" min="1" max="500" value="20">
+          </div>
+          <div class="cof-b2b__field">
+            <label>Xicaras por pessoa</label>
+            <select data-cups><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option></select>
+          </div>
+          <div class="cof-b2b__field">
+            <label>Dias por mes</label>
+            <select data-days><option>15</option><option>20</option><option selected>22</option><option>26</option><option>30</option></select>
+          </div>
+        </div>
+      </div>
+      <aside class="cof-b2b__result">
+        <div class="cof-b2b__eyebrow">Consumo estimado</div>
+        <div class="cof-b2b__kg"><span data-kg>5</span>kg</div>
+        <p class="cof-b2b__meta"><span data-cups-total>880</span> xicaras/mes considerando 10g por xicara.</p>
+        <div class="cof-b2b__package">
+          <span class="cof-b2b__eyebrow">Faixa sugerida</span>
+          <strong data-package>B2B Essencial</strong>
+        </div>
+        <a class="cof-b2b__cta" data-whatsapp href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Quero%20uma%20proposta%20B2B%20CofCof." target="_blank" rel="noopener">Solicitar proposta</a>
+      </aside>
+    </div>
+    <div class="cof-b2b__facts">
+      <div class="cof-b2b__fact"><strong>Torra sob demanda</strong><span>Volume planejado para reduzir estoque parado.</span></div>
+      <div class="cof-b2b__fact"><strong>Nota fiscal</strong><span>Fornecimento formal para operacoes comerciais.</span></div>
+      <div class="cof-b2b__fact"><strong>Perfil sensorial</strong><span>Escolha lote mais doce, frutado ou equilibrado.</span></div>
+      <div class="cof-b2b__fact"><strong>Recorrencia</strong><span>Plano ajustavel conforme movimento da empresa.</span></div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const root = document.currentScript.closest('[data-cofcof-b2b]');
+      if (!root) return;
+      const people = root.querySelector('[data-people]');
+      const cups = root.querySelector('[data-cups]');
+      const days = root.querySelector('[data-days]');
+      const kgOut = root.querySelector('[data-kg]');
+      const cupsOut = root.querySelector('[data-cups-total]');
+      const packageOut = root.querySelector('[data-package]');
+      const whatsapp = root.querySelector('[data-whatsapp]');
+      const types = [...root.querySelectorAll('[data-type]')];
+      const update = () => {
+        const totalCups = Math.max(1, Number(people.value || 1)) * Math.max(1, Number(cups.value || 1)) * Math.max(1, Number(days.value || 1));
+        const kg = Math.max(1, Math.ceil((totalCups * 10) / 1000));
+        let pack = 'B2B Essencial';
+        if (kg > 50) pack = 'Volume Personalizado';
+        else if (kg > 20) pack = 'B2B Volume';
+        else if (kg > 10) pack = 'B2B Premium';
+        else if (kg > 5) pack = 'B2B Elevado';
+        kgOut.textContent = kg;
+        cupsOut.textContent = totalCups.toLocaleString('pt-BR');
+        packageOut.textContent = pack;
+        const text = `Ola! Quero uma proposta B2B CofCof. Estimativa: ${kg}kg/mes (${totalCups} xicaras), faixa ${pack}.`;
+        whatsapp.href = `https://wa.me/5534998728882?text=${encodeURIComponent(text)}`;
+      };
+      types.forEach((button) => button.addEventListener('click', () => {
+        types.forEach((item) => item.classList.remove('is-active'));
+        button.classList.add('is-active');
+        cups.value = button.dataset.cups || cups.value;
+        days.value = button.dataset.days || days.value;
+        update();
+      }));
+      [people, cups, days].forEach((field) => field.addEventListener('input', update));
+      update();
+    })();
+  </script>
+</div>

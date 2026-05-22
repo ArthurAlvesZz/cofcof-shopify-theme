@@ -245,6 +245,9 @@
       endif
     -%}
     {{ page_content }}
+    {% if page.handle == 'empresas' %}
+      {% render 'cofcof-empresas-calculator' %}
+    {% endif %}
   </div>
 </div>
 

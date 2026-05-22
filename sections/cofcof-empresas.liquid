@@ -1,0 +1,24 @@
+<section class="cof-empresas">
+  <style>
+    .cof-empresas{--black:#0a0a0a;--sand:#f6f1eb;--muted:rgba(246,241,235,.68);--gold:#c9a263;--line:rgba(246,241,235,.14);font-family:'DM Sans',Helvetica,sans-serif;background:var(--black);color:var(--sand);min-height:100vh}.cof-empresas a{color:inherit;text-decoration:none}.cof-empresas__wrap{max-width:1340px;margin:0 auto;padding:0 28px}@media(min-width:768px){.cof-empresas__wrap{padding:0 56px}}.cof-empresas__nav{height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.cof-empresas__brand{font-family:Montserrat,sans-serif;font-weight:800;font-size:16px;letter-spacing:.08em;color:var(--sand);text-transform:uppercase}.cof-empresas__links{display:flex;gap:30px;align-items:center}.cof-empresas__links a{font:700 11px/1 Montserrat,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding-bottom:3px}.cof-empresas__links a:hover,.cof-empresas__links a[aria-current=true]{color:var(--sand)}.cof-empresas a:focus-visible{outline:2px solid var(--sand);outline-offset:4px}@media(max-width:1000px){.cof-empresas__links{display:none}}@media(max-width:620px){.cof-empresas__wrap{padding:0 20px}}
+  </style>
+  <div class="cof-empresas__wrap">
+    <nav class="cof-empresas__nav" aria-label="Navegacao principal">
+      <a class="cof-empresas__brand" href="/">COFCOF.CO</a>
+      <div class="cof-empresas__links">
+        <a href="/">Home</a><a href="/pages/assinatura">Assinatura</a><a href="/pages/nossos-cafes">Cafes</a><a href="/pages/origem">Origem</a><a href="/pages/onde-encontrar">Onde Encontrar</a><a aria-current="true" href="/pages/empresas">Empresas</a><a href="/pages/quem-somos">Quem Somos</a><a href="/pages/contato">Contato</a>
+      </div>
+    </nav>
+  </div>
+  {% render 'cofcof-empresas-calculator' %}
+</section>
+
+{% schema %}
+{
+  "name": "CofCof Empresas",
+  "settings": [],
+  "presets": [
+    { "name": "CofCof Empresas" }
+  ]
+}
+{% endschema %}
