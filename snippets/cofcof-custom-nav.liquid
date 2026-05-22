@@ -1,0 +1,32 @@
+{% liquid
+  assign active_page = active | default: ''
+%}
+<style>
+  .cof-nav{--cof-black:#0a0a0a;--cof-sand:#f6f1eb;--cof-muted:rgba(246,241,235,.68);--cof-gold:#c9a263;--cof-line:rgba(246,241,235,.14);height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--cof-line);position:relative;z-index:5}.cof-nav a{color:inherit;text-decoration:none}.cof-nav__brand{font-family:Montserrat,sans-serif;font-weight:800;font-size:16px;letter-spacing:.08em;color:var(--cof-sand);text-transform:uppercase;white-space:nowrap}.cof-nav__links{display:flex;gap:30px;align-items:center}.cof-nav__links a,.cof-nav__mobile a{font:700 11px/1 Montserrat,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--cof-muted);position:relative}.cof-nav__links a:hover,.cof-nav__links a[aria-current=true],.cof-nav__mobile a:hover,.cof-nav__mobile a[aria-current=true]{color:var(--cof-sand)}.cof-nav a:focus-visible,.cof-nav summary:focus-visible{outline:2px solid var(--cof-sand);outline-offset:4px}.cof-nav__menu{display:none;position:relative}.cof-nav__menu summary{list-style:none;cursor:pointer;font:800 11px/1 Montserrat,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--cof-sand);border:1px solid var(--cof-line);padding:12px 14px}.cof-nav__menu summary::-webkit-details-marker{display:none}.cof-nav__mobile{position:absolute;right:0;top:calc(100% + 10px);width:min(82vw,310px);display:grid;gap:0;background:#111;border:1px solid var(--cof-line);box-shadow:0 24px 70px rgba(0,0,0,.48);padding:8px}.cof-nav__mobile a{padding:14px 12px;border-bottom:1px solid var(--cof-line)}.cof-nav__mobile a:last-child{border-bottom:0}@media(max-width:1100px){.cof-nav__links{display:none}.cof-nav__menu{display:block}}@media(max-width:620px){.cof-nav{height:64px}.cof-nav__brand{font-size:14px}.cof-nav__menu summary{padding:10px 12px}}
+</style>
+<nav class="cof-nav" aria-label="Navegacao principal CofCof">
+  <a class="cof-nav__brand" href="{{ routes.root_url }}">COFCOF.CO</a>
+  <div class="cof-nav__links">
+    <a {% if active_page == 'home' %}aria-current="true"{% endif %} href="{{ routes.root_url }}">Home</a>
+    <a {% if active_page == 'assinatura' %}aria-current="true"{% endif %} href="/pages/assinatura">Assinatura</a>
+    <a {% if active_page == 'cafes' %}aria-current="true"{% endif %} href="/pages/nossos-cafes">Cafes</a>
+    <a {% if active_page == 'origem' %}aria-current="true"{% endif %} href="/pages/origem">Origem</a>
+    <a {% if active_page == 'onde-encontrar' %}aria-current="true"{% endif %} href="/pages/onde-encontrar">Onde Encontrar</a>
+    <a {% if active_page == 'empresas' %}aria-current="true"{% endif %} href="/pages/empresas">Empresas</a>
+    <a {% if active_page == 'quem-somos' %}aria-current="true"{% endif %} href="/pages/quem-somos">Quem Somos</a>
+    <a {% if active_page == 'contato' %}aria-current="true"{% endif %} href="/pages/contato">Contato</a>
+  </div>
+  <details class="cof-nav__menu">
+    <summary>Menu</summary>
+    <div class="cof-nav__mobile">
+      <a {% if active_page == 'home' %}aria-current="true"{% endif %} href="{{ routes.root_url }}">Home</a>
+      <a {% if active_page == 'assinatura' %}aria-current="true"{% endif %} href="/pages/assinatura">Assinatura</a>
+      <a {% if active_page == 'cafes' %}aria-current="true"{% endif %} href="/pages/nossos-cafes">Cafes</a>
+      <a {% if active_page == 'origem' %}aria-current="true"{% endif %} href="/pages/origem">Origem</a>
+      <a {% if active_page == 'onde-encontrar' %}aria-current="true"{% endif %} href="/pages/onde-encontrar">Onde Encontrar</a>
+      <a {% if active_page == 'empresas' %}aria-current="true"{% endif %} href="/pages/empresas">Empresas</a>
+      <a {% if active_page == 'quem-somos' %}aria-current="true"{% endif %} href="/pages/quem-somos">Quem Somos</a>
+      <a {% if active_page == 'contato' %}aria-current="true"{% endif %} href="/pages/contato">Contato</a>
+    </div>
+  </details>
+</nav>

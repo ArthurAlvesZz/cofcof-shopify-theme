@@ -4,12 +4,7 @@
   </style>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <div class="cof-locator__wrap">
-    <nav class="cof-locator__nav" aria-label="Navegacao principal">
-      <a class="cof-locator__brand" href="/">COFCOF.CO</a>
-      <div class="cof-locator__links">
-        <a href="/">Home</a><a href="/pages/assinatura">Assinatura</a><a href="/pages/nossos-cafes">Cafes</a><a href="/pages/origem">Origem</a><a aria-current="true" href="/pages/onde-encontrar">Onde Encontrar</a><a href="/pages/empresas">Empresas</a><a href="/pages/quem-somos">Quem Somos</a><a href="/pages/contato">Contato</a>
-      </div>
-    </nav>
+    {% render 'cofcof-custom-nav', active: 'onde-encontrar' %}
     <div class="cof-locator__hero">
       <div class="cof-locator__eyebrow">{{ section.settings.eyebrow }}</div>
       <h1>{{ section.settings.heading }}</h1>

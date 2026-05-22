@@ -367,6 +367,7 @@
     {%- if page.handle == 'trocas-e-devolucoes' -%}{%- assign is_landing = true -%}{%- endif -%}
     {%- if page.handle == 'contato' -%}{%- assign is_landing = true -%}{%- endif -%}
     {%- if template == 'index' -%}{%- assign is_landing = true -%}{%- endif -%}
+    {%- if template == '404' -%}{%- assign is_landing = true -%}{%- endif -%}
 
     {%- if is_landing -%}
       <style>
