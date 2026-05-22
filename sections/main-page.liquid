@@ -252,6 +252,11 @@
         assign page_content = page_content | append: cofcof_nav_button_css
       endif
     -%}
+    {% if page.handle == 'origem' %}
+      {% render 'cofcof-custom-nav', active: 'origem' %}
+    {% elsif page.handle == 'onde-encontrar' or page.handle == 'aonde-encontrar' %}
+      {% render 'cofcof-custom-nav', active: 'onde-encontrar' %}
+    {% endif %}
     {{ page_content }}
     {% if page.handle == 'empresas' %}
       {% render 'cofcof-empresas-calculator' %}
