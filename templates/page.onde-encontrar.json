@@ -1,47 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "cofcof-onde-encontrar",
-      "blocks": {
-        "cofcof_uberlandia": {
-          "type": "partner",
-          "settings": {
-            "active": true,
-            "name": "CofCof.co",
-            "type": "Referencia",
-            "city": "Uberlandia",
-            "state": "MG",
-            "neighborhood": "Cerrado Mineiro",
-            "address": "Uberlandia, MG",
-            "latitude": "-18.9128",
-            "longitude": "-48.2755",
-            "whatsapp": "https://wa.me/5534998728882",
-            "instagram": "https://instagram.com/cofcof.co",
-            "description": "Ponto de referencia CofCof para parceiros e atendimento."
-          }
-        },
-        "parceiro_centro": {
-          "type": "partner",
-          "settings": {
-            "active": true,
-            "name": "Parceiro CofCof",
-            "type": "Cafeteria",
-            "city": "Uberlandia",
-            "state": "MG",
-            "neighborhood": "Centro",
-            "address": "Centro, Uberlandia, MG",
-            "latitude": "-18.9186",
-            "longitude": "-48.2772",
-            "whatsapp": "",
-            "instagram": "",
-            "description": "Edite este parceiro pelo editor do tema quando houver endereco real."
-          }
-        }
-      },
-      "block_order": [
-        "cofcof_uberlandia",
-        "parceiro_centro"
-      ],
+      "type": "cofcof-partner-map",
       "settings": {}
     }
   },
