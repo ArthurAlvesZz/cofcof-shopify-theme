@@ -1,0 +1,50 @@
+<section class="cof-home">
+  <style>
+    .cof-home{--black:#0a0a0a;--sand:#f6f1eb;--muted:rgba(246,241,235,.68);--gold:#c9a263;--line:rgba(246,241,235,.14);font-family:'DM Sans',Helvetica,sans-serif;background:var(--black);color:var(--sand);min-height:100vh;overflow:hidden}.cof-home a{color:inherit;text-decoration:none}.cof-home__wrap{max-width:1340px;margin:0 auto;padding:0 28px}@media(min-width:768px){.cof-home__wrap{padding:0 56px}}.cof-home__nav{height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:relative;z-index:2}.cof-home__brand{font-family:Montserrat,sans-serif;font-weight:800;font-size:16px;letter-spacing:.08em;color:var(--sand);text-transform:uppercase}.cof-home__links{display:flex;gap:30px;align-items:center}.cof-home__links a{font:700 11px/1 Montserrat,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);position:relative;padding-bottom:3px}.cof-home__links a:hover,.cof-home__links a[aria-current=true]{color:var(--sand)}.cof-home a:focus-visible{outline:2px solid var(--sand);outline-offset:4px}.cof-home__hero{position:relative;padding:96px 0 72px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.8fr);gap:56px;align-items:end}.cof-home__video{position:absolute;inset:0;z-index:0;opacity:.18;pointer-events:none}.cof-home__video video{width:100%;height:100%;object-fit:cover;filter:saturate(.95) contrast(1.06)}.cof-home__video:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.86),rgba(10,10,10,.34) 50%,rgba(10,10,10,.9))}.cof-home__copy,.cof-home__panel{position:relative;z-index:1}.cof-home__eyebrow{font:700 11px/1.4 Montserrat,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}.cof-home h1{font:800 clamp(44px,8vw,104px)/.9 Montserrat,sans-serif;text-transform:uppercase;margin:26px 0 24px;max-width:920px}.cof-home__lead{max-width:640px;color:var(--muted);font-size:18px;line-height:1.8}.cof-home__actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}.cof-home__btn{display:inline-block;padding:17px 28px;border:1.5px solid var(--sand);font:800 11px/1 Montserrat,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--sand);transition:background .25s,color .25s}.cof-home__btn:hover{background:var(--sand);color:var(--black)}.cof-home__btn--fill{background:var(--sand);color:var(--black)}.cof-home__btn--fill:hover{background:transparent;color:var(--sand)}.cof-home__panel{border:1px solid var(--line);background:rgba(10,10,10,.62);backdrop-filter:blur(10px);padding:28px}.cof-home__panel p{color:var(--muted);line-height:1.75;margin:14px 0 0}.cof-home__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border-top:1px solid var(--line)}.cof-home__card{background:#111;padding:32px}.cof-home__card h2{font:800 18px/1.2 Montserrat,sans-serif;text-transform:uppercase;margin:16px 0 12px}.cof-home__card p{color:var(--muted);line-height:1.65}.cof-home__card a{display:inline-block;margin-top:18px;color:var(--gold);font:800 10px/1 Montserrat,sans-serif;letter-spacing:.16em;text-transform:uppercase}@media(max-width:1000px){.cof-home__links{display:none}.cof-home__hero{grid-template-columns:1fr}.cof-home__grid{grid-template-columns:1fr}}@media(max-width:620px){.cof-home__wrap{padding:0 20px}.cof-home h1{font-size:42px}.cof-home__hero{padding-top:72px}.cof-home__actions{display:grid}.cof-home__btn{text-align:center}}
+  </style>
+  <div class="cof-home__wrap">
+    <nav class="cof-home__nav" aria-label="Navegacao principal">
+      <a class="cof-home__brand" href="/">COFCOF.CO</a>
+      <div class="cof-home__links">
+        <a aria-current="true" href="/">Home</a><a href="/pages/assinatura">Assinatura</a><a href="/pages/nossos-cafes">Cafes</a><a href="/pages/origem">Origem</a><a href="/pages/onde-encontrar">Onde Encontrar</a><a href="/pages/empresas">Empresas</a><a href="/pages/quem-somos">Quem Somos</a><a href="/pages/contato">Contato</a>
+      </div>
+    </nav>
+    <div class="cof-home__hero">
+      <div class="cof-home__video" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="metadata"><source src="{{ 'cofcof-hero-background.mp4' | asset_url }}" type="video/mp4"></video>
+      </div>
+      <div class="cof-home__copy">
+        <div class="cof-home__eyebrow">{{ section.settings.eyebrow }}</div>
+        <h1>{{ section.settings.heading }}</h1>
+        <p class="cof-home__lead">{{ section.settings.text }}</p>
+        <div class="cof-home__actions">
+          <a class="cof-home__btn cof-home__btn--fill" href="/pages/assinatura">Assinatura</a>
+          <a class="cof-home__btn" href="/pages/nossos-cafes">Ver cafes</a>
+        </div>
+      </div>
+      <aside class="cof-home__panel">
+        <div class="cof-home__eyebrow">CofCof.co</div>
+        <p>Cafe especial, origem rastreavel e torra sob demanda para uma experiencia mais fresca, precisa e autoral.</p>
+      </aside>
+    </div>
+  </div>
+  <div class="cof-home__grid">
+    <article class="cof-home__card"><div class="cof-home__eyebrow">01</div><h2>Assinatura</h2><p>Receba cafes especiais selecionados com recorrencia simples.</p><a href="/pages/assinatura">Conhecer</a></article>
+    <article class="cof-home__card"><div class="cof-home__eyebrow">02</div><h2>Origem</h2><p>Conheca a historia, a regiao e o cuidado por tras dos lotes.</p><a href="/pages/origem">Ver origem</a></article>
+    <article class="cof-home__card"><div class="cof-home__eyebrow">03</div><h2>Onde Encontrar</h2><p>Encontre parceiros e pontos CofCof quando estiver fora de casa.</p><a href="/pages/onde-encontrar">Abrir mapa</a></article>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CofCof Home",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Chamada pequena", "default": "Cafe especial CofCof" },
+    { "type": "text", "id": "heading", "label": "Titulo", "default": "Cafe especial com origem, frescor e assinatura." },
+    { "type": "textarea", "id": "text", "label": "Texto", "default": "Uma vitrine direta para assinatura, cafes, origem e pontos parceiros da CofCof.co." }
+  ],
+  "presets": [
+    { "name": "CofCof Home" }
+  ]
+}
+{% endschema %}

@@ -23,6 +23,12 @@
       assign page_content = page.content
 
       if page.handle == 'assinatura'
+        assign page_content = page_content | replace: 'href="/pages/assinatura" class="nv-l"', 'href="/" class="nv-l"'
+        assign page_content = page_content | replace: '<a href="/pages/assinatura" class="act">Assinatura</a>', '<a href="/">Home</a><a href="/pages/assinatura" class="act">Assinatura</a>'
+        assign page_content = page_content | replace: '<a href="/pages/nossos-cafes">Cafés</a><a href="/pages/empresas">Empresas</a>', '<a href="/pages/nossos-cafes">Cafés</a><a href="/pages/origem">Origem</a><a href="/pages/onde-encontrar">Onde Encontrar</a><a href="/pages/empresas">Empresas</a>'
+        assign page_content = page_content | replace: '<a href="/pages/assinatura">Assinatura</a><a href="/pages/nossos-cafes">Cafés</a>', '<a href="/">Home</a><a href="/pages/assinatura">Assinatura</a><a href="/pages/nossos-cafes">Cafés</a>'
+        assign page_content = page_content | replace: '<a href="/pages/assinatura" class="act">Assinatura</a><a href="/pages/nossos-cafes">Cafés</a><a href="/pages/empresas">Empresas</a><a href="/pages/quem-somos">Quem Somos</a><a href="/pages/contato">Contato</a><a href="#planos" class="nv-c">Assinar →</a>', '<a href="/">Home</a><a href="/pages/assinatura" class="act">Assinatura</a><a href="/pages/nossos-cafes">Cafés</a><a href="/pages/origem">Origem</a><a href="/pages/onde-encontrar">Onde Encontrar</a><a href="/pages/empresas">Empresas</a><a href="/pages/quem-somos">Quem Somos</a><a href="/pages/contato">Contato</a><a href="#planos" class="nv-c">Assinar →</a>'
+        assign page_content = page_content | replace: '<a href="/pages/assinatura">Assinatura</a><a href="/pages/nossos-cafes">Cafés</a><a href="/pages/empresas">Empresas</a><a href="/pages/quem-somos">Quem Somos</a><a href="/pages/contato">Contato</a><a href="#planos" class="mo-c">Assinar →</a>', '<a href="/">Home</a><a href="/pages/assinatura">Assinatura</a><a href="/pages/nossos-cafes">Cafés</a><a href="/pages/origem">Origem</a><a href="/pages/onde-encontrar">Onde Encontrar</a><a href="/pages/empresas">Empresas</a><a href="/pages/quem-somos">Quem Somos</a><a href="/pages/contato">Contato</a><a href="#planos" class="mo-c">Assinar →</a>'
         assign page_content = page_content | replace: 'href="LINK_CHECKOUT_GERAL"', 'href="#planos"'
         assign page_content = page_content | replace: 'href="LINK_CHECKOUT_ESSENCIAL"', 'href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Quero%20assinar%20o%20plano%20Essencial%20da%20CofCof."'
         assign page_content = page_content | replace: 'href="LINK_CHECKOUT_CLASSICO"', 'href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Quero%20assinar%20o%20plano%20Cl%C3%A1ssico%20da%20CofCof."'
@@ -30,9 +36,9 @@
         assign video_card_01_poster = 'cofcof-video-card-01.jpg' | asset_url
         assign video_card_02_poster = 'cofcof-video-card-02.jpg' | asset_url
         assign video_card_03_poster = 'cofcof-video-card-03.jpg' | asset_url
-        assign video_card_01_src = 'video-1.mp4' | asset_url
-        assign video_card_02_src = 'video-2.mp4' | asset_url
-        assign video_card_03_src = 'video-3.mp4' | asset_url
+        assign video_card_01_src = 'cofcof-card-video-01.mp4' | asset_url
+        assign video_card_02_src = 'cofcof-card-video-02.mp4' | asset_url
+        assign video_card_03_src = 'cofcof-card-video-03.mp4' | asset_url
         assign hero_background_video_src = 'cofcof-hero-background.mp4' | asset_url
         capture hero_background_video
           echo '<div class="cofcof-hero-video-bg" aria-hidden="true"><video autoplay muted loop playsinline preload="metadata"><source src="'
@@ -109,29 +115,70 @@
           echo section.id
           echo '-padding .pl.feat .pl-btn:hover{color:var(--sand,#f6f1eb)!important}.section-'
           echo section.id
+          echo '-padding .btn>span,.section-'
+          echo section.id
+          echo '-padding .pl-btn>span,.section-'
+          echo section.id
+          echo '-padding .nv-c,.section-'
+          echo section.id
+          echo '-padding .mo-c{position:relative;z-index:1}.section-'
+          echo section.id
+          echo '-padding .ae a:focus-visible,.section-'
+          echo section.id
+          echo '-padding .ae button:focus-visible{outline:2px solid var(--sand,#f6f1eb);outline-offset:4px}.section-'
+          echo section.id
           echo '-padding .hero-main{position:relative;isolation:isolate}.section-'
           echo section.id
           echo '-padding .hero-main>.fi{position:relative;z-index:1}.section-'
           echo section.id
-          echo '-padding .cofcof-hero-video-bg{position:absolute;inset:-40px -28px;z-index:0;overflow:hidden;pointer-events:none;opacity:.14}.section-'
+          echo '-padding .cofcof-hero-video-bg{position:absolute;inset:-40px -28px;z-index:0;overflow:hidden;pointer-events:none;opacity:.2}.section-'
           echo section.id
-          echo '-padding .cofcof-hero-video-bg video{width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.05)}.section-'
+          echo '-padding .cofcof-hero-video-bg video{width:100%;height:100%;object-fit:cover;filter:saturate(.95) contrast(1.08)}.section-'
           echo section.id
-          echo '-padding .cofcof-hero-video-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.86),rgba(10,10,10,.38) 48%,rgba(10,10,10,.82))}'
+          echo '-padding .cofcof-hero-video-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.7),rgba(10,10,10,.24) 48%,rgba(10,10,10,.72))}.section-'
+          echo section.id
+          echo '-padding .cofcof-video-modal{position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:none;align-items:center;justify-content:center;padding:22px}.section-'
+          echo section.id
+          echo '-padding .cofcof-video-modal.is-open{display:flex}.section-'
+          echo section.id
+          echo '-padding .cofcof-video-modal__dialog{position:relative;width:min(100%,980px);background:#050505;border:1px solid rgba(246,241,235,.18);box-shadow:0 28px 90px rgba(0,0,0,.55)}.section-'
+          echo section.id
+          echo '-padding .cofcof-video-modal__video{width:100%;aspect-ratio:16/9;display:block;background:#050505}.section-'
+          echo section.id
+          echo '-padding .cofcof-video-modal__close{position:absolute;top:12px;right:12px;z-index:2;width:42px;height:42px;border:1px solid rgba(246,241,235,.42);background:rgba(10,10,10,.58);color:var(--sand,#f6f1eb);font-size:24px;line-height:1}.section-'
+          echo section.id
+          echo '-padding .cofcof-video-modal__close:hover,.section-'
+          echo section.id
+          echo '-padding .cofcof-video-modal__close:focus-visible{background:var(--sand,#f6f1eb);color:var(--black,#0a0a0a)}'
           echo '</style>'
+        endcapture
+        capture assinatura_video_modal
+          echo '<div class="cofcof-video-modal" aria-hidden="true"><div class="cofcof-video-modal__dialog" role="dialog" aria-modal="true" aria-label="Video CofCof"><button class="cofcof-video-modal__close" type="button" aria-label="Fechar video">&times;</button><video class="cofcof-video-modal__video" controls playsinline preload="metadata"></video></div></div>'
         endcapture
         capture assinatura_video_interaction_script
           echo '<script>(function(){var root=document.querySelector(".section-'
           echo section.id
-          echo '-padding");if(!root)return;var cards=root.querySelectorAll(".vt");function play(card){var video=card&&card.querySelector(".vv-media");if(!video)return;root.querySelectorAll(".vv-media").forEach(function(item){if(item!==video){item.pause();item.currentTime=0;}});video.muted=true;video.play().catch(function(){});}function stop(card){var video=card&&card.querySelector(".vv-media");if(!video)return;video.pause();video.currentTime=0;}cards.forEach(function(card){card.addEventListener("mouseenter",function(){play(card);});card.addEventListener("mouseleave",function(){stop(card);});card.addEventListener("touchstart",function(){play(card);},{passive:true});card.addEventListener("pointerdown",function(event){if(event.pointerType==="touch"){play(card);}});});})();</script>'
+          echo '-padding");if(!root)return;var sources={1:"'
+          echo video_card_01_src
+          echo '",2:"'
+          echo video_card_02_src
+          echo '",3:"'
+          echo video_card_03_src
+          echo '"};var cards=root.querySelectorAll(".vt");var modal=root.querySelector(".cofcof-video-modal");var modalVideo=modal&&modal.querySelector(".cofcof-video-modal__video");var closeBtn=modal&&modal.querySelector(".cofcof-video-modal__close");var lastCard=null;function cardVideo(card){return card&&card.querySelector(".vv-media");}function playPreview(card){var video=cardVideo(card);if(!video)return;root.querySelectorAll(".vv-media").forEach(function(item){if(item!==video){item.pause();item.currentTime=0;}});video.muted=true;video.play().catch(function(){});}function stopPreview(card){var video=cardVideo(card);if(!video)return;video.pause();video.currentTime=0;}function openModal(card){if(!modal||!modalVideo)return;var src=sources[card.getAttribute("data-video")];if(!src)return;lastCard=card;root.querySelectorAll(".vv-media").forEach(function(item){item.pause();});modal.classList.add("is-open");modal.setAttribute("aria-hidden","false");modalVideo.src=src;modalVideo.muted=false;modalVideo.volume=1;modalVideo.controls=true;modalVideo.play().catch(function(){});closeBtn&&closeBtn.focus();}function closeModal(){if(!modal||!modalVideo)return;modal.classList.remove("is-open");modal.setAttribute("aria-hidden","true");modalVideo.pause();modalVideo.currentTime=0;modalVideo.removeAttribute("src");modalVideo.load();if(lastCard){lastCard.focus();lastCard=null;}}cards.forEach(function(card){card.setAttribute("role","button");card.setAttribute("tabindex","0");card.addEventListener("mouseenter",function(){playPreview(card);});card.addEventListener("mouseleave",function(){stopPreview(card);});card.addEventListener("touchstart",function(){playPreview(card);window.setTimeout(function(){stopPreview(card);},2400);},{passive:true});card.addEventListener("pointerdown",function(event){if(event.pointerType==="touch"){playPreview(card);window.setTimeout(function(){stopPreview(card);},2400);}});card.addEventListener("click",function(){openModal(card);});card.addEventListener("keydown",function(event){if(event.key==="Enter"||event.key===" "){event.preventDefault();openModal(card);}});});window.setTimeout(function(){cards.forEach(function(card){playPreview(card);});window.setTimeout(function(){cards.forEach(stopPreview);},2600);},650);closeBtn&&closeBtn.addEventListener("click",closeModal);modal&&modal.addEventListener("click",function(event){if(event.target===modal)closeModal();});document.addEventListener("keydown",function(event){if(event.key==="Escape"&&modal&&modal.classList.contains("is-open"))closeModal();});})();</script>'
         endcapture
         assign hero_main_open_with_video = '<div class="bx hero-main">' | append: hero_background_video
         assign page_content = page_content | replace_first: '<div class="bx hero-main">', hero_main_open_with_video
+        assign page_content = page_content | append: assinatura_video_modal
         assign page_content = page_content | append: assinatura_visibility_css
         assign page_content = page_content | append: assinatura_video_interaction_script
       endif
 
       if page.handle == 'nossos-cafes' or page.handle == 'empresas' or page.handle == 'quem-somos' or page.handle == 'contato'
+        assign page_content = page_content | replace: 'href="/pages/assinatura" class="nv-l"', 'href="/" class="nv-l"'
+        assign page_content = page_content | replace: '<div class="nv-r"><a href="/pages/assinatura"', '<div class="nv-r"><a href="/">Home</a><a href="/pages/assinatura"'
+        assign page_content = page_content | replace: '<div class="mo-i"><a href="/pages/assinatura"', '<div class="mo-i"><a href="/">Home</a><a href="/pages/assinatura"'
+        assign page_content = page_content | replace: '<a href="/pages/nossos-cafes">Cafés</a><a href="/pages/empresas">Empresas</a>', '<a href="/pages/nossos-cafes">Cafés</a><a href="/pages/origem">Origem</a><a href="/pages/onde-encontrar">Onde Encontrar</a><a href="/pages/empresas">Empresas</a>'
+        assign page_content = page_content | replace: '<a href="/pages/nossos-cafes" class="act">Cafés</a><a href="/pages/empresas">Empresas</a>', '<a href="/pages/nossos-cafes" class="act">Cafés</a><a href="/pages/origem">Origem</a><a href="/pages/onde-encontrar">Onde Encontrar</a><a href="/pages/empresas">Empresas</a>'
         assign page_content = page_content | replace: 'href="LINK_CHECKOUT_GERAL"', 'href="/pages/assinatura#planos"'
       endif
 
@@ -144,6 +191,57 @@
         assign page_content = page_content | replace: 'href="TRACE_LINK_06"', 'href="/pages/nossos-cafes"'
         assign page_content = page_content | replace: 'href="TRACE_LINK_07"', 'href="/pages/nossos-cafes"'
         assign page_content = page_content | replace: 'href="TRACE_LINK_08"', 'href="/pages/nossos-cafes"'
+      endif
+
+      if page.handle == 'assinatura' or page.handle == 'nossos-cafes' or page.handle == 'empresas' or page.handle == 'quem-somos' or page.handle == 'contato'
+        capture cofcof_nav_button_css
+          echo '<style>.section-'
+          echo section.id
+          echo '-padding .nv-l{color:var(--sand,#f6f1eb)!important}.section-'
+          echo section.id
+          echo '-padding .nv-r a,.section-'
+          echo section.id
+          echo '-padding .mo a{color:rgba(246,241,235,.68)!important}.section-'
+          echo section.id
+          echo '-padding .nv-r a:hover,.section-'
+          echo section.id
+          echo '-padding .mo a:hover,.section-'
+          echo section.id
+          echo '-padding .nv-r a.act{color:var(--sand,#f6f1eb)!important}.section-'
+          echo section.id
+          echo '-padding .btn>span,.section-'
+          echo section.id
+          echo '-padding .pl-btn>span{position:relative;z-index:2}.section-'
+          echo section.id
+          echo '-padding .btn-sd{color:var(--black,#0a0a0a)!important}.section-'
+          echo section.id
+          echo '-padding .btn-sd:hover{color:var(--sand,#f6f1eb)!important}.section-'
+          echo section.id
+          echo '-padding .btn-os,.section-'
+          echo section.id
+          echo '-padding .btn-ds,.section-'
+          echo section.id
+          echo '-padding .pl-btn,.section-'
+          echo section.id
+          echo '-padding .nv-c,.section-'
+          echo section.id
+          echo '-padding .mo-c{color:var(--sand,#f6f1eb)!important}.section-'
+          echo section.id
+          echo '-padding .btn-os:hover,.section-'
+          echo section.id
+          echo '-padding .btn-ds:hover,.section-'
+          echo section.id
+          echo '-padding .pl-btn:hover,.section-'
+          echo section.id
+          echo '-padding .nv-c:hover,.section-'
+          echo section.id
+          echo '-padding .mo-c:hover{color:var(--black,#0a0a0a)!important}.section-'
+          echo section.id
+          echo '-padding .ae a:focus-visible,.section-'
+          echo section.id
+          echo '-padding .ae button:focus-visible{outline:2px solid var(--sand,#f6f1eb);outline-offset:4px}</style>'
+        endcapture
+        assign page_content = page_content | append: cofcof_nav_button_css
       endif
     -%}
     {{ page_content }}
