@@ -14,6 +14,23 @@
   }
 {%- endstyle -%}
 
+{% if page.handle == 'assinatura' or page.handle == 'nossos-cafes' or page.handle == 'origem' or page.handle == 'onde-encontrar' or page.handle == 'aonde-encontrar' or page.handle == 'empresas' or page.handle == 'quem-somos' or page.handle == 'contato' %}
+  <style>
+    .section-{{ section.id }}-padding .rte .ae .nv,
+    .section-{{ section.id }}-padding .rte .ae .mo {
+      display: none !important;
+    }
+  </style>
+  {% liquid
+    assign cofcof_active_nav = page.handle
+    if page.handle == 'nossos-cafes'
+      assign cofcof_active_nav = 'cafes'
+    elsif page.handle == 'aonde-encontrar'
+      assign cofcof_active_nav = 'onde-encontrar'
+    endif
+  %}
+  {% render 'cofcof-custom-nav', active: cofcof_active_nav %}
+{% endif %}
 <div class="page-width page-width--narrow section-{{ section.id }}-padding">
   <h1 class="main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
     {{ page.title | escape }}
@@ -256,23 +273,6 @@
         assign page_content = page_content | append: cofcof_nav_button_css
       endif
     -%}
-    {% if page.handle == 'assinatura' or page.handle == 'nossos-cafes' or page.handle == 'origem' or page.handle == 'onde-encontrar' or page.handle == 'aonde-encontrar' or page.handle == 'empresas' or page.handle == 'quem-somos' or page.handle == 'contato' %}
-      <style>
-        .section-{{ section.id }}-padding .rte .ae .nv,
-        .section-{{ section.id }}-padding .rte .ae .mo {
-          display: none !important;
-        }
-      </style>
-      {% liquid
-        assign cofcof_active_nav = page.handle
-        if page.handle == 'nossos-cafes'
-          assign cofcof_active_nav = 'cafes'
-        elsif page.handle == 'aonde-encontrar'
-          assign cofcof_active_nav = 'onde-encontrar'
-        endif
-      %}
-      {% render 'cofcof-custom-nav', active: cofcof_active_nav %}
-    {% endif %}
     {{ page_content }}
     {% if page.handle == 'empresas' %}
       {% render 'cofcof-empresas-calculator' %}

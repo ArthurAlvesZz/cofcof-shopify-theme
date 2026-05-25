@@ -316,6 +316,18 @@
       /* Fundo areia em TODAS as páginas */
       body { background: var(--cof-sand) !important; }
 
+      /* Remove fundo claro do header padrao Shopify */
+      .header-wrapper { background: transparent !important; }
+
+      /* Garante visibilidade da logo COFCOF.CO na navbar custom */
+      .cof-nav__brand,
+      .cof-nav .nv-l {
+        color: var(--cof-sand) !important;
+        background: transparent !important;
+        mix-blend-mode: unset !important;
+        opacity: 1 !important;
+      }
+
       /* Esconde announcement bar "Welcome to our store" em todo o site */
       .shopify-section-announcement-bar,
       [id*="announcement"],
