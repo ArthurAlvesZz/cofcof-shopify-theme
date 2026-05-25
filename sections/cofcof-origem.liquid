@@ -465,6 +465,20 @@
 </section>
 </div>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('v');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.cof-origem .fi').forEach(function(el) { observer.observe(el); });
+});
+</script>
+
 {% schema %}
 {
   "name": "CofCof Origem",
