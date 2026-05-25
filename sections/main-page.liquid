@@ -196,7 +196,7 @@
         assign page_content = page_content | append: assinatura_video_interaction_script
       endif
 
-      if page.handle == 'nossos-cafes' or page.handle == 'empresas' or page.handle == 'quem-somos' or page.handle == 'contato'
+      if page.handle == 'nossos-cafes' or page.handle == 'cafes' or page.handle == 'empresas' or page.handle == 'quem-somos' or page.handle == 'contato'
         assign page_content = page_content | replace: 'href="/pages/assinatura" class="nv-l"', 'href="/" class="nv-l"'
         assign page_content = page_content | replace: '<div class="nv-r"><a href="/pages/assinatura"', '<div class="nv-r"><a href="/">Home</a><a href="/pages/assinatura"'
         assign page_content = page_content | replace: '<div class="mo-i"><a href="/pages/assinatura"', '<div class="mo-i"><a href="/">Home</a><a href="/pages/assinatura"'
@@ -205,18 +205,18 @@
         assign page_content = page_content | replace: 'href="LINK_CHECKOUT_GERAL"', 'href="/pages/assinatura#planos"'
       endif
 
-      if page.handle == 'nossos-cafes'
-        assign page_content = page_content | replace: 'href="TRACE_LINK_01"', 'href="/pages/nossos-cafes"'
-        assign page_content = page_content | replace: 'href="TRACE_LINK_02"', 'href="/pages/nossos-cafes"'
-        assign page_content = page_content | replace: 'href="TRACE_LINK_03"', 'href="/pages/nossos-cafes"'
-        assign page_content = page_content | replace: 'href="TRACE_LINK_04"', 'href="/pages/nossos-cafes"'
-        assign page_content = page_content | replace: 'href="TRACE_LINK_05"', 'href="/pages/nossos-cafes"'
-        assign page_content = page_content | replace: 'href="TRACE_LINK_06"', 'href="/pages/nossos-cafes"'
-        assign page_content = page_content | replace: 'href="TRACE_LINK_07"', 'href="/pages/nossos-cafes"'
-        assign page_content = page_content | replace: 'href="TRACE_LINK_08"', 'href="/pages/nossos-cafes"'
+      if page.handle == 'nossos-cafes' or page.handle == 'cafes'
+        assign page_content = page_content | replace: 'href="TRACE_LINK_01"', 'href="/pages/cafes"'
+        assign page_content = page_content | replace: 'href="TRACE_LINK_02"', 'href="/pages/cafes"'
+        assign page_content = page_content | replace: 'href="TRACE_LINK_03"', 'href="/pages/cafes"'
+        assign page_content = page_content | replace: 'href="TRACE_LINK_04"', 'href="/pages/cafes"'
+        assign page_content = page_content | replace: 'href="TRACE_LINK_05"', 'href="/pages/cafes"'
+        assign page_content = page_content | replace: 'href="TRACE_LINK_06"', 'href="/pages/cafes"'
+        assign page_content = page_content | replace: 'href="TRACE_LINK_07"', 'href="/pages/cafes"'
+        assign page_content = page_content | replace: 'href="TRACE_LINK_08"', 'href="/pages/cafes"'
       endif
 
-      if page.handle == 'assinatura' or page.handle == 'nossos-cafes' or page.handle == 'empresas' or page.handle == 'quem-somos' or page.handle == 'contato'
+      if page.handle == 'assinatura' or page.handle == 'nossos-cafes' or page.handle == 'cafes' or page.handle == 'empresas' or page.handle == 'quem-somos' or page.handle == 'contato'
         capture cofcof_nav_button_css
           echo '<style>.section-'
           echo section.id
