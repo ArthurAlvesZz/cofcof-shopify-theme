@@ -366,14 +366,34 @@
         width: 100vw !important;
         max-width: 100vw !important;
       }
+
+      /* === CONTRASTE GLOBAL DOS BOTÕES COFCOF === */
+      .nv-c, .mo-c, .btn-os, .btn-ds, .pl-btn {
+        color: var(--cof-sand, #F6F1EB) !important;
+      }
+      .nv-c:hover, .mo-c:hover, .btn-os:hover, .btn-ds:hover, .pl-btn:hover {
+        color: var(--cof-stone, #252525) !important;
+      }
+      .btn-sd {
+        color: var(--cof-stone, #252525) !important;
+      }
+      .btn-sd:hover {
+        color: var(--cof-sand, #F6F1EB) !important;
+      }
+      .lnk {
+        color: var(--cof-sand, #F6F1EB) !important;
+      }
+      .pl.feat .pl-btn, .pl.feat .pl-btn:hover {
+        color: var(--cof-sand, #F6F1EB) !important;
+      }
     </style>
 
     {% comment %} COFCOF.CO — Hide header/footer on ALL custom pages {% endcomment %}
     {%- assign is_landing = false -%}
-    {%- if page.handle == 'assinatura' -%}{%- assign is_landing = true -%}{%- endif -%}
-    {%- if page.handle == 'nossos-cafes' -%}{%- assign is_landing = true -%}{%- endif -%}
+    {%- if page.handle == 'assinatura' or page.handle == 'assinaturas' -%}{%- assign is_landing = true -%}{%- endif -%}
+    {%- if page.handle == 'nossos-cafes' or page.handle == 'cafes' -%}{%- assign is_landing = true -%}{%- endif -%}
     {%- if page.handle == 'origem' -%}{%- assign is_landing = true -%}{%- endif -%}
-    {%- if page.handle == 'onde-encontrar' -%}{%- assign is_landing = true -%}{%- endif -%}
+    {%- if page.handle == 'onde-encontrar' or page.handle == 'aonde-encontrar' -%}{%- assign is_landing = true -%}{%- endif -%}
     {%- if page.handle == 'empresas' -%}{%- assign is_landing = true -%}{%- endif -%}
     {%- if page.handle == 'quem-somos' -%}{%- assign is_landing = true -%}{%- endif -%}
     {%- if page.handle == 'trocas-e-devolucoes' -%}{%- assign is_landing = true -%}{%- endif -%}

@@ -14,7 +14,7 @@
   }
 {%- endstyle -%}
 
-{% if page.handle == 'assinatura' or page.handle == 'nossos-cafes' or page.handle == 'origem' or page.handle == 'onde-encontrar' or page.handle == 'aonde-encontrar' or page.handle == 'empresas' or page.handle == 'quem-somos' or page.handle == 'contato' %}
+{% if page.handle == 'assinatura' or page.handle == 'assinaturas' or page.handle == 'nossos-cafes' or page.handle == 'cafes' or page.handle == 'origem' or page.handle == 'onde-encontrar' or page.handle == 'aonde-encontrar' or page.handle == 'empresas' or page.handle == 'quem-somos' or page.handle == 'contato' %}
   <style>
     .section-{{ section.id }}-padding .rte .ae .nv,
     .section-{{ section.id }}-padding .rte .ae .mo {
@@ -23,10 +23,12 @@
   </style>
   {% liquid
     assign cofcof_active_nav = page.handle
-    if page.handle == 'nossos-cafes'
+    if page.handle == 'nossos-cafes' or page.handle == 'cafes'
       assign cofcof_active_nav = 'cafes'
     elsif page.handle == 'aonde-encontrar'
       assign cofcof_active_nav = 'onde-encontrar'
+    elsif page.handle == 'assinaturas'
+      assign cofcof_active_nav = 'assinatura'
     endif
   %}
   {% render 'cofcof-custom-nav', active: cofcof_active_nav %}
