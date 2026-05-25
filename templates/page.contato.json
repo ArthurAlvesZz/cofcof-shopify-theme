@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "cofcof-subscription",
+      "type": "cofcof-contato",
       "settings": {}
     }
   },

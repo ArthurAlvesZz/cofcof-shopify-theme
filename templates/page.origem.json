@@ -2,34 +2,6 @@
   "sections": {
     "main": {
       "type": "cofcof-origem",
-      "blocks": {
-        "cerrado": {
-          "type": "highlight",
-          "settings": {
-            "title": "Cerrado Mineiro",
-            "text": "Regiao com terroir reconhecido, estacoes bem definidas e vocacao para cafes de alta pontuacao."
-          }
-        },
-        "processo": {
-          "type": "highlight",
-          "settings": {
-            "title": "Processo",
-            "text": "Colheita, selecao, secagem e beneficiamento pensados para preservar dulcor, corpo e complexidade."
-          }
-        },
-        "torra": {
-          "type": "highlight",
-          "settings": {
-            "title": "Torra",
-            "text": "A torra acontece sob demanda para reduzir estoque parado e entregar cafe no ponto certo."
-          }
-        }
-      },
-      "block_order": [
-        "cerrado",
-        "processo",
-        "torra"
-      ],
       "settings": {}
     }
   },

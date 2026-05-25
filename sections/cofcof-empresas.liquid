@@ -1,17 +1,312 @@
-<section class="cof-empresas">
-  <style>
-    .cof-empresas{--black:#0a0a0a;--sand:#f6f1eb;--muted:rgba(246,241,235,.68);--gold:#c9a263;--line:rgba(246,241,235,.14);font-family:'DM Sans',Helvetica,sans-serif;background:var(--black);color:var(--sand);min-height:100vh}.cof-empresas a{color:inherit;text-decoration:none}.cof-empresas__wrap{max-width:1340px;margin:0 auto;padding:0 28px}@media(min-width:768px){.cof-empresas__wrap{padding:0 56px}}.cof-empresas__nav{height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.cof-empresas__brand{font-family:Montserrat,sans-serif;font-weight:800;font-size:16px;letter-spacing:.08em;color:var(--sand);text-transform:uppercase}.cof-empresas__links{display:flex;gap:30px;align-items:center}.cof-empresas__links a{font:700 11px/1 Montserrat,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding-bottom:3px}.cof-empresas__links a:hover,.cof-empresas__links a[aria-current=true]{color:var(--sand)}.cof-empresas a:focus-visible{outline:2px solid var(--sand);outline-offset:4px}@media(max-width:1000px){.cof-empresas__links{display:none}}@media(max-width:620px){.cof-empresas__wrap{padding:0 20px}}
-  </style>
-  {% render 'cofcof-custom-nav', active: 'empresas' %}
-  {% render 'cofcof-empresas-calculator' %}
+<style>
+:root{--black:#0A0A0A;--sand:#F6F1EB;--sand-2:#EFE7DB;--parch:#E8E0D4;--clay:#7A6654;--sub:#6B6B6B;--dim:#999;--rule:rgba(10,10,10,.12);--rule-w:rgba(246,241,235,.14);--fn:'DM Sans',Helvetica,sans-serif;--fl:'Montserrat',sans-serif}
+*{box-sizing:border-box}a{color:inherit;text-decoration:none}button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
+.bx{max-width:1340px;margin:0 auto;padding:0 28px}
+@media(min-width:768px){.bx{padding:0 56px}}
+.fi{opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.fi.v{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.fi{opacity:1;transform:none;transition:none}}
+.eyebrow{font-family:var(--fl);font-weight:700;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--clay)}
+.display{font-family:var(--fl);font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:.96}
+.ital{font-family:var(--fl);font-weight:800;font-style:italic;text-transform:lowercase;letter-spacing:-.005em;color:var(--clay)}
+.body-p{font-family:var(--fn);font-weight:300;line-height:1.65}
+.sec{padding:80px 0}
+@media(min-width:768px){.sec{padding:112px 0}}
+.sec-d{background:var(--black);color:var(--sand)}
+.btn{position:relative;overflow:hidden;display:inline-block;cursor:pointer;font-family:var(--fl);font-weight:700;letter-spacing:.2em;text-transform:uppercase;transition:color .38s}
+.btn>span{position:relative;z-index:1}
+.btn::before{content:'';position:absolute;inset:0;transform:translateY(101%);transition:transform .42s cubic-bezier(.2,.7,.2,1);z-index:0}
+.btn:hover::before{transform:translateY(0)}
+.btn-ds{background:var(--black);color:var(--sand)}
+.btn-ds::before{background:var(--sand)}
+.btn-ds:hover{color:var(--black)}
+.btn-sd{background:var(--sand);color:var(--black);border:1.5px solid var(--sand)}
+.btn-sd::before{background:var(--black)}
+.btn-sd:hover{color:var(--sand)}
+.label{font-family:var(--fl);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.sec-d .label{color:rgba(246,241,235,.5)}
+.pg-hero{padding:130px 0 72px;background:var(--black);color:var(--sand);position:relative;overflow:hidden}
+@media(min-width:768px){.pg-hero{padding:160px 0 96px}}
+.pg-hero-grid{position:absolute;inset:0;background-image:linear-gradient(to right,var(--rule-w) 1px,transparent 1px);background-size:25% 100%;opacity:.5;pointer-events:none}
+.pg-hero-spot{position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:80%;height:70%;background:radial-gradient(ellipse at center,rgba(122,102,84,.16) 0%,transparent 60%);filter:blur(40px);pointer-events:none}
+.pg-hero-in{position:relative;z-index:2}
+.pg-hero h1{font-size:clamp(2.5rem,5.5vw,5.2rem);max-width:900px;line-height:1.05;color:var(--sand);font-weight:800;margin-top:20px}
+.pg-hero .body-p{font-size:clamp(18px,1.8vw,22px);max-width:780px;color:rgba(246,241,235,.7);margin-top:32px}
+.pg-hero-cta{margin-top:56px;display:flex;flex-wrap:wrap;gap:16px}
+.tk{background:var(--sand);border-bottom:1px solid var(--rule);padding:16px 0;overflow:hidden;display:flex;align-items:center}
+.tk-i{display:flex;white-space:nowrap;animation:emp-tk-scroll 25s linear infinite}
+.tk-item{font-family:var(--fl);font-weight:700;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--clay);display:flex;align-items:center;margin-right:48px}
+.tk-item span{font-size:8px;margin-left:48px;opacity:.4}
+@keyframes emp-tk-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.head{display:flex;flex-direction:column;gap:32px;margin-bottom:64px}
+@media(min-width:768px){.head{flex-direction:row;justify-content:space-between;align-items:flex-end}}
+.head-meta{color:var(--sub);font-size:11px}
+.sec-d .head-meta{color:rgba(246,241,235,.5)}
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.sg-i{border:1px solid var(--rule-w);padding:clamp(40px,4vw,56px);display:flex;flex-direction:column;transition:background .3s,border-color .3s}
+.sg-i:hover{background:rgba(246,241,235,.05);border-color:var(--sand)}
+.sg-svg{width:48px;height:48px;margin-bottom:32px;stroke:var(--clay);fill:none;stroke-width:1.3}
+.sg-t{font-family:var(--fl);font-weight:800;font-size:22px;text-transform:uppercase;letter-spacing:.02em;margin-bottom:16px}
+.sg-d{font-family:var(--fn);font-weight:300;font-size:16px;color:rgba(246,241,235,.7);line-height:1.6;flex:1}
+.sg-lnk{display:inline-block;margin-top:32px;font-family:var(--fl);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--sand);border-bottom:1px solid rgba(246,241,235,.3);padding-bottom:4px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(32px,6vw,72px);margin-top:clamp(48px,8vh,88px);align-items:stretch}
+.step{display:flex;flex-direction:column}
+.step-n{font-family:var(--fl);font-weight:800;font-size:56px;line-height:1;letter-spacing:-.02em;color:var(--sand);margin-bottom:32px;opacity:.6}
+.step h3{font-size:clamp(20px,2vw,24px);color:var(--sand);margin-bottom:16px}
+.step p{font-size:16px;color:rgba(246,241,235,.7)}
+.dif{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;margin-top:64px}
+.dif-i{padding:32px;border:1px solid rgba(246,241,235,.15);background:rgba(246,241,235,.03)}
+.dif-n{font-family:var(--fl);font-weight:800;font-size:clamp(48px,6vw,64px);color:var(--sand);margin-bottom:16px;line-height:1}
+.dif-t{font-family:var(--fl);font-weight:700;font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);margin-bottom:12px}
+.dif-d{font-family:var(--fn);font-weight:300;font-size:15px;color:rgba(246,241,235,.6);line-height:1.6}
+.ctab{text-align:center;padding:clamp(48px,6vw,80px) 0;margin-top:32px}
+.ctab h3{font-family:var(--fl);font-weight:800;font-size:clamp(28px,3.5vw,40px);color:var(--sand);margin-bottom:24px;line-height:1.15;text-transform:uppercase}
+.ctab p{font-size:18px;color:rgba(246,241,235,.7);max-width:600px;margin:0 auto 40px;line-height:1.65}
+.exp-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(40px,8vw,80px);align-items:center;margin-top:40px}
+@media(max-width:899px){.exp-grid{grid-template-columns:1fr}}
+.exp-text{font-size:18px;line-height:1.7;color:rgba(246,241,235,.85)}
+.exp-text p{margin-bottom:24px}
+.exp-card{background:var(--sand);color:var(--black);padding:clamp(40px,5vw,64px);border:1px solid var(--rule)}
+.exp-card h4{padding-bottom:24px;border-bottom:1px solid var(--rule);font-size:20px;font-weight:800;text-transform:uppercase;margin-bottom:24px}
+.exp-card p{font-size:18px;line-height:1.6;font-weight:300;font-family:var(--fn)}
+.exp-cta{display:inline-block;margin-top:28px;font-family:var(--fl);font-weight:700;font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--sand);border-bottom:1px solid rgba(246,241,235,.3);padding-bottom:4px}
+.num-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:clamp(40px,8vh,64px);border-top:1px solid var(--rule-w)}
+@media(min-width:768px){.num-grid{grid-template-columns:repeat(4,1fr)}}
+.num-i{padding:36px 24px;border-bottom:1px solid var(--rule-w);border-right:1px solid var(--rule-w);text-align:center}
+.num-i:nth-child(2n){border-right:none}
+@media(min-width:768px){.num-i:nth-child(2n){border-right:1px solid var(--rule-w)}.num-i:nth-child(4n){border-right:none}}
+.num-v{font-family:var(--fl);font-weight:800;font-size:32px;color:var(--sand);letter-spacing:-.01em;line-height:1}
+.num-l{font-family:var(--fl);font-weight:600;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,241,235,.5);margin-top:10px}
+.cta-end{background:var(--black);padding:clamp(80px,12vh,140px) 0;text-align:center}
+.cta-end-in{max-width:860px;margin:0 auto}
+.cta-end .eyebrow{opacity:.8;color:var(--sand);margin-bottom:24px}
+.cta-end h2{font-size:clamp(2.8rem,6vw,5rem);margin-bottom:24px}
+.cta-end .ital{color:var(--sand)}
+.cta-end .body-p{font-size:clamp(18px,1.5vw,22px);max-width:640px;margin:0 auto;color:rgba(246,241,235,.9)}
+.cta-end .btn{display:inline-flex;padding:24px 48px;font-size:14px;background:var(--black);color:var(--sand);border:1.5px solid var(--sand)}
+.cta-end .btn::before{background:var(--sand)}
+.cta-end .btn:hover{color:var(--black)}
+.cta-end-meta{font-size:13px;color:rgba(246,241,235,.65);font-weight:300;margin-top:16px}
+</style>
+
+{% render 'cofcof-custom-nav', active: 'empresas' %}
+
+<!-- B2B HERO -->
+<section data-shopify-section="b2b-hero" class="pg-hero fi">
+  <div class="pg-hero-grid"></div>
+  <div class="pg-hero-spot"></div>
+  <div class="bx pg-hero-in">
+    <div class="eyebrow">B2B · Empresas · Exporta&ccedil;&atilde;o</div>
+    <h1>Caf&eacute; especial para empresas que querem transformar cada x&iacute;cara em <span class="ital">experi&ecirc;ncia</span>.</h1>
+    <p class="body-p">Fornecimento recorrente para cafeterias, escrit&oacute;rios, hot&eacute;is, restaurantes e neg&oacute;cios que querem servir caf&eacute;s premiados, frescos e rastre&aacute;veis.</p>
+    <div class="pg-hero-cta">
+      <a href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Tenho%20interesse%20no%20plano%20Empresas%20da%20COFCOF.CO." target="_blank" rel="noopener noreferrer" class="btn btn-sd" style="padding:22px 42px;font-size:14px"><span>Falar com comercial &rarr;</span></a>
+      <a href="#exportacao" class="btn" style="border:1.5px solid rgba(246,241,235,.4);color:rgba(246,241,235,.8);padding:22px 36px;font-size:13px"><span>Exporta&ccedil;&atilde;o &rarr;</span></a>
+    </div>
+  </div>
 </section>
+
+<!-- TICKER -->
+<section data-shopify-section="b2b-ticker" class="tk">
+  <div class="tk-i">
+    <div class="tk-item">Cafeterias <span>&#10022;</span></div>
+    <div class="tk-item">Escrit&oacute;rios <span>&#10022;</span></div>
+    <div class="tk-item">Hot&eacute;is <span>&#10022;</span></div>
+    <div class="tk-item">Coworkings <span>&#10022;</span></div>
+    <div class="tk-item">Restaurantes <span>&#10022;</span></div>
+    <div class="tk-item">Exporta&ccedil;&atilde;o <span>&#10022;</span></div>
+    <div class="tk-item">Cafeterias <span>&#10022;</span></div>
+    <div class="tk-item">Escrit&oacute;rios <span>&#10022;</span></div>
+    <div class="tk-item">Hot&eacute;is <span>&#10022;</span></div>
+    <div class="tk-item">Coworkings <span>&#10022;</span></div>
+    <div class="tk-item">Restaurantes <span>&#10022;</span></div>
+    <div class="tk-item">Exporta&ccedil;&atilde;o <span>&#10022;</span></div>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section data-shopify-section="b2b-for-who" class="sec sec-d fi">
+  <div class="bx">
+    <div class="head">
+      <div>
+        <div class="eyebrow">Cap&iacute;tulo 01 &mdash; Para quem &eacute;</div>
+        <h2 class="display" style="color:var(--sand)">Caf&eacute; premiado pra cada<br/>tipo de <span class="ital">neg&oacute;cio</span>.</h2>
+      </div>
+      <div class="label head-meta">04 segmentos</div>
+    </div>
+    <div class="sg">
+      <div class="sg-i fi">
+        <svg class="sg-svg" viewBox="0 0 40 40"><circle cx="20" cy="14" r="6"/><path d="M8 36c0-8 5.4-14 12-14s12 6 12 14"/></svg>
+        <div class="sg-t">Cafeterias</div>
+        <p class="sg-d">Diferencie seu menu com lotes premiados. Seus clientes notam a diferen&ccedil;a na primeira x&iacute;cara.</p>
+        <a href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Sou%20de%20uma%20cafeteria%20e%20quero%20saber%20mais." target="_blank" rel="noopener noreferrer" class="sg-lnk">Ver solu&ccedil;&atilde;o para cafeteria &rarr;</a>
+      </div>
+      <div class="sg-i fi">
+        <svg class="sg-svg" viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="22" rx="2"/><path d="M6 18h28M14 10V6M26 10V6"/></svg>
+        <div class="sg-t">Escrit&oacute;rios</div>
+        <p class="sg-d">Caf&eacute; especial como diferencial. Equipes mais motivadas come&ccedil;am com uma x&iacute;cara excelente.</p>
+        <a href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Quero%20montar%20um%20plano%20para%20meu%20escrit%C3%B3rio." target="_blank" rel="noopener noreferrer" class="sg-lnk">Montar plano para escrit&oacute;rio &rarr;</a>
+      </div>
+      <div class="sg-i fi">
+        <svg class="sg-svg" viewBox="0 0 40 40"><rect x="8" y="6" width="24" height="28" rx="2"/><path d="M14 6v28M8 14h6M8 22h6M20 14h6M20 22h6M17 30h6"/></svg>
+        <div class="sg-t">Hot&eacute;is &middot; Restaurantes</div>
+        <p class="sg-d">Ofere&ccedil;a aos seus clientes uma experi&ecirc;ncia inesquec&iacute;vel com o mesmo caf&eacute; da Cup of Excellence.</p>
+        <a href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Tenho%20interesse%20em%20fornecimento%20para%20hotel%2Frestaurante." target="_blank" rel="noopener noreferrer" class="sg-lnk">Falar sobre fornecimento &rarr;</a>
+      </div>
+      <div class="sg-i fi">
+        <svg class="sg-svg" viewBox="0 0 40 40"><rect x="6" y="12" width="18" height="14" rx="2"/><path d="M10 20h10M6 16h18"/><circle cx="30" cy="19" r="6"/><path d="M28 17l2 2 4-4"/></svg>
+        <div class="sg-t">Coworkings</div>
+        <p class="sg-d">Caf&eacute; especial como atrativo principal. Ajude seus membros a produzirem e socializarem melhor.</p>
+        <a href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Gostaria%20de%20uma%20proposta%20para%20meu%20coworking." target="_blank" rel="noopener noreferrer" class="sg-lnk">Criar proposta recorrente &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section data-shopify-section="b2b-how-it-works" class="sec sec-d fi">
+  <div class="bx">
+    <div class="head">
+      <div>
+        <div class="eyebrow">Cap&iacute;tulo 02 &mdash; Como funciona</div>
+        <h2 class="display" style="color:var(--sand)">Simples. Sem burocracia.<br/>Caf&eacute; de <span class="ital">verdade</span>.</h2>
+      </div>
+      <div class="label head-meta">03 passos</div>
+    </div>
+    <div class="steps">
+      <div class="step fi">
+        <div class="step-n">01</div>
+        <h3>Conte sobre sua opera&ccedil;&atilde;o</h3>
+        <p>Segmento, cidade, volume e objetivo.</p>
+      </div>
+      <div class="step fi">
+        <div class="step-n">02</div>
+        <h3>Receba proposta sob medida</h3>
+        <p>Pre&ccedil;o por kg, frequ&ecirc;ncia, lote ideal e condi&ccedil;&otilde;es.</p>
+      </div>
+      <div class="step fi">
+        <div class="step-n">03</div>
+        <h3>Entrega recorrente</h3>
+        <p>Caf&eacute; torrado sob demanda, nota fiscal e suporte.</p>
+      </div>
+    </div>
+    <div class="fi" style="margin-top:clamp(56px,8vh,88px);text-align:center">
+      <p style="font-family:var(--fl);font-size:14px;letter-spacing:.04em;color:var(--sand);margin-bottom:24px">Quer estimar o volume ideal para sua empresa?</p>
+      <a href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Gostaria%20de%20estimar%20o%20volume%20para%20minha%20empresa." target="_blank" rel="noopener noreferrer" class="btn btn-sd" style="padding:20px 42px;font-size:13px"><span>Solicitar proposta B2B &rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section data-shopify-section="b2b-why" class="sec sec-d fi">
+  <div class="bx">
+    <div class="head">
+      <div>
+        <div class="eyebrow">Cap&iacute;tulo 03 &mdash; Por que COFCOF.CO</div>
+        <h2 class="display" style="color:var(--sand)">O que seu fornecedor atual<br/>n&atilde;o te <span class="ital">oferece</span>.</h2>
+      </div>
+      <div class="label head-meta">06 diferenciais</div>
+    </div>
+    <div class="dif">
+      <div class="dif-i fi"><div class="dif-n">86+</div><div class="dif-t">SCA</div><p class="dif-d">Caf&eacute; especial com padr&atilde;o sensorial comprovado.</p></div>
+      <div class="dif-i fi"><div class="dif-n">D.O.</div><div class="dif-t">Cerrado Mineiro</div><p class="dif-d">Origem reconhecida, rastre&aacute;vel e valorizada.</p></div>
+      <div class="dif-i fi"><div class="dif-n">7d</div><div class="dif-t">Da torra</div><p class="dif-d">Mais frescor para equipe, clientes e card&aacute;pio.</p></div>
+      <div class="dif-i fi" style="border-color:transparent;background:none"><div class="dif-n" style="font-size:clamp(40px,5vw,48px);color:rgba(246,241,235,.7)">NF</div><div class="dif-t" style="font-size:18px;color:rgba(246,241,235,.9)">Nota fiscal</div><p class="dif-d" style="color:rgba(246,241,235,.5)">Fornecimento profissional para opera&ccedil;&atilde;o B2B.</p></div>
+      <div class="dif-i fi" style="border-color:transparent;background:none"><div class="dif-n" style="font-size:clamp(40px,5vw,48px);color:rgba(246,241,235,.7)">QR</div><div class="dif-t" style="font-size:18px;color:rgba(246,241,235,.9)">De origem</div><p class="dif-d" style="color:rgba(246,241,235,.5)">Transpar&ecirc;ncia para contar a hist&oacute;ria do caf&eacute;.</p></div>
+      <div class="dif-i fi" style="border-color:transparent;background:none"><div class="dif-n" style="font-size:clamp(40px,5vw,48px);color:rgba(246,241,235,.7)">1:1</div><div class="dif-t" style="font-size:18px;color:rgba(246,241,235,.9)">Atendimento</div><p class="dif-d" style="color:rgba(246,241,235,.5)">Curadoria e suporte para sua opera&ccedil;&atilde;o.</p></div>
+    </div>
+    <div class="ctab fi">
+      <h3>Quer servir caf&eacute; premiado no seu <span class="ital">neg&oacute;cio</span>?</h3>
+      <p>Conte sobre sua empresa, volume estimado e tipo de preparo. Respondemos em at&eacute; 24h com uma proposta personalizada.</p>
+      <a href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Tenho%20interesse%20no%20plano%20Empresas%20da%20COFCOF.CO.%20Meu%20neg%C3%B3cio%20%C3%A9%3A%20" target="_blank" rel="noopener noreferrer" class="btn btn-sd" style="padding:20px 42px;font-size:13px"><span>Solicitar proposta B2B &rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPORT -->
+<section data-shopify-section="b2b-export" class="sec sec-d fi" id="exportacao">
+  <div class="bx">
+    <div class="head">
+      <div>
+        <div class="eyebrow" style="opacity:.6">Cap&iacute;tulo 04 &mdash; Exporta&ccedil;&atilde;o &amp; Corporativo</div>
+        <h2 class="display" style="color:var(--sand);font-size:clamp(2.5rem,5vw,4.8rem)">Caf&eacute;s premiados do Brasil<br/>para sua <span class="ital">empresa</span>.</h2>
+      </div>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-text">
+        <p>Os lotes do Cerrado Mineiro j&aacute; s&atilde;o disputados por compradores internacionais na Cup of Excellence. Agora, voc&ecirc; pode levar esses mesmos caf&eacute;s para a rotina da sua equipe ou clientes.</p>
+        <p>Seja para escrit&oacute;rios no Brasil ou exporta&ccedil;&atilde;o (Europa, EUA, &Aacute;sia) de caf&eacute; torrado e em gr&atilde;os verdes. Todos com rastreabilidade total, selo D.O. Cerrado Mineiro e suporte comercial dedicado.</p>
+        <p style="margin-bottom:40px">Atendemos desde fornecimento mensal para cl&iacute;nicas a partir de 10kg at&eacute; envios internacionais complexos.</p>
+        <a href="https://wa.me/5534998728882?text=Hello!%20I%27m%20interested%20in%20importing%20COFCOF.CO%20specialty%20coffee." target="_blank" rel="noopener noreferrer" class="lnk exp-cta" style="font-family:var(--fl);font-size:13px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;color:var(--sand);text-decoration:none;border-bottom:1px solid rgba(246,241,235,.3);padding-bottom:4px">Falar com nosso time &rarr;</a>
+      </div>
+      <div class="exp-card">
+        <h4>Cen&aacute;rio de uso</h4>
+        <p>"Para empresas que querem substituir o caf&eacute; comum por uma experi&ecirc;ncia mais premium em reuni&otilde;es, recep&ccedil;&atilde;o e na rotina di&aacute;ria da equipe."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section data-shopify-section="b2b-numbers" class="sec sec-d fi">
+  <div class="bx">
+    <div class="head" style="justify-content:center;text-align:center">
+      <div>
+        <div class="eyebrow">Por que empresas escolhem</div>
+        <h2 class="display" style="color:var(--sand)">Os n&uacute;meros da <span class="ital">COFCOF.CO</span>.</h2>
+      </div>
+    </div>
+    <div class="num-grid">
+      <div class="num-i"><div class="num-v">86+</div><div class="num-l">Pontos SCA m&iacute;n.</div></div>
+      <div class="num-i"><div class="num-v">COE</div><div class="num-l">Cup of Excellence</div></div>
+      <div class="num-i"><div class="num-v">8</div><div class="num-l">Lotes em rota&ccedil;&atilde;o</div></div>
+      <div class="num-i"><div class="num-v">7d</div><div class="num-l">Torra sob demanda</div></div>
+    </div>
+    <div style="text-align:center;margin-top:80px">
+      <p style="font-size:18px;color:rgba(246,241,235,.8);margin-bottom:24px">Quer montar uma proposta para sua opera&ccedil;&atilde;o?</p>
+      <a href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20plano%20Empresas%20da%20COFCOF.CO." target="_blank" rel="noopener noreferrer" class="btn btn-sd" style="padding:22px 48px;font-size:14px"><span>Falar com comercial &rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section data-shopify-section="b2b-cta" class="cta-end fi">
+  <div class="bx cta-end-in">
+    <div class="eyebrow">Empresas a partir de 10kg</div>
+    <h2 class="display">Pre&ccedil;o sob medida.<br/>Atendimento <span class="ital">dedicado</span>.</h2>
+    <p class="body-p">Respondemos em at&eacute; 24h com uma proposta personalizada para sua opera&ccedil;&atilde;o.</p>
+    <div style="margin-top:48px;display:flex;flex-direction:column;align-items:center;gap:16px">
+      <a href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Tenho%20interesse%20no%20plano%20Empresas%20da%20COFCOF.CO." target="_blank" rel="noopener noreferrer" class="btn"><span>Solicitar proposta B2B &rarr;</span></a>
+      <p style="font-size:13px;color:rgba(246,241,235,.65);font-family:var(--fn);font-weight:300;margin-top:16px">Sem compromisso &middot; Pedido m&iacute;nimo sob consulta &middot; Atendimento comercial</p>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        e.target.classList.add('v');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  var elements = document.querySelectorAll('.fi');
+  for (var i = 0; i < elements.length; i++) { observer.observe(elements[i]); }
+})();
+</script>
 
 {% schema %}
 {
   "name": "CofCof Empresas",
+  "tag": "section",
+  "class": "cof-empresas-section",
   "settings": [],
   "presets": [
-    { "name": "CofCof Empresas" }
+    {
+      "name": "CofCof Empresas"
+    }
   ]
 }
 {% endschema %}

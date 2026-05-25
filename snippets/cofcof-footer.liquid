@@ -1,0 +1,89 @@
+{% liquid
+  assign is_b2b = false
+  if template.suffix == 'empresas' or request.page_type == 'page' and page.handle == 'empresas'
+    assign is_b2b = true
+  endif
+%}
+<footer class="cof-footer">
+  <style>
+    .cof-footer{--cof-black:#0a0a0a;--cof-sand:#f6f1eb;--cof-muted:rgba(246,241,235,.68);--cof-gold:#c9a263;--cof-line:rgba(246,241,235,.14);font-family:'DM Sans',Helvetica,sans-serif;background:var(--cof-black);color:var(--cof-sand);padding:80px 0 40px;border-top:1px solid var(--cof-line)}
+    .cof-footer a{color:inherit;text-decoration:none}
+    .cof-footer__wrap{max-width:1340px;margin:0 auto;padding:0 28px}@media(min-width:768px){.cof-footer__wrap{padding:0 56px}}
+    .cof-footer__grid{display:grid;grid-template-columns:1fr;gap:clamp(40px,5vw,80px);margin-bottom:64px}@media(min-width:768px){.cof-footer__grid{grid-template-columns:2fr 1fr 1fr 1fr}}
+    .cof-footer__brand{font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(32px,4.5vw,48px);letter-spacing:.08em;text-transform:uppercase;color:var(--cof-sand);line-height:1;margin-bottom:24px}
+    .cof-footer__desc{font-size:16px;color:rgba(246,241,235,.75);max-width:360px;line-height:1.6;margin:0 0 32px}
+    .cof-footer__newsletter{display:flex;gap:8px;max-width:360px}
+    .cof-footer__newsletter input{flex:1;background:rgba(246,241,235,.05);border:1px solid rgba(246,241,235,.2);padding:12px 16px;color:var(--cof-sand);font-size:14px;border-radius:4px;outline:none}
+    .cof-footer__newsletter input:focus{border-color:var(--cof-gold)}
+    .cof-footer__newsletter button{background:var(--cof-sand);color:var(--cof-black);border:none;padding:0 20px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-radius:4px;cursor:pointer}
+    .cof-footer__newsletter button:hover{background:#e0d8cc}
+    .cof-footer__b2b{padding:24px;background:rgba(246,241,235,.05);border-radius:8px;border:1px solid rgba(246,241,235,.1);max-width:360px}
+    .cof-footer__b2b .eyebrow{font:700 10px/1 Montserrat,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--cof-sand);margin-bottom:12px}
+    .cof-footer__b2b p{font-size:14px;color:rgba(246,241,235,.7);margin:0 0 16px}
+    .cof-footer__b2b a{background:var(--cof-sand);color:var(--cof-black);display:flex;align-items:center;justify-content:center;padding:16px;font-size:13px;font-weight:700;border-radius:4px;gap:8px}
+    .cof-footer__b2b a:hover{background:#e0d8cc}
+    .cof-footer h4{font:700 10px/1 Montserrat,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--cof-gold);margin:0 0 24px;opacity:.7}
+    .cof-footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
+    .cof-footer ul a{font-size:16px;color:rgba(246,241,235,.9);transition:color .2s}
+    .cof-footer ul a:hover{color:var(--cof-sand)}
+    .cof-footer__bottom{padding-top:40px;border-top:1px solid rgba(246,241,235,.15);display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
+    .cof-footer__legal{font-size:13px;color:rgba(246,241,235,.6);line-height:1.7;margin:0}
+    .cof-footer__cr{font-family:Montserrat,sans-serif;font-weight:700;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(246,241,235,.6);margin:0}
+    .cof-footer a:focus-visible{outline:2px solid var(--cof-sand);outline-offset:4px}
+  </style>
+  <div class="cof-footer__wrap">
+    <div class="cof-footer__grid">
+      <div>
+        <a class="cof-footer__brand" href="{{ routes.root_url }}">COFCOF.CO</a>
+        <p class="cof-footer__desc">Cafés especiais do Cerrado Mineiro. Premiados pela Cup of Excellence. Entrega mensal, rastreabilidade QR, torra sob demanda.</p>
+        {% if is_b2b %}
+          <div class="cof-footer__b2b">
+            <div class="eyebrow">Atendimento B2B</div>
+            <p>Fale diretamente com nosso comercial para orçamentos e propostas.</p>
+            <a href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Quero%20falar%20com%20o%20setor%20comercial%20B2B." target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp →</a>
+          </div>
+        {% else %}
+          <form class="cof-footer__newsletter" action="#" method="post">
+            <input type="email" placeholder="Assinar newsletter" required>
+            <button type="submit">Assinar</button>
+          </form>
+        {% endif %}
+      </div>
+      <div class="cof-footer__col">
+        <h4>Assinatura</h4>
+        <ul>
+          <li><a href="/pages/assinatura">Planos</a></li>
+          <li><a href="/pages/cafes">Nossos cafés</a></li>
+          <li><a href="/pages/empresas"{% if is_b2b %} style="color:var(--cof-sand);font-weight:600"{% endif %}>Empresas</a></li>
+        </ul>
+      </div>
+      <div class="cof-footer__col">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="/pages/origem">Origem</a></li>
+          <li><a href="/pages/onde-encontrar">Onde Encontrar</a></li>
+          <li><a href="/pages/contato">Contato</a></li>
+          {% if is_b2b %}
+          <li><a href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20proposta." target="_blank" rel="noopener noreferrer" style="color:var(--cof-sand);font-weight:600">Solicitar Proposta B2B</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <div class="cof-footer__col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="https://wa.me/5534998728882" target="_blank" rel="noopener noreferrer"{% if is_b2b %} style="color:var(--cof-sand);font-weight:700"{% endif %}>+55 34 99872-8882</a></li>
+          {% if is_b2b %}
+          <li><a href="mailto:comercial@cofcof.co">comercial@cofcof.co</a></li>
+          {% else %}
+          <li><a href="mailto:contato@cofcof.co">contato@cofcof.co</a></li>
+          {% endif %}
+          <li><a href="https://instagram.com/cofcof.company" target="_blank" rel="noopener noreferrer">@cofcof.company</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="cof-footer__bottom">
+      <p class="cof-footer__legal">Cof Cof Cafés Especiais do Cerrado LTDA · CNPJ 52.639.486/0001-06<br>Patrocínio / MG · Cerrado Mineiro · Seg–Sex 8h–17h</p>
+      <p class="cof-footer__cr">&copy; {{ 'now' | date: '%Y' }} — Todos os direitos reservados</p>
+    </div>
+  </div>
+</footer>

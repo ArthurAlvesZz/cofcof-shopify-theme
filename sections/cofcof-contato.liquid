@@ -1,0 +1,212 @@
+<div class="cof-contato">
+<style>
+.cof-contato{--black:#0A0A0A;--sand:#F6F1EB;--sand-2:#EFE7DB;--parch:#E8E0D4;--clay:#7A6654;--sub:#6B6B6B;--rule:rgba(10,10,10,.12);--rule-w:rgba(246,241,235,.14);--fn:'DM Sans',Helvetica,sans-serif;--fl:'Montserrat',sans-serif;font-family:var(--fn);color:var(--txt);background:var(--sand)}
+.cof-contato *{box-sizing:border-box}
+.cof-contato a{color:inherit;text-decoration:none}
+.cof-contato button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
+.cof-contato .bx{max-width:1340px;margin:0 auto;padding:0 28px}
+@media(min-width:768px){.cof-contato .bx{padding:0 56px}}
+.cof-contato .fi{opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.cof-contato .fi.v{opacity:1;transform:none}
+.cof-contato .eyebrow{font-family:var(--fl);font-weight:700;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--clay)}
+.cof-contato .display{font-family:var(--fl);font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:.96}
+.cof-contato .ital{font-family:var(--fl);font-weight:800;font-style:italic;text-transform:lowercase;letter-spacing:-.005em;color:var(--clay)}
+.cof-contato .body-p{font-family:var(--fn);font-weight:300;line-height:1.65}
+.cof-contato .sec{padding:80px 0}
+@media(min-width:768px){.cof-contato .sec{padding:112px 0}}
+.cof-contato .sec-p{background:var(--parch)}
+.cof-contato .lnk{position:relative;display:inline-block;padding-bottom:3px}
+.cof-contato .lnk::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform-origin:right;transform:scaleX(0);transition:transform .42s cubic-bezier(.2,.7,.2,1)}
+.cof-contato .lnk:hover::after{transform-origin:left;transform:scaleX(1)}
+.cof-contato .btn{position:relative;overflow:hidden;display:inline-block;cursor:pointer;font-family:var(--fl);font-weight:700;letter-spacing:.2em;text-transform:uppercase;transition:color .38s;text-align:center}
+.cof-contato .btn>span{position:relative;z-index:1}
+.cof-contato .btn::before{content:'';position:absolute;inset:0;transform:translateY(101%);transition:transform .42s cubic-bezier(.2,.7,.2,1);z-index:0}
+.cof-contato .btn:hover::before{transform:translateY(0)}
+.cof-contato .btn-ds{background:var(--black);color:var(--sand)}
+.cof-contato .btn-ds::before{background:var(--sand)}
+.cof-contato .btn-ds:hover{color:var(--black)}
+.cof-contato .btn-sd{background:var(--sand);color:var(--black);border:1.5px solid var(--sand)}
+.cof-contato .btn-sd::before{background:var(--black)}
+.cof-contato .btn-sd:hover{color:var(--sand)}
+
+/* Hero */
+.cof-contato .pg-hero{padding:130px 0 72px;background:var(--black);color:var(--sand);position:relative;overflow:hidden}
+@media(min-width:768px){.cof-contato .pg-hero{padding:160px 0 96px}}
+.cof-contato .pg-hero-grid{position:absolute;inset:0;background-image:linear-gradient(to right,var(--rule-w) 1px,transparent 1px);background-size:25% 100%;opacity:.5;pointer-events:none}
+.cof-contato .pg-hero-spot{position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:80%;height:70%;background:radial-gradient(ellipse at center,rgba(122,102,84,.16) 0%,transparent 60%);filter:blur(40px);pointer-events:none}
+.cof-contato .pg-hero-in{position:relative;z-index:2}
+.cof-contato .pg-hero h1{font-size:clamp(2rem,5.5vw,4.4rem);color:var(--sand);font-weight:800;margin-top:20px;max-width:1100px}
+.cof-contato .pg-hero .body-p{font-size:clamp(14px,1.1vw,16px);color:rgba(246,241,235,.7);margin-top:24px;max-width:620px}
+
+/* Contact cards */
+.cof-contato .ct-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(16px,2vw,24px);margin-top:clamp(40px,8vh,72px)}
+.cof-contato .ct-i{padding:clamp(32px,3vw,44px);border:1px solid var(--rule);background:var(--sand);transition:background .3s,border-color .3s}
+.cof-contato .ct-i:hover{background:var(--sand-2);border-color:var(--black)}
+.cof-contato .ct-svg{width:32px;height:32px;margin-bottom:24px;stroke:var(--clay);fill:none;stroke-width:1.3}
+.cof-contato .ct-t{font-family:var(--fl);font-weight:800;font-size:18px;text-transform:uppercase;letter-spacing:.02em;margin-bottom:10px}
+.cof-contato .ct-d{font-family:var(--fn);font-weight:300;font-size:14px;color:var(--sub);line-height:1.65;margin-bottom:20px}
+.cof-contato .ct-link{font-family:var(--fl);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--black)}
+
+/* Info grid */
+.cof-contato .info-grid{display:grid;gap:clamp(32px,5vw,64px);margin-top:clamp(40px,8vh,72px)}
+@media(min-width:900px){.cof-contato .info-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.cof-contato .info-col h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin-top:16px;margin-bottom:28px}
+.cof-contato .ir{border-bottom:1px solid var(--rule);padding:16px 0;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.cof-contato .ir:first-child{border-top:1px solid var(--black);padding-top:18px}
+.cof-contato .ir-l{font-family:var(--fl);font-weight:700;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--clay);flex-shrink:0}
+.cof-contato .ir-v{font-family:var(--fl);font-weight:700;font-size:13px;color:var(--black);text-align:right;letter-spacing:.02em}
+.cof-contato .ir-v a{color:var(--black);border-bottom:1px solid var(--rule);transition:border-color .3s;padding-bottom:1px}
+.cof-contato .ir-v a:hover{border-color:var(--black)}
+
+/* FAQ */
+.cof-contato .fq{margin-top:0}
+.cof-contato .fq-i{border-bottom:1px solid var(--rule)}
+.cof-contato .fq-i:first-child{border-top:1px solid var(--black)}
+.cof-contato .fq-q{width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 0;text-align:left;transition:color .3s}
+.cof-contato .fq-qt{font-family:var(--fl);font-weight:700;font-size:13px;letter-spacing:.02em;color:var(--black);padding-right:16px;text-transform:uppercase}
+.cof-contato .fq-ic{font-family:var(--fl);font-weight:800;font-size:18px;color:var(--clay);transition:transform .3s;line-height:1}
+.cof-contato .fq-i.open .fq-ic{transform:rotate(45deg)}
+.cof-contato .fq-a{overflow:hidden;transition:max-height .4s;max-height:0}
+.cof-contato .fq-i.open .fq-a{max-height:500px}
+.cof-contato .fq-ai{padding-bottom:20px}
+.cof-contato .fq-at{font-family:var(--fn);font-weight:300;font-size:14px;color:var(--sub);line-height:1.7}
+.cof-contato .fq-at a{color:var(--black);border-bottom:1px solid var(--rule);padding-bottom:1px;transition:border-color .3s}
+.cof-contato .fq-at a:hover{border-color:var(--black)}
+
+/* Final CTA */
+.cof-contato .cta-end{background:var(--clay);padding:clamp(100px,16vh,180px) 0;text-align:center;position:relative;overflow:hidden}
+.cof-contato .cta-end-in{position:relative;z-index:1;max-width:720px;margin:0 auto}
+.cof-contato .cta-end .eyebrow{color:var(--sand);opacity:.72;margin-bottom:28px}
+.cof-contato .cta-end h2{font-size:clamp(1.8rem,4.5vw,3.4rem);line-height:1.02;color:var(--sand);margin-bottom:32px}
+.cof-contato .cta-end .ital{color:var(--sand)}
+.cof-contato .cta-end .body-p{color:var(--sand);opacity:.85;font-size:15px;max-width:580px;margin:0 auto 36px}
+.cof-contato .cta-end .btn{font-size:12px;padding:20px 42px;background:var(--black);color:var(--sand)}
+.cof-contato .cta-end .btn::before{background:var(--sand)}
+.cof-contato .cta-end .btn:hover{color:var(--black)}
+</style>
+
+{% render 'cofcof-custom-nav', active: 'contato' %}
+
+<!-- HERO -->
+<section class="pg-hero fi">
+  <div class="pg-hero-grid"></div>
+  <div class="pg-hero-spot"></div>
+  <div class="bx pg-hero-in">
+    <div class="eyebrow">Contato</div>
+    <h1 class="display">Fale com a <span class="ital">COFCOF.CO</span>.</h1>
+    <p class="body-p">Duuvidas sobre assinatura, pedidos, parcerias comerciais ou exportacao. A gente responde rapido — sem atendente virtual, sem burocracia.</p>
+  </div>
+</section>
+
+<!-- CONTACT CARDS -->
+<section class="sec fi">
+  <div class="bx">
+    <div class="ct-grid">
+      <div class="ct-i fi">
+        <svg class="ct-svg" viewBox="0 0 32 32"><path d="M4 7h24v18H4z"/><path d="M4 7l12 11L28 7"/></svg>
+        <div class="ct-t">E-mail</div>
+        <p class="ct-d">Duuvidas gerais, suporte ao assinante e solicitacoes formais. Respondemos em ate 24h.</p>
+        <a href="mailto:contato@cofcof.co" class="lnk ct-link">contato@cofcof.co &rarr;</a>
+      </div>
+      <div class="ct-i fi">
+        <svg class="ct-svg" viewBox="0 0 32 32"><rect x="6" y="3" width="20" height="26" rx="3"/><circle cx="16" cy="24" r="1.5" fill="currentColor"/><path d="M12 7h8"/></svg>
+        <div class="ct-t">WhatsApp</div>
+        <p class="ct-d">Atendimento rapido pra pedidos, trocas e duuvidas. Resposta imediata em horario comercial.</p>
+        <a href="https://wa.me/5534998728882?text=Ola!%20Preciso%20de%20ajuda%20com%20a%20COFCOF.CO." target="_blank" rel="noopener noreferrer" class="lnk ct-link">(34) 99872-8882 &rarr;</a>
+      </div>
+      <div class="ct-i fi">
+        <svg class="ct-svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12"/><path d="M16 8v9l6 3"/></svg>
+        <div class="ct-t">Horario</div>
+        <p class="ct-d">Segunda a sexta, das 8h as 17h. Mensagens fora do horario sao respondidas no proximo dia util.</p>
+        <span class="ct-link" style="color:var(--sub)">Horario de Brasilia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO + FAQ -->
+<section class="sec sec-p fi">
+  <div class="bx">
+    <div class="info-grid">
+      <div class="info-col">
+        <div class="eyebrow">Dados oficiais</div>
+        <h2 class="display" style="color:var(--black)">Dados da <span class="ital">empresa</span>.</h2>
+        <div>
+          <div class="ir"><span class="ir-l">Razao social</span><span class="ir-v">Cof Cof Cafes Especiais do Cerrado LTDA</span></div>
+          <div class="ir"><span class="ir-l">CNPJ</span><span class="ir-v">52.639.486/0001-06</span></div>
+          <div class="ir"><span class="ir-l">E-mail</span><span class="ir-v"><a href="mailto:contato@cofcof.co">contato@cofcof.co</a></span></div>
+          <div class="ir"><span class="ir-l">WhatsApp</span><span class="ir-v"><a href="https://wa.me/5534998728882" target="_blank" rel="noopener noreferrer">(34) 99872-8882</a></span></div>
+          <div class="ir"><span class="ir-l">Instagram</span><span class="ir-v"><a href="https://instagram.com/cofcof.company" target="_blank" rel="noopener noreferrer">@cofcof.company</a></span></div>
+          <div class="ir"><span class="ir-l">Regiao</span><span class="ir-v">Patrocinio · MG · Cerrado Mineiro</span></div>
+          <div class="ir"><span class="ir-l">Horario</span><span class="ir-v">Seg–Sex, 8h–17h</span></div>
+        </div>
+      </div>
+      <div class="info-col">
+        <div class="eyebrow">Duuvidas rapidas</div>
+        <h2 class="display" style="color:var(--black)">Perguntas <span class="ital">comuns</span>.</h2>
+        <div class="fq">
+          <div class="fq-i">
+            <button class="fq-q" onclick="this.closest('.fq-i').classList.toggle('open')">
+              <span class="fq-qt">Como cancelo minha assinatura?</span>
+              <span class="fq-ic">+</span>
+            </button>
+            <div class="fq-a"><div class="fq-ai"><p class="fq-at">Direto na sua area de assinante, sem precisar falar com ninguem. Sem multa, sem contrato. Se preferir, pode fazer pelo WhatsApp ou e-mail tambem.</p></div></div>
+          </div>
+          <div class="fq-i">
+            <button class="fq-q" onclick="this.closest('.fq-i').classList.toggle('open')">
+              <span class="fq-qt">Meu pedido nao chegou. E agora?</span>
+              <span class="fq-ic">+</span>
+            </button>
+            <div class="fq-a"><div class="fq-ai"><p class="fq-at">Entre em contato pelo WhatsApp ou e-mail com o numero do pedido. A gente rastreia o envio e resolve rapido. Se houver extravio, reenviamos sem custo.</p></div></div>
+          </div>
+          <div class="fq-i">
+            <button class="fq-q" onclick="this.closest('.fq-i').classList.toggle('open')">
+              <span class="fq-qt">Quero trocar o plano. Como faco?</span>
+              <span class="fq-ic">+</span>
+            </button>
+            <div class="fq-a"><div class="fq-ai"><p class="fq-at">Acesse sua area de assinante e altere o plano. A mudanca entra em vigor no proximo ciclo de cobranca. Sem custo adicional.</p></div></div>
+          </div>
+          <div class="fq-i">
+            <button class="fq-q" onclick="this.closest('.fq-i').classList.toggle('open')">
+              <span class="fq-qt">Voce atende empresas?</span>
+              <span class="fq-ic">+</span>
+            </button>
+            <div class="fq-a"><div class="fq-ai"><p class="fq-at">Sim. Planos a partir de 10kg/mes com preco personalizado pra cafeterias, escritorios, hoteis e coworkings. <a href="/empresas">Saiba mais na pagina Empresas</a>.</p></div></div>
+          </div>
+          <div class="fq-i">
+            <button class="fq-q" onclick="this.closest('.fq-i').classList.toggle('open')">
+              <span class="fq-qt">Exportam pro exterior?</span>
+              <span class="fq-ic">+</span>
+            </button>
+            <div class="fq-a"><div class="fq-ai"><p class="fq-at">Sim. Cafe torrado e graos verdes para qualquer pais. <a href="/empresas#exportacao">Veja os detalhes na secao de exportacao</a>.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-end fi">
+  <div class="bx cta-end-in">
+    <div class="eyebrow">Parcerias · Empresas</div>
+    <h2 class="display">Quer servir Cof Cof<br/>no seu <span class="ital">negocio</span>?</h2>
+    <p class="body-p">Cafeterias, escritorios, hoteis, restaurantes e coworkings. Condicoes especiais pra volume a partir de 10kg/mes.</p>
+    <a href="/empresas" class="btn"><span>Ver planos pra empresas &rarr;</span></a>
+  </div>
+</section>
+</div>
+
+{% schema %}
+{
+  "name": "CofCof Contato",
+  "tag": "section",
+  "class": "cof-contato-section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "CofCof Contato"
+    }
+  ]
+}
+{% endschema %}

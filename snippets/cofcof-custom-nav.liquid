@@ -1,36 +1,91 @@
 {% liquid
   assign active_page = active | default: ''
+  assign is_b2b = false
+  if active_page == 'empresas'
+    assign is_b2b = true
+  endif
 %}
 <style>
-  .cof-nav{--cof-black:#0a0a0a;--cof-sand:#f6f1eb;--cof-muted:rgba(246,241,235,.68);--cof-gold:#c9a263;--cof-line:rgba(246,241,235,.14);width:100%;box-sizing:border-box;position:relative;z-index:20;background:var(--cof-black);color:var(--cof-sand)}.cof-nav,.cof-nav *{box-sizing:border-box}.cof-nav a{color:inherit;text-decoration:none}.cof-nav__inner{width:100%;max-width:1340px;height:68px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:flex;align-items:center;justify-content:space-between;gap:24px;border-bottom:1px solid var(--cof-line)}.cof-nav__brand{font-family:Montserrat,sans-serif;font-weight:800;font-size:16px;letter-spacing:.08em;color:var(--cof-sand)!important;text-transform:uppercase;white-space:nowrap;display:inline-flex;align-items:center;min-width:max-content}.cof-nav__links{display:flex;gap:28px;align-items:center;margin-left:auto}.cof-nav__links a,.cof-nav__mobile a{font:700 11px/1 Montserrat,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--cof-muted)!important;position:relative}.cof-nav__links a:hover,.cof-nav__links a[aria-current=true],.cof-nav__mobile a:hover,.cof-nav__mobile a[aria-current=true]{color:var(--cof-sand)!important}.cof-nav__cta,.cof-nav__mobile .cof-nav__cta{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--cof-sand);background:var(--cof-sand);color:var(--cof-black)!important;padding:13px 18px;font:900 10px/1 Montserrat,sans-serif;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;position:relative;z-index:1;transition:background .2s,color .2s,border-color .2s}.cof-nav__cta:hover,.cof-nav__cta:focus-visible{background:transparent;color:var(--cof-sand)!important;border-color:var(--cof-sand)}.cof-nav__cta *{color:inherit!important}.cof-nav a:focus-visible,.cof-nav summary:focus-visible{outline:2px solid var(--cof-sand);outline-offset:4px}.cof-nav__menu{display:none;position:relative;margin-left:auto}.cof-nav__menu summary{list-style:none;cursor:pointer;font:800 11px/1 Montserrat,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--cof-sand);border:1px solid var(--cof-line);padding:12px 14px}.cof-nav__menu summary::-webkit-details-marker{display:none}.cof-nav__mobile{position:absolute;right:0;top:calc(100% + 10px);width:min(82vw,310px);display:grid;gap:0;background:#111;border:1px solid var(--cof-line);box-shadow:0 24px 70px rgba(0,0,0,.48);padding:8px}.cof-nav__mobile a{padding:14px 12px;border-bottom:1px solid var(--cof-line)}.cof-nav__mobile .cof-nav__cta{margin-top:8px;padding:15px 12px;border-bottom:1px solid var(--cof-sand)}.cof-nav__mobile a:last-child{border-bottom:0}@media(max-width:1160px){.cof-nav__links{gap:20px}.cof-nav__cta{padding:12px 14px}}@media(max-width:1100px){.cof-nav__links{display:none}.cof-nav__menu{display:block}}@media(max-width:620px){.cof-nav__inner{height:64px}.cof-nav__brand{font-size:14px}.cof-nav__menu summary{padding:10px 12px}}
+:root{--black:#0A0A0A;--sand:#F6F1EB;--clay:#7A6654;--rule-w:rgba(246,241,235,.14);--fl:'Montserrat',sans-serif}
+.nv{position:fixed;top:0;left:0;width:100%;z-index:90;background:rgba(10,10,10,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--rule-w)}
+.nv-i{display:flex;align-items:center;justify-content:space-between;height:60px;padding:14px 0}
+@media(min-width:768px){.nv-i{height:68px}}
+.nv-l{font-family:var(--fl);font-weight:800;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--sand);text-decoration:none}
+@media(min-width:768px){.nv-l{font-size:16px}}
+.nv-r{display:none;align-items:center;gap:28px}
+@media(min-width:1000px){.nv-r{display:flex}}
+.nv-r a{font-family:var(--fl);font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(246,241,235,.58);transition:color .3s;position:relative;padding:12px 0;text-decoration:none}
+.nv-r a:hover{color:var(--sand)}
+.nv-r a.act{color:var(--sand)}
+.nv-r a.act::after{content:'';position:absolute;left:0;right:0;bottom:6px;height:1px;background:var(--clay)}
+.nv-c{display:inline-flex;align-items:center;font-family:var(--fl);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;padding:14px 28px;color:var(--sand) !important;border:1.5px solid var(--sand);transition:background .3s,color .3s;line-height:1;text-decoration:none}
+.nv-r a.nv-c:hover{background:var(--sand) !important;color:var(--black) !important}
+.hb{display:flex;flex-direction:column;gap:5px;padding:8px;z-index:91;background:none;border:none;cursor:pointer}
+@media(min-width:1000px){.hb{display:none}}
+.hb span{display:block;width:20px;height:1px;background:var(--sand);transition:all .3s}
+.hb.o span:nth-child(1){transform:rotate(45deg) translate(2px,3px)}
+.hb.o span:nth-child(2){opacity:0}
+.hb.o span:nth-child(3){transform:rotate(-45deg) translate(2px,-3px)}
+.mo{overflow:hidden;max-height:0;background:rgba(10,10,10,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--rule-w);transition:max-height .4s;position:fixed;top:60px;left:0;width:100%;z-index:89}
+@media(min-width:768px){.mo{top:68px}}
+@media(min-width:1000px){.mo{display:none}}
+.mo.o{max-height:440px}
+.mo-i{padding:22px 28px;display:flex;flex-direction:column;gap:16px}
+.mo-i a{font-family:var(--fl);font-weight:600;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,235,.7);transition:color .3s;text-decoration:none}
+.mo-i a.mo-c{color:var(--sand)}
+.bx{max-width:1340px;margin:0 auto;padding:0 28px}
+@media(min-width:768px){.bx{padding:0 56px}}
 </style>
-<nav class="cof-nav" aria-label="Navegacao principal CofCof">
-  <div class="cof-nav__inner bx nv-i">
-    <a class="cof-nav__brand nv-l" href="{{ routes.root_url }}">COFCOF.CO</a>
-    <div class="cof-nav__links nv-r">
-      <a {% if active_page == 'home' %}aria-current="true"{% endif %} href="{{ routes.root_url }}">Home</a>
-      <a {% if active_page == 'assinatura' %}aria-current="true"{% endif %} href="/pages/assinatura">Assinatura</a>
-      <a {% if active_page == 'cafes' %}aria-current="true"{% endif %} href="/pages/cafes">Cafes</a>
-      <a {% if active_page == 'origem' %}aria-current="true"{% endif %} href="/pages/origem">Origem</a>
-      <a {% if active_page == 'onde-encontrar' %}aria-current="true"{% endif %} href="/pages/onde-encontrar">Onde Encontrar</a>
-      <a {% if active_page == 'empresas' %}aria-current="true"{% endif %} href="/pages/empresas">Empresas</a>
-      <a {% if active_page == 'quem-somos' %}aria-current="true"{% endif %} href="/pages/quem-somos">Quem Somos</a>
-      <a {% if active_page == 'contato' %}aria-current="true"{% endif %} href="/pages/contato">Contato</a>
-      <a class="cof-nav__cta nv-c" href="/pages/assinatura#planos">Assinar</a>
+
+<nav class="nv">
+  <div class="bx nv-i">
+    <a href="{{ routes.root_url }}" class="nv-l">COFCOF.CO</a>
+    <div class="nv-r" style="gap:28px">
+      <a href="{{ routes.root_url }}"{% if active_page == 'home' %} class="act{% if is_b2b %} b2b-act{% endif %}"{% endif %} style="font-size:13px">Inicio</a>
+      <a href="/pages/cafes"{% if active_page == 'cafes' %} class="act{% if is_b2b %} b2b-act{% endif %}"{% endif %} style="font-size:13px">Cafes</a>
+      <a href="/pages/assinatura"{% if active_page == 'assinatura' %} class="act{% if is_b2b %} b2b-act{% endif %}"{% endif %} style="font-size:13px">Assinaturas</a>
+      <a href="/pages/origem"{% if active_page == 'origem' %} class="act{% if is_b2b %} b2b-act{% endif %}"{% endif %} style="font-size:13px">Origem</a>
+      <a href="/pages/onde-encontrar"{% if active_page == 'onde-encontrar' %} class="act{% if is_b2b %} b2b-act{% endif %}"{% endif %} style="font-size:13px">Onde Encontrar</a>
+      <a href="/pages/empresas"{% if active_page == 'empresas' %} class="act b2b-act"{% endif %} style="font-size:13px{% if is_b2b %};color:#f6f1eb;border-bottom:1px solid #f6f1eb;padding-bottom:4px{% endif %}">Para Empresas</a>
+      <a href="/pages/contato"{% if active_page == 'contato' %} class="act{% if is_b2b %} b2b-act{% endif %}"{% endif %} style="font-size:13px">Contato</a>
+      <a href="/pages/assinatura" class="nv-c" style="font-size:13px">Comprar &rarr;</a>
     </div>
-    <details class="cof-nav__menu">
-      <summary>Menu</summary>
-      <div class="cof-nav__mobile">
-        <a {% if active_page == 'home' %}aria-current="true"{% endif %} href="{{ routes.root_url }}">Home</a>
-        <a {% if active_page == 'assinatura' %}aria-current="true"{% endif %} href="/pages/assinatura">Assinatura</a>
-        <a {% if active_page == 'cafes' %}aria-current="true"{% endif %} href="/pages/cafes">Cafes</a>
-        <a {% if active_page == 'origem' %}aria-current="true"{% endif %} href="/pages/origem">Origem</a>
-        <a {% if active_page == 'onde-encontrar' %}aria-current="true"{% endif %} href="/pages/onde-encontrar">Onde Encontrar</a>
-        <a {% if active_page == 'empresas' %}aria-current="true"{% endif %} href="/pages/empresas">Empresas</a>
-        <a {% if active_page == 'quem-somos' %}aria-current="true"{% endif %} href="/pages/quem-somos">Quem Somos</a>
-        <a {% if active_page == 'contato' %}aria-current="true"{% endif %} href="/pages/contato">Contato</a>
-        <a class="cof-nav__cta mo-c" href="/pages/assinatura#planos">Assinar</a>
-      </div>
-    </details>
+    <button class="hb" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<div class="mo" id="MO">
+  <div class="mo-i">
+    <a href="{{ routes.root_url }}"{% if active_page == 'home' %} class="mo-c"{% endif %}>Inicio</a>
+    <a href="/pages/cafes"{% if active_page == 'cafes' %} class="mo-c"{% endif %}>Cafes</a>
+    <a href="/pages/assinatura"{% if active_page == 'assinatura' %} class="mo-c"{% endif %}>Assinaturas</a>
+    <a href="/pages/origem"{% if active_page == 'origem' %} class="mo-c"{% endif %}>Origem</a>
+    <a href="/pages/onde-encontrar"{% if active_page == 'onde-encontrar' %} class="mo-c"{% endif %}>Onde Encontrar</a>
+    <a href="/pages/empresas"{% if active_page == 'empresas' %} class="mo-c"{% endif %}>Para Empresas</a>
+    <a href="/pages/contato"{% if active_page == 'contato' %} class="mo-c"{% endif %}>Contato</a>
+    <a href="/pages/assinatura" class="mo-c">Comprar &rarr;</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var hb = document.querySelector('.hb');
+  var mo = document.getElementById('MO');
+  if (!hb || !mo) return;
+  var links = mo.querySelectorAll('a');
+  hb.addEventListener('click', function(){
+    var isOpen = mo.classList.toggle('o');
+    hb.classList.toggle('o');
+    hb.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+  });
+  for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener('click', function(){
+      mo.classList.remove('o');
+      hb.classList.remove('o');
+      hb.setAttribute('aria-label', 'Abrir menu');
+    });
+  }
+})();
+</script>

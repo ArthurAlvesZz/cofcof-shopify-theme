@@ -450,9 +450,11 @@
     </main>
 
     {% comment %} COFCOF.CO — Conditionally show footer {% endcomment %}
-    {%- unless is_landing -%}
+    {%- if is_landing -%}
+      {% render 'cofcof-footer' %}
+    {%- else -%}
       {% sections 'footer-group' %}
-    {%- endunless -%}
+    {%- endif -%}
 
     <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>

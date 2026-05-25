@@ -1,63 +1,480 @@
-<section class="cof-origin">
-  <style>
-    .cof-origin{--black:#0a0a0a;--sand:#f6f1eb;--muted:rgba(246,241,235,.64);--gold:#c9a263;--line:rgba(246,241,235,.14);font-family:'DM Sans',Helvetica,sans-serif;background:var(--black);color:var(--sand);min-height:100vh}.cof-origin a{color:inherit;text-decoration:none}.cof-origin__wrap{max-width:1340px;margin:0 auto;padding:0 28px}@media(min-width:768px){.cof-origin__wrap{padding:0 56px}}.cof-origin__nav{height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.cof-origin__brand{font-family:Montserrat,sans-serif;font-weight:800;font-size:16px;letter-spacing:.08em;color:var(--sand);text-transform:uppercase}.cof-origin__links{display:flex;gap:30px;align-items:center}.cof-origin__links a{font:700 11px/1 Montserrat,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:rgba(246,241,235,.68);position:relative;padding-bottom:3px}.cof-origin__links a[aria-current=true],.cof-origin__links a:hover{color:var(--sand)}.cof-origin__links a:focus-visible,.cof-origin__brand:focus-visible,.cof-origin__cta a:focus-visible{outline:2px solid var(--sand);outline-offset:4px}.cof-origin__hero{padding:86px 0 64px;display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:58px}.cof-origin__eyebrow{font:700 11px/1.4 Montserrat,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}.cof-origin h1{font:800 clamp(42px,7vw,92px)/.9 Montserrat,sans-serif;text-transform:uppercase;margin:24px 0}.cof-origin__lead{color:var(--muted);font-size:18px;line-height:1.8;max-width:760px}.cof-origin__panel{border:1px solid var(--line);padding:28px;background:linear-gradient(145deg,rgba(201,162,99,.14),rgba(246,241,235,.03))}.cof-origin__panel dl{margin:0}.cof-origin__panel dt{font:700 10px/1 Montserrat,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:22px}.cof-origin__panel dt:first-child{margin-top:0}.cof-origin__panel dd{margin:8px 0 0;color:var(--sand);font-weight:700}.cof-origin__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border-top:1px solid var(--line)}.cof-origin__card{background:#111;padding:34px;min-height:250px}.cof-origin__card h2{font:800 20px/1.2 Montserrat,sans-serif;text-transform:uppercase;margin:18px 0 14px}.cof-origin__card p{color:var(--muted);line-height:1.7}.cof-origin__cta{padding:60px 28px;text-align:center;border-top:1px solid var(--line)}.cof-origin__cta a{display:inline-block;border:1px solid var(--sand);color:var(--sand);padding:16px 24px;font:800 11px/1 Montserrat,sans-serif;letter-spacing:.18em;text-transform:uppercase}.cof-origin__cta a:hover{background:var(--sand);color:var(--black)}@media(max-width:1000px){.cof-origin__links{display:none}.cof-origin__hero{grid-template-columns:1fr}.cof-origin__grid{grid-template-columns:1fr}}@media(max-width:620px){.cof-origin__wrap{padding:0 20px}.cof-origin h1{font-size:43px}}
-  </style>
-  {% render 'cofcof-custom-nav', active: 'origem' %}
-  <div class="cof-origin__wrap">
-    <div class="cof-origin__hero">
-      <div>
-        <div class="cof-origin__eyebrow">{{ section.settings.eyebrow }}</div>
-        <h1>{{ section.settings.heading }}</h1>
-        <p class="cof-origin__lead">{{ section.settings.text }}</p>
-      </div>
-      <aside class="cof-origin__panel">
-        <dl>
-          <dt>Regiao</dt><dd>{{ section.settings.region }}</dd>
-          <dt>Altitude</dt><dd>{{ section.settings.altitude }}</dd>
-          <dt>Safra</dt><dd>{{ section.settings.harvest }}</dd>
-          <dt>Qualidade</dt><dd>{{ section.settings.quality }}</dd>
-        </dl>
-      </aside>
+<div class="cof-origem">
+<style>
+.cof-origem{--black:#0A0A0A;--sand:#F6F1EB;--parch:#E8E0D4;--clay:#7A6654;--sub:#6B6B6B;--dim:#999;--rule:rgba(10,10,10,.12);--rule-w:rgba(246,241,235,.14);--fn:'DM Sans',Helvetica,sans-serif;--fl:'Montserrat',sans-serif;font-family:var(--fn);color:var(--txt);background:var(--sand)}
+.cof-origem *{box-sizing:border-box}
+.cof-origem a{color:inherit;text-decoration:none}
+.cof-origem button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
+.cof-origem .bx{max-width:1340px;margin:0 auto;padding:0 28px}
+@media(min-width:768px){.cof-origem .bx{padding:0 56px}}
+.cof-origem .fi{opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.cof-origem .fi.v{opacity:1;transform:none}
+.cof-origem .eyebrow{font-family:var(--fl);font-weight:700;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--clay)}
+.cof-origem .display{font-family:var(--fl);font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:.96}
+.cof-origem .ital{font-family:var(--fl);font-weight:800;font-style:italic;text-transform:lowercase;letter-spacing:-.005em;color:var(--clay)}
+.cof-origem .body-p{font-family:var(--fn);font-weight:300;line-height:1.65}
+.cof-origem .sec{padding:80px 0}
+@media(min-width:768px){.cof-origem .sec{padding:112px 0}}
+.cof-origem .sec-d{background:var(--black);color:var(--sand)}
+.cof-origem .sec-p{background:var(--parch)}
+.cof-origem .btn{position:relative;overflow:hidden;display:inline-block;cursor:pointer;font-family:var(--fl);font-weight:700;letter-spacing:.2em;text-transform:uppercase;transition:color .38s;text-align:center}
+.cof-origem .btn>span{position:relative;z-index:1}
+.cof-origem .btn::before{content:'';position:absolute;inset:0;transform:translateY(101%);transition:transform .42s cubic-bezier(.2,.7,.2,1);z-index:0}
+.cof-origem .btn:hover::before{transform:translateY(0)}
+.cof-origem .btn-ds{background:var(--black);color:var(--sand)}
+.cof-origem .btn-ds::before{background:var(--sand)}
+.cof-origem .btn-ds:hover{color:var(--black)}
+.cof-origem .btn-sd{background:var(--sand);color:var(--black);border:1.5px solid var(--sand)}
+.cof-origem .btn-sd::before{background:var(--black)}
+.cof-origem .btn-sd:hover{color:var(--sand)}
+.cof-origem .label{font-family:var(--fl);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+
+/* Hero */
+.cof-origem .pg-hero{padding:130px 0 72px;background:var(--black);color:var(--sand);position:relative;overflow:hidden}
+@media(min-width:768px){.cof-origem .pg-hero{padding:160px 0 96px}}
+.cof-origem .pg-hero-grid{position:absolute;inset:0;background-image:linear-gradient(to right,var(--rule-w) 1px,transparent 1px);background-size:25% 100%;opacity:.5;pointer-events:none}
+.cof-origem .pg-hero-spot{position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:80%;height:70%;background:radial-gradient(ellipse at center,rgba(122,102,84,.16) 0%,transparent 60%);filter:blur(40px);pointer-events:none}
+.cof-origem .pg-hero-in{position:relative;z-index:2}
+.cof-origem .pg-hero h1{font-size:clamp(2.2rem,5vw,4.2rem);color:var(--sand);font-weight:800;margin-top:20px}
+.cof-origem .pg-hero .body-p{font-size:clamp(16px,1.2vw,18px);color:rgba(246,241,235,.7);margin-top:24px}
+.cof-origem .pg-hero-cta{margin-top:48px;display:flex;flex-direction:column;gap:16px}
+@media(min-width:600px){.cof-origem .pg-hero-cta{flex-direction:row;flex-wrap:wrap}}
+
+/* Hero badge */
+.cof-origem .hero-badge{display:inline-flex;align-items:center;border:1px solid rgba(201,162,99,.3);color:var(--clay);padding:6px 16px;border-radius:40px;background:rgba(201,162,99,.05);font-family:var(--fl);font-weight:700;font-size:10px;letter-spacing:.24em;text-transform:uppercase}
+.cof-origem .hero-meta{display:flex;flex-wrap:wrap;gap:24px;color:var(--clay);font-family:var(--fl);font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:800;margin-top:40px;justify-content:center}
+.cof-origem .hero-meta span{display:flex;align-items:center;gap:6px}
+
+/* Why grid */
+.cof-origem .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;background:var(--rule);border:1px solid var(--rule)}
+.cof-origem .why-i{background:var(--sand);padding:40px}
+.cof-origem .why-i svg{color:var(--clay);margin-bottom:24px}
+.cof-origem .why-i h4{font-family:var(--fl);font-weight:800;font-size:24px;color:var(--black);margin-bottom:12px;line-height:.96}
+.cof-origem .why-i .label{margin-bottom:24px;font-size:10px}
+.cof-origem .why-i p{font-family:var(--fn);font-weight:300;font-size:14px;color:var(--sub);line-height:1.65}
+
+/* Map section */
+.cof-origem .orig-map-wrap{padding:0;position:relative;background:var(--black);border:1px solid var(--rule-w);overflow:hidden}
+.cof-origem .orig-map-flex{display:flex;flex-direction:column;height:100%}
+@media(min-width:1024px){.cof-origem .orig-map-flex{flex-direction:row}}
+.cof-origem .orig-map-panel{padding:clamp(32px,4vw,64px);background:var(--black)}
+@media(min-width:1024px){.cof-origem .orig-map-panel{flex:1;border-right:1px solid var(--rule-w)}}
+.cof-origem .orig-map-filter{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.cof-origem .orig-filter-btn{padding:6px 12px;border-radius:40px;font-family:var(--fl);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;border:1px solid var(--rule-w);background:var(--black);color:var(--clay);transition:all .2s}
+.cof-origem .orig-farm-card{border:1px solid var(--rule-w);background:var(--black);padding:24px;display:flex;flex-direction:column;margin-bottom:16px}
+.cof-origem .orig-farm-card.selected{border-color:var(--clay)}
+.cof-origem .farm-detail-row{display:flex;justify-content:space-between;border-bottom:1px solid var(--rule);padding:12px 0;font-size:14px}
+.cof-origem .farm-detail-row:first-of-type{padding-top:0}
+.cof-origem .farm-detail-key{color:var(--sub)}
+.cof-origem .farm-detail-val{color:var(--sand)}
+.cof-origem .farm-detail-val.highlight{color:var(--clay);font-weight:700}
+.cof-origem .orig-map-placeholder{flex:1;min-height:400px;background:#1a1a1a;position:relative;overflow:hidden}
+@media(min-width:1024px){.cof-origem .orig-map-placeholder{min-height:500px}}
+.cof-origem .map-grid-overlay{position:absolute;inset:0;background-image:linear-gradient(to right,var(--rule-w) 1px,transparent 1px),linear-gradient(to bottom,var(--rule-w) 1px,transparent 1px);background-size:8.33% 8.33%;opacity:.3}
+.cof-origem .map-pin{position:absolute;width:32px;height:32px;border-radius:50%;border:2px solid var(--clay);display:flex;align-items:center;justify-content:center;color:var(--clay);transform:translate(-50%,-50%);transition:all .3s;cursor:default;z-index:2}
+.cof-origem .map-pin.featured{background:var(--clay);color:var(--black)}
+.cof-origem .map-pin.premium{border-color:var(--clay);background:transparent}
+.cof-origem .map-pin-label{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;font-family:var(--fl);font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,235,.6);white-space:nowrap;text-shadow:0 0 4px #000}
+
+/* Producers */
+.cof-origem .prod-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2px;background:var(--rule);border:1px solid var(--rule)}
+.cof-origem .prod-i{display:flex;flex-direction:column;background:var(--sand)}
+.cof-origem .prod-img{aspect-ratio:4/3;position:relative;overflow:hidden;background:var(--parch);display:flex;align-items:center;justify-content:center}
+.cof-origem .prod-img svg{opacity:.1}
+.cof-origem .prod-body{padding:32px;display:flex;flex-direction:column;flex:1}
+.cof-origem .prod-name{font-family:var(--fl);font-weight:800;font-size:24px;color:var(--black);margin-bottom:8px;line-height:.96}
+.cof-origem .prod-loc{font-family:var(--fn);font-weight:300;font-size:12px;color:var(--sub);margin-bottom:24px}
+.cof-origem .prod-details{border-top:1px solid var(--rule);padding-top:24px;display:flex;flex-direction:column;gap:8px;font-size:13px;margin-bottom:32px}
+.cof-origem .prod-details>div{display:flex;justify-content:space-between}
+.cof-origem .prod-details .key{color:var(--sub)}
+.cof-origem .prod-details .val{color:var(--black)}
+.cof-origem .prod-details .val.gold{color:var(--clay);font-weight:700}
+.cof-origem .prod-actions{display:flex;gap:16px;margin-top:auto}
+.cof-origem .prod-actions .btn{flex:1;padding:16px;font-size:10px;text-align:center}
+
+/* Timeline */
+.cof-origem .tl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;text-align:center}
+.cof-origem .tl-i{}
+.cof-origem .tl-circle{width:80px;height:80px;border-radius:50%;background:var(--black);border:1px solid var(--rule-w);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;color:var(--clay)}
+.cof-origem .tl-i h4{font-family:var(--fl);font-weight:800;font-size:20px;color:var(--sand);margin-bottom:8px;line-height:.96}
+.cof-origem .tl-i p{font-family:var(--fn);font-weight:300;font-size:12px;color:rgba(246,241,235,.6);line-height:1.65}
+
+/* Products grid (light variant) */
+.cof-origem .prd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2px;background:var(--rule-w);border:1px solid var(--rule-w);margin-top:0}
+.cof-origem .prd-i{background:var(--parch);padding:32px;display:flex;flex-direction:column;transition:background .3s}
+.cof-origem .prd-i:hover{background:#ddd5c9}
+.cof-origem .prd-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px}
+.cof-origem .prd-reg{font-family:var(--fl);font-weight:700;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);border:1px solid rgba(10,10,10,.2);padding:4px 10px;border-radius:4px}
+.cof-origem .prd-badge{font-family:var(--fl);font-weight:700;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);background:var(--clay);padding:4px 8px;border-radius:4px}
+.cof-origem .prd-t{font-family:var(--fl);font-weight:800;font-size:24px;color:var(--black);margin-bottom:8px;line-height:.96}
+.cof-origem .prd-n{font-family:var(--fn);font-weight:300;font-size:14px;color:var(--sub);line-height:1.5;margin-bottom:32px}
+.cof-origem .prd-b{margin-top:auto;display:flex;justify-content:space-between;align-items:center}
+.cof-origem .prd-pr{font-family:var(--fl);font-weight:700;font-size:16px;color:var(--black)}
+.cof-origem .prd-lnk{font-family:var(--fl);font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--clay)}
+
+/* Head section */
+.cof-origem .head{display:flex;flex-direction:column;gap:32px;margin-bottom:64px}
+@media(min-width:768px){.cof-origem .head{flex-direction:row;justify-content:space-between;align-items:flex-end}}
+</style>
+
+{% render 'cofcof-custom-nav', active: 'origem' %}
+
+<!-- HERO -->
+<section class="pg-hero fi v">
+  <div class="pg-hero-grid"></div>
+  <div class="pg-hero-spot"></div>
+  <div class="bx pg-hero-in" style="text-align:center">
+    <div class="eyebrow" style="margin-bottom:24px;justify-content:center">
+      <span class="hero-badge">Origem · Cerrado Mineiro · Rastreabilidade</span>
+    </div>
+    <h1 class="display" style="max-width:1000px;line-height:1.05;margin:0 auto">
+      A origem que assina <span class="ital">cada cafe</span> CofCof.
+    </h1>
+    <p class="body-p" style="max-width:680px;margin:24px auto 0">
+      Do Cerrado Mineiro a sua xicara. Voce sabe exatamente o que esta bebendo — e por que aquela xicara tem aquele sabor.
+    </p>
+    <div class="hero-meta">
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Cerrado Mineiro D.O.</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 86+ SCA</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg> Cup of Excellence</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg> QR por lote</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12c0-2.76 2.24-5 5-5s5 2.24 5 5-2.24 5-5 5-5-2.24-5-5z"/><path d="M4 8c0-2.21 1.79-4 4-4s4 1.79 4 4"/><path d="M4 16c0 2.21 1.79 4 4 4s4-1.79 4-4"/></svg> Torra sob demanda</span>
+    </div>
+    <div class="pg-hero-cta" style="justify-content:center">
+      <a href="#mapa-origem" class="btn btn-ds" style="font-size:12px;padding:20px 42px"><span>Explorar mapa da origem</span></a>
+      <a href="/cafes" class="btn btn-sd" style="font-size:12px;padding:20px 42px"><span>Comprar cafes do Cerrado &rarr;</span></a>
     </div>
   </div>
-  <div class="cof-origin__grid">
-    {% for block in section.blocks %}
-      <article class="cof-origin__card" {{ block.shopify_attributes }}>
-        <div class="cof-origin__eyebrow">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
-        <h2>{{ block.settings.title }}</h2>
-        <p>{{ block.settings.text }}</p>
-      </article>
-    {% endfor %}
-  </div>
-  <div class="cof-origin__cta"><a href="{{ section.settings.cta_link | default: '/pages/assinatura#planos' }}">{{ section.settings.cta_label }}</a></div>
 </section>
+
+<!-- WHY -->
+<section class="sec fi">
+  <div class="bx">
+    <div class="head" style="text-align:center;align-items:center">
+      <div style="max-width:800px;margin:0 auto">
+        <div class="eyebrow" style="margin-bottom:24px;justify-content:center">Por que o Cerrado?</div>
+        <h2 class="display" style="color:var(--black)">O que a origem muda<br/>no <span class="ital">sabor</span>?</h2>
+        <p class="body-p" style="margin-top:24px;font-size:16px;color:var(--sub)">
+          Origem nao e cenario. E o que explica o sabor, a rastreabilidade e o valor de cada lote. Entenda como o terroir se prova na xicara.
+        </p>
+      </div>
+    </div>
+    <div class="why-grid">
+      <div class="why-i fi">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>
+        <h4>Altitude</h4>
+        <div class="label">Maturacao Lenta</div>
+        <p>Cafes cultivados em altitude tendem a desenvolver docura e camadas aromaticas mais ricas e complexas.</p>
+      </div>
+      <div class="why-i fi">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        <h4>Estacoes</h4>
+        <div class="label">Inverno seco</div>
+        <p>O clima definido ajuda na secagem e na consistencia do lote, garantindo uma xicura purissima e limpa.</p>
+      </div>
+      <div class="why-i fi">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M12 22c3.314 0 6-4.477 6-10S15.314 2 12 2"/><path d="M12 22c-3.314 0-6-4.477-6-10S8.686 2 12 2"/></svg>
+        <h4>Solo</h4>
+        <div class="label">Basalto</div>
+        <p>Solo mineral contribui para corpo, equilibrio, docura e perfil sensorial mais marcante.</p>
+      </div>
+      <div class="why-i fi">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+        <h4>Processos</h4>
+        <div class="label">Natural &amp; Fermentados</div>
+        <p>O processo muda panorama aromatico, docura, acidez e finalizacao da bebida.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px">
+      <a href="#mapa-origem" class="btn btn-sd" style="font-size:11px;padding:16px 32px"><span>Explorar origens no mapa &rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section id="mapa-origem" class="sec sec-d fi orig-map-wrap">
+  <div class="orig-map-flex">
+    <div class="orig-map-panel">
+      <h2 class="display" style="color:var(--sand);margin-bottom:16px">Mapa da Origem CofCof</h2>
+      <p class="body-p" style="color:rgba(246,241,235,.7);font-size:16px;margin-bottom:32px">
+        Explore as fazendas por tras dos nossos lotes. Cada ponto representa uma origem selecionada: produtores, microlotes e cafes rastreaveis que compoem a curadoria CofCof.
+      </p>
+
+      <div class="orig-map-filter">
+        <button class="orig-filter-btn active" disabled>86+ SCA <span>3</span></button>
+        <button class="orig-filter-btn" disabled>Natural <span>2</span></button>
+        <button class="orig-filter-btn" disabled>Fermentado <span>1</span></button>
+        <button class="orig-filter-btn" disabled>Cup of Excellence <span>2</span></button>
+      </div>
+      <div class="orig-map-filter">
+        <button class="orig-filter-btn" disabled>Mais doce <span>2</span></button>
+        <button class="orig-filter-btn" disabled>Mais floral <span>1</span></button>
+        <button class="orig-filter-btn" disabled>Disponivel agora <span>3</span></button>
+      </div>
+
+      <!-- Farm 1 -->
+      <div class="orig-farm-card selected">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px">
+          <div>
+            <h3 class="display" style="font-size:24px;color:var(--sand)">Fazenda Alto da Serra</h3>
+            <p class="body-p" style="font-size:14px;color:var(--sub)">Produtor: Eliane Garcia</p>
+          </div>
+        </div>
+        <div class="farm-detail-row"><span class="farm-detail-key">Altitude</span><span class="farm-detail-val">1250m</span></div>
+        <div class="farm-detail-row"><span class="farm-detail-key">Processo</span><span class="farm-detail-val">Fermentacao controlada (72h)</span></div>
+        <div class="farm-detail-row"><span class="farm-detail-key">Pontuacao</span><span class="farm-detail-val highlight">88.5 SCA</span></div>
+        <div style="display:flex;gap:16px;margin-top:24px">
+          <a href="/cafes/lote-01-paraiso" class="btn btn-sd" style="flex:1;text-align:center;font-size:10px"><span>Ver Cafe do Lote</span></a>
+          <a href="#produtores" class="btn btn-ds" style="flex:1;border:1px solid var(--rule-w);font-size:10px;text-align:center"><span>Ver Produtor</span></a>
+        </div>
+      </div>
+
+      <!-- Farm 2 -->
+      <div class="orig-farm-card">
+        <div style="margin-bottom:24px">
+          <h3 class="display" style="font-size:24px;color:var(--sand)">Sitio Bela Vista</h3>
+          <p class="body-p" style="font-size:14px;color:var(--sub)">Produtor: Roberto Silva</p>
+        </div>
+        <div class="farm-detail-row"><span class="farm-detail-key">Altitude</span><span class="farm-detail-val">1180m</span></div>
+        <div class="farm-detail-row"><span class="farm-detail-key">Processo</span><span class="farm-detail-val">Natural</span></div>
+        <div class="farm-detail-row"><span class="farm-detail-key">Pontuacao</span><span class="farm-detail-val highlight">88.0 SCA</span></div>
+        <div style="display:flex;gap:16px;margin-top:24px">
+          <a href="/cafes/lote-02-topazio" class="btn btn-sd" style="flex:1;text-align:center;font-size:10px"><span>Ver Cafe do Lote</span></a>
+          <a href="#produtores" class="btn btn-ds" style="flex:1;border:1px solid var(--rule-w);font-size:10px;text-align:center"><span>Ver Produtor</span></a>
+        </div>
+      </div>
+
+      <!-- Farm 3 -->
+      <div class="orig-farm-card">
+        <div style="margin-bottom:24px">
+          <h3 class="display" style="font-size:24px;color:var(--sand)">Sitio Vale do Sol</h3>
+          <p class="body-p" style="font-size:14px;color:var(--sub)">Produtor: Ana Maria</p>
+        </div>
+        <div class="farm-detail-row"><span class="farm-detail-key">Altitude</span><span class="farm-detail-val">1150m</span></div>
+        <div class="farm-detail-row"><span class="farm-detail-key">Processo</span><span class="farm-detail-val">Natural Seca Lenta</span></div>
+        <div class="farm-detail-row"><span class="farm-detail-key">Pontuacao</span><span class="farm-detail-val highlight">87.5 SCA</span></div>
+        <div style="display:flex;gap:16px;margin-top:24px">
+          <a href="/cafes/lote-04-rubi" class="btn btn-sd" style="flex:1;text-align:center;font-size:10px"><span>Ver Cafe do Lote</span></a>
+          <a href="#produtores" class="btn btn-ds" style="flex:1;border:1px solid var(--rule-w);font-size:10px;text-align:center"><span>Ver Produtor</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Static Map -->
+    <div class="orig-map-placeholder">
+      <div class="map-grid-overlay"></div>
+      <div style="position:relative;width:100%;height:100%">
+        <span class="map-pin-label" style="left:35%;top:30%">Alto da Serra</span>
+        <span class="map-pin featured" style="left:35%;top:34%">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </span>
+        <span class="map-pin-label" style="left:58%;top:48%">Bela Vista</span>
+        <span class="map-pin featured" style="left:58%;top:52%">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </span>
+        <span class="map-pin-label" style="left:22%;top:58%">Vale do Sol</span>
+        <span class="map-pin premium" style="left:22%;top:62%">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </span>
+        <div style="position:absolute;right:24px;bottom:24px;font-family:var(--fl);font-size:9px;color:rgba(246,241,235,.3);letter-spacing:.12em;text-transform:uppercase">Cerrado Mineiro · MG</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCERS -->
+<section id="produtores" class="sec fi">
+  <div class="bx">
+    <h2 class="display" style="color:var(--black);margin-bottom:48px">
+      Produtores por tras dos <span class="ital">lotes</span>.
+    </h2>
+    <div class="prod-grid">
+      <!-- Producer 1 -->
+      <div class="prod-i">
+        <div class="prod-img">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>
+        </div>
+        <div class="prod-body">
+          <div class="label" style="margin-bottom:8px">Fazenda Alto da Serra</div>
+          <h3 class="prod-name">Eliane Garcia</h3>
+          <p class="prod-loc">Serra do Salitre, Cerrado Mineiro</p>
+          <div class="prod-details">
+            <div><span class="key">Lote:</span><span class="val">Lote 01 — Paraiso</span></div>
+            <div><span class="key">SCA:</span><span class="val gold">88.5</span></div>
+          </div>
+          <div class="prod-actions">
+            <a href="/cafes/lote-01-paraiso" class="btn btn-sd"><span>Ver Cafe</span></a>
+            <a href="#mapa-origem" class="btn" style="border:1px solid var(--rule);color:var(--black);padding:16px;font-size:10px"><span>No Mapa</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Producer 2 -->
+      <div class="prod-i">
+        <div class="prod-img">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>
+        </div>
+        <div class="prod-body">
+          <div class="label" style="margin-bottom:8px">Sitio Bela Vista</div>
+          <h3 class="prod-name">Roberto Silva</h3>
+          <p class="prod-loc">Patrocinio, Cerrado Mineiro</p>
+          <div class="prod-details">
+            <div><span class="key">Lote:</span><span class="val">Lote 02 — Topazio</span></div>
+            <div><span class="key">SCA:</span><span class="val gold">88.0</span></div>
+          </div>
+          <div class="prod-actions">
+            <a href="/cafes/lote-02-topazio" class="btn btn-sd"><span>Ver Cafe</span></a>
+            <a href="#mapa-origem" class="btn" style="border:1px solid var(--rule);color:var(--black);padding:16px;font-size:10px"><span>No Mapa</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Producer 3 -->
+      <div class="prod-i">
+        <div class="prod-img">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>
+        </div>
+        <div class="prod-body">
+          <div class="label" style="margin-bottom:8px">Sitio Vale do Sol</div>
+          <h3 class="prod-name">Ana Maria</h3>
+          <p class="prod-loc">Coromandel, Cerrado Mineiro</p>
+          <div class="prod-details">
+            <div><span class="key">Lote:</span><span class="val">Lote 04 — Rubi</span></div>
+            <div><span class="key">SCA:</span><span class="val gold">87.5</span></div>
+          </div>
+          <div class="prod-actions">
+            <a href="/cafes/lote-04-rubi" class="btn btn-sd"><span>Ver Cafe</span></a>
+            <a href="#mapa-origem" class="btn" style="border:1px solid var(--rule);color:var(--black);padding:16px;font-size:10px"><span>No Mapa</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="sec sec-d fi">
+  <div class="bx">
+    <div style="text-align:center;margin-bottom:64px">
+      <h2 class="display" style="color:var(--sand)">Da origem ate voce</h2>
+      <p class="body-p" style="font-size:18px;color:rgba(246,241,235,.7);max-width:600px;margin:24px auto 0">
+        Uma cadeia curta, rastreavel e focada em preservar a qualidade e o frescor de cada gota.
+      </p>
+    </div>
+    <div class="tl-grid">
+      <div class="tl-i">
+        <div class="tl-circle">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>
+        </div>
+        <h4>1. Fazenda</h4>
+        <p>Selecao de produtores focados em microlotes e manejo cuidadoso.</p>
+      </div>
+      <div class="tl-i">
+        <div class="tl-circle">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h4>2. Avaliacao</h4>
+        <p>Apenas lotes acima de 86 pontos entram na curadoria.</p>
+      </div>
+      <div class="tl-i">
+        <div class="tl-circle">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12c0-2.76 2.24-5 5-5s5 2.24 5 5-2.24 5-5 5-5-2.24-5-5z"/><path d="M4 8c0-2.21 1.79-4 4-4s4 1.79 4 4"/><path d="M4 16c0 2.21 1.79 4 4 4s4-1.79 4-4"/></svg>
+        </div>
+        <h4>3. Torra</h4>
+        <p>Torrado apenas apos seu pedido garantindo frescor maximo.</p>
+      </div>
+      <div class="tl-i">
+        <div class="tl-circle">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        </div>
+        <h4>4. Rastreio</h4>
+        <p>QR Code leva aos dados de origem na palma da mao.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAFES -->
+<section class="sec sec-p fi">
+  <div class="bx">
+    <div class="head">
+      <div style="max-width:600px">
+        <div class="eyebrow" style="margin-bottom:24px">Lotes Ativos</div>
+        <h2 class="display" style="color:var(--black)">Escolha um cafe com <span class="ital">origem comprovada</span>.</h2>
+      </div>
+      <div>
+        <a href="/cafes" class="btn btn-sd" style="font-size:11px;padding:16px 32px"><span>Ir para o catalogo &rarr;</span></a>
+      </div>
+    </div>
+
+    <div class="prd-grid">
+      <!-- Product 1 -->
+      <div class="prd-i" style="border:1px solid var(--clay)">
+        <div class="prd-head">
+          <div class="prd-reg">Serra do Salitre - MG</div>
+          <div class="prd-badge">86+ SCA</div>
+        </div>
+        <h3 class="prd-t">Lote 01 — Paraiso</h3>
+        <p class="prd-n">Jasmim • Mel • Frutas Amarelas.</p>
+        <div class="prd-b">
+          <div class="prd-pr">R$ 95,00</div>
+          <a href="/cafes/lote-01-paraiso" class="prd-lnk">Detalhes</a>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="prd-i">
+        <div class="prd-head">
+          <div class="prd-reg">Patrocinio - MG</div>
+          <div class="prd-badge">86+ SCA</div>
+        </div>
+        <h3 class="prd-t">Lote 02 — Topazio</h3>
+        <p class="prd-n">Frutas Vermelhas • Melaco • Licoroso.</p>
+        <div class="prd-b">
+          <div class="prd-pr">R$ 88,00</div>
+          <a href="/cafes/lote-02-topazio" class="prd-lnk">Detalhes</a>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="prd-i">
+        <div class="prd-head">
+          <div class="prd-reg">Coromandel - MG</div>
+        </div>
+        <h3 class="prd-t">Lote 04 — Rubi</h3>
+        <p class="prd-n">Caramelo • Cacau • Nozes.</p>
+        <div class="prd-b">
+          <div class="prd-pr">R$ 82,00</div>
+          <a href="/cafes/lote-04-rubi" class="prd-lnk">Detalhes</a>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="prd-i">
+        <div class="prd-head">
+          <div class="prd-reg">Monte Carmelo - MG</div>
+        </div>
+        <h3 class="prd-t">Lote 03 — Arara</h3>
+        <p class="prd-n">Chocolate • Tangerina • Cremoso.</p>
+        <div class="prd-b">
+          <div class="prd-pr">R$ 82,00</div>
+          <a href="/cafes/lote-03-arara" class="prd-lnk">Detalhes</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
 
 {% schema %}
 {
   "name": "CofCof Origem",
-  "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Chamada pequena", "default": "Origem CofCof" },
-    { "type": "text", "id": "heading", "label": "Titulo", "default": "Do Cerrado Mineiro para a sua xicara." },
-    { "type": "textarea", "id": "text", "label": "Texto principal", "default": "A CofCof nasce da escolha por cafes especiais com origem clara, processo respeitado e torra sob demanda. Cada lote carrega a assinatura de quem planta, colhe, seleciona e prepara o cafe para chegar fresco." },
-    { "type": "text", "id": "region", "label": "Regiao", "default": "Cerrado Mineiro" },
-    { "type": "text", "id": "altitude", "label": "Altitude", "default": "1100 - 1250m" },
-    { "type": "text", "id": "harvest", "label": "Safra", "default": "2025 / Arabica" },
-    { "type": "text", "id": "quality", "label": "Qualidade", "default": "86+ SCA" },
-    { "type": "text", "id": "cta_label", "label": "Texto CTA", "default": "Conhecer assinatura" },
-    { "type": "url", "id": "cta_link", "label": "Link CTA" }
-  ],
-  "blocks": [
-    { "type": "highlight", "name": "Destaque", "settings": [
-      { "type": "text", "id": "title", "label": "Titulo", "default": "Cerrado Mineiro" },
-      { "type": "textarea", "id": "text", "label": "Texto", "default": "Uma regiao reconhecida por altitude, clima definido e produtores que tratam qualidade como rotina." }
-    ] }
-  ],
+  "tag": "section",
+  "class": "cof-origem-section",
+  "settings": [],
   "presets": [
-    { "name": "CofCof Origem", "blocks": [
-      { "type": "highlight", "settings": { "title": "Cerrado Mineiro", "text": "Regiao com terroir reconhecido, estacoes bem definidas e vocacao para cafes de alta pontuacao." } },
-      { "type": "highlight", "settings": { "title": "Processo", "text": "Colheita, selecao, secagem e beneficiamento pensados para preservar dulcor, corpo e complexidade." } },
-      { "type": "highlight", "settings": { "title": "Torra", "text": "A torra acontece sob demanda para reduzir estoque parado e entregar cafe no ponto certo." } }
-    ] }
+    {
+      "name": "CofCof Origem"
+    }
   ]
 }
 {% endschema %}
