@@ -269,6 +269,72 @@
   </div>
 </section>
 
+<!-- FAIXAS B2B -->
+<section data-shopify-section="b2b-tiers" class="sec sec-d fi">
+  <div class="bx">
+    <div class="head" style="justify-content:center;text-align:center">
+      <div>
+        <div class="eyebrow">Faixas de volume</div>
+        <h2 class="display" style="color:var(--sand)">Planos B2B para cada<br/><span class="ital">tamanho</span> de opera&ccedil;&atilde;o.</h2>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:64px">
+      <div class="sg-i" style="padding:clamp(32px,3vw,40px)">
+        <div class="sg-t" style="font-size:clamp(28px,3vw,36px)">10&ndash;20kg</div>
+        <div class="label" style="color:var(--clay);margin-bottom:16px">/ m&ecirc;s</div>
+        <p class="sg-d" style="font-size:14px">Escrit&oacute;rios, cl&iacute;nicas e recep&ccedil;&otilde;es premium.</p>
+        <a href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Tenho%20interesse%20na%20faixa%20de%2010-20kg." target="_blank" rel="noopener noreferrer" class="sg-lnk">Solicitar proposta &rarr;</a>
+      </div>
+      <div class="sg-i" style="padding:clamp(32px,3vw,40px);border-color:rgba(201,162,99,.3)">
+        <div class="sg-t" style="font-size:clamp(28px,3vw,36px)">20&ndash;50kg</div>
+        <div class="label" style="color:var(--clay);margin-bottom:16px">/ m&ecirc;s</div>
+        <p class="sg-d" style="font-size:14px">Restaurantes, cafeterias, coworkings.</p>
+        <a href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Tenho%20interesse%20na%20faixa%20de%2020-50kg." target="_blank" rel="noopener noreferrer" class="sg-lnk">Solicitar proposta &rarr;</a>
+      </div>
+      <div class="sg-i" style="padding:clamp(32px,3vw,40px)">
+        <div class="sg-t" style="font-size:clamp(28px,3vw,36px)">50kg+</div>
+        <div class="label" style="color:var(--clay);margin-bottom:16px">/ m&ecirc;s</div>
+        <p class="sg-d" style="font-size:14px">Hot&eacute;is, redes e revenda.</p>
+        <a href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Tenho%20interesse%20na%20faixa%20de%2050kg%2B." target="_blank" rel="noopener noreferrer" class="sg-lnk">Solicitar proposta &rarr;</a>
+      </div>
+      <div class="sg-i" style="padding:clamp(32px,3vw,40px);background:rgba(246,241,235,.03)">
+        <div class="sg-t" style="font-size:clamp(28px,3vw,36px);color:var(--clay)">Exporta&ccedil;&atilde;o</div>
+        <p class="sg-d" style="font-size:14px">Grandes volumes e opera&ccedil;&otilde;es sob consulta.</p>
+        <a href="#exportacao" class="sg-lnk">Falar sobre exporta&ccedil;&atilde;o &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ B2B -->
+<section data-shopify-section="b2b-faq" class="sec sec-d fi">
+  <div class="bx">
+    <div class="head" style="justify-content:center;text-align:center">
+      <div>
+        <div class="eyebrow">FAQ</div>
+        <h2 class="display" style="color:var(--sand)">Perguntas <span class="ital">frequentes</span>.</h2>
+      </div>
+    </div>
+    <div style="max-width:760px;margin:64px auto 0;display:flex;flex-direction:column;gap:12px">
+      {% assign faqs = "Qual o pedido minimo?|O pedido B2B minimo padrao e a partir de 10kg, mas trabalhamos com diferentes faixas de volume ajustadas.,Voce emitem nota fiscal?|Sim, todos os volumes corporativos incluem emissao de nota fiscal.,O cafe e torrado quando?|Sempre na semana do envio (torra sob demanda). Nao temos estoque parado de cafe torrado para B2B.,Posso escolher o lote?|Para volumes definidos, voce pode criar um perfil fixo.,Entregam fora de Uberlandia?|Sim, enviamos para todo o Brasil via transportadora. Exportacao e sob consulta.,Atendem cafeterias?|Sim, e um dos nossos focos. Auxiliamos na narrativa sensorial do cardapio.,Tem preco por kg?|Cada faixa (10-20kg, 20-50kg, 50kg+) possui valores gradativos.,Posso ajustar o volume mensal?|Sim, sem burocracia. O plano cresce junto com seu negocio.,Como funciona exportacao?|Operamos envio direto do Cerrado Mineiro. Preco FOB ou CIF a avaliar." | split: "," %}
+      {% for faq in faqs %}
+        {% assign qa = faq | split: "|" %}
+        <details class="faq-item" style="background:rgba(246,241,235,.03);border:1px solid rgba(246,241,235,.1);padding:24px 28px;cursor:pointer">
+          <summary style="font-family:var(--fl);font-weight:700;font-size:16px;color:var(--sand);list-style:none;display:flex;justify-content:space-between;align-items:center">
+            <span>{{ qa[0] }}</span>
+            <span style="font-size:12px;color:var(--clay);transition:transform .3s">+</span>
+          </summary>
+          <p style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(246,241,235,.1);font-size:15px;color:rgba(246,241,235,.7);line-height:1.6">{{ qa[1] }}</p>
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<style>
+.faq-item[open] summary span:last-child{transform:rotate(45deg)}
+.faq-item summary::-webkit-details-marker{display:none}
+</style>
+
 <!-- FINAL CTA -->
 <section data-shopify-section="b2b-cta" class="cta-end fi">
   <div class="bx cta-end-in">
