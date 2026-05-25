@@ -199,84 +199,23 @@
         Explore as fazendas por tras dos nossos lotes. Cada ponto representa uma origem selecionada: produtores, microlotes e cafes rastreaveis que compoem a curadoria CofCof.
       </p>
 
-      <div class="orig-map-filter">
-        <button class="orig-filter-btn active" disabled>86+ SCA <span>3</span></button>
-        <button class="orig-filter-btn" disabled>Natural <span>2</span></button>
-        <button class="orig-filter-btn" disabled>Fermentado <span>1</span></button>
-        <button class="orig-filter-btn" disabled>Cup of Excellence <span>2</span></button>
-      </div>
-      <div class="orig-map-filter">
-        <button class="orig-filter-btn" disabled>Mais doce <span>2</span></button>
-        <button class="orig-filter-btn" disabled>Mais floral <span>1</span></button>
-        <button class="orig-filter-btn" disabled>Disponivel agora <span>3</span></button>
+      <div class="orig-map-filter" id="origFilters">
+        <button class="orig-filter-btn active" data-filter="todos">Todos <span>3</span></button>
+        <button class="orig-filter-btn" data-filter="sca">86+ SCA <span>3</span></button>
+        <button class="orig-filter-btn" data-filter="natural">Natural <span>2</span></button>
+        <button class="orig-filter-btn" data-filter="fermentado">Fermentado <span>1</span></button>
       </div>
 
-      <!-- Farm 1 -->
-      <div class="orig-farm-card selected">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px">
-          <div>
-            <h3 class="display" style="font-size:24px;color:var(--sand)">Fazenda Alto da Serra</h3>
-            <p class="body-p" style="font-size:14px;color:var(--sub)">Produtor: Eliane Garcia</p>
-          </div>
-        </div>
-        <div class="farm-detail-row"><span class="farm-detail-key">Altitude</span><span class="farm-detail-val">1250m</span></div>
-        <div class="farm-detail-row"><span class="farm-detail-key">Processo</span><span class="farm-detail-val">Fermentacao controlada (72h)</span></div>
-        <div class="farm-detail-row"><span class="farm-detail-key">Pontuacao</span><span class="farm-detail-val highlight">88.5 SCA</span></div>
-        <div style="display:flex;gap:16px;margin-top:24px">
-          <a href="/cafes/lote-01-paraiso" class="btn btn-sd" style="flex:1;text-align:center;font-size:10px"><span>Ver Cafe do Lote</span></a>
-          <a href="#produtores" class="btn btn-ds" style="flex:1;border:1px solid var(--rule-w);font-size:10px;text-align:center"><span>Ver Produtor</span></a>
-        </div>
-      </div>
-
-      <!-- Farm 2 -->
-      <div class="orig-farm-card">
-        <div style="margin-bottom:24px">
-          <h3 class="display" style="font-size:24px;color:var(--sand)">Sitio Bela Vista</h3>
-          <p class="body-p" style="font-size:14px;color:var(--sub)">Produtor: Roberto Silva</p>
-        </div>
-        <div class="farm-detail-row"><span class="farm-detail-key">Altitude</span><span class="farm-detail-val">1180m</span></div>
-        <div class="farm-detail-row"><span class="farm-detail-key">Processo</span><span class="farm-detail-val">Natural</span></div>
-        <div class="farm-detail-row"><span class="farm-detail-key">Pontuacao</span><span class="farm-detail-val highlight">88.0 SCA</span></div>
-        <div style="display:flex;gap:16px;margin-top:24px">
-          <a href="/cafes/lote-02-topazio" class="btn btn-sd" style="flex:1;text-align:center;font-size:10px"><span>Ver Cafe do Lote</span></a>
-          <a href="#produtores" class="btn btn-ds" style="flex:1;border:1px solid var(--rule-w);font-size:10px;text-align:center"><span>Ver Produtor</span></a>
-        </div>
-      </div>
-
-      <!-- Farm 3 -->
-      <div class="orig-farm-card">
-        <div style="margin-bottom:24px">
-          <h3 class="display" style="font-size:24px;color:var(--sand)">Sitio Vale do Sol</h3>
-          <p class="body-p" style="font-size:14px;color:var(--sub)">Produtor: Ana Maria</p>
-        </div>
-        <div class="farm-detail-row"><span class="farm-detail-key">Altitude</span><span class="farm-detail-val">1150m</span></div>
-        <div class="farm-detail-row"><span class="farm-detail-key">Processo</span><span class="farm-detail-val">Natural Seca Lenta</span></div>
-        <div class="farm-detail-row"><span class="farm-detail-key">Pontuacao</span><span class="farm-detail-val highlight">87.5 SCA</span></div>
-        <div style="display:flex;gap:16px;margin-top:24px">
-          <a href="/cafes/lote-04-rubi" class="btn btn-sd" style="flex:1;text-align:center;font-size:10px"><span>Ver Cafe do Lote</span></a>
-          <a href="#produtores" class="btn btn-ds" style="flex:1;border:1px solid var(--rule-w);font-size:10px;text-align:center"><span>Ver Produtor</span></a>
-        </div>
+      <!-- Farm cards (dados injetados via JS) -->
+      <div id="origFarmCards"></div>
+      <div id="origFarmEmpty" class="orig-farm-card" style="text-align:center;color:var(--sub);padding:64px 32px;display:none">
+        <p class="body-p">Nenhuma fazenda encontrada para este filtro.</p>
       </div>
     </div>
 
-    <!-- Static Map -->
-    <div class="orig-map-placeholder">
-      <div class="map-grid-overlay"></div>
-      <div style="position:relative;width:100%;height:100%">
-        <span class="map-pin-label" style="left:35%;top:30%">Alto da Serra</span>
-        <span class="map-pin featured" style="left:35%;top:34%">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </span>
-        <span class="map-pin-label" style="left:58%;top:48%">Bela Vista</span>
-        <span class="map-pin featured" style="left:58%;top:52%">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </span>
-        <span class="map-pin-label" style="left:22%;top:58%">Vale do Sol</span>
-        <span class="map-pin premium" style="left:22%;top:62%">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </span>
-        <div style="position:absolute;right:24px;bottom:24px;font-family:var(--fl);font-size:9px;color:rgba(246,241,235,.3);letter-spacing:.12em;text-transform:uppercase">Cerrado Mineiro · MG</div>
-      </div>
+    <!-- Interactive Map -->
+    <div class="orig-map-placeholder" id="origMapContainer">
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(246,241,235,.5);font-family:var(--fl);font-size:14px;letter-spacing:.12em">Carregando mapa...</div>
     </div>
   </div>
 </section>
@@ -464,6 +403,132 @@
   </div>
 </section>
 </div>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+<script>
+(function(){
+  var farms = [
+    { id:'farm-1', name:'Fazenda Alto da Serra', producer:'Eliane Garcia', lat:-19.1172, lng:-46.6894, alt:'1250m', process:'Fermentacao controlada (72h)', sca:'88.5', slug:'lote-01-paraiso', featured:true },
+    { id:'farm-2', name:'Sitio Bela Vista', producer:'Roberto Silva', lat:-18.9482, lng:-46.9945, alt:'1180m', process:'Natural', sca:'88.0', slug:'lote-02-topazio', featured:true },
+    { id:'farm-3', name:'Sitio Vale do Sol', producer:'Ana Maria', lat:-18.4716, lng:-47.2001, alt:'1150m', process:'Natural Seca Lenta', sca:'87.5', slug:'lote-04-rubi', featured:false }
+  ];
+
+  function initMap() {
+    var container = document.getElementById('origMapContainer');
+    if (!container || typeof L === 'undefined') { setTimeout(initMap, 300); return; }
+    container.innerHTML = '';
+    container.style.background = '#0a0a0a';
+
+    var map = L.map('origMapContainer', {
+      center: [-18.85, -47.0],
+      zoom: 7.5,
+      zoomControl: false,
+      scrollWheelZoom: true
+    });
+    L.zoomControl({ position:'bottomright' }).addTo(map);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution:'&copy; <a href="https://carto.com/">CARTO</a>',
+      maxZoom: 19
+    }).addTo(map);
+
+    var activeFarmId = null;
+    var markers = {};
+    var mapFns = {};
+
+    farms.forEach(function(f) {
+      var icon = L.divIcon({
+        className: '',
+        html: '<div class="orig-pin" data-id="'+f.id+'" style="width:34px;height:34px;border-radius:50%;background:'+(f.featured?'#c9a263':'transparent')+';border:2px solid #c9a263;display:flex;align-items:center;justify-content:center;color:'+(f.featured?'#0a0a0a':'#c9a263')+';transform-origin:center;transition:transform .3s,box-shadow .3s;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.5)">'+(f.featured?'<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>':'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>')+'</div>',
+        iconSize: [34, 34],
+        iconAnchor: [17, 17]
+      });
+      var marker = L.marker([f.lat, f.lng], { icon: icon }).addTo(map);
+      markers[f.id] = marker;
+      mapFns[f.id] = function(farm) {
+        selectFarm(farm);
+        map.flyTo([farm.lat, farm.lng], 10, { animate: true, duration: 1.2 });
+      };
+      (function(farm){
+        marker.on('click', function(){ mapFns[farm.id](farm); });
+      })(f);
+    });
+
+    function selectFarm(farm) {
+      activeFarmId = farm.id;
+      var cardHtml = '<div class="orig-farm-card selected">'+
+        '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px"><div><h3 class="display" style="font-size:24px;color:var(--sand)">'+farm.name+'</h3><p class="body-p" style="font-size:14px;color:var(--sub)">Produtor: '+farm.producer+'</p></div></div>'+
+        '<div class="farm-detail-row"><span class="farm-detail-key">Altitude</span><span class="farm-detail-val">'+farm.alt+'</span></div>'+
+        '<div class="farm-detail-row"><span class="farm-detail-key">Processo</span><span class="farm-detail-val">'+farm.process+'</span></div>'+
+        '<div class="farm-detail-row"><span class="farm-detail-key">Pontuacao</span><span class="farm-detail-val highlight">'+farm.sca+' SCA</span></div>'+
+        '<div style="display:flex;gap:16px;margin-top:24px"><a href="/cafes/'+farm.slug+'" class="btn btn-sd" style="flex:1;text-align:center;font-size:10px"><span>Ver Cafe do Lote</span></a><a href="#produtores" class="btn btn-ds" style="flex:1;border:1px solid var(--rule-w);font-size:10px;text-align:center"><span>Ver Produtor</span></a></div></div>';
+      document.getElementById('origFarmCards').innerHTML = cardHtml;
+      Object.keys(markers).forEach(function(k) {
+        var el = markers[k].getElement();
+        if (el) {
+          var pin = el.querySelector('.orig-pin');
+          if (pin) {
+            pin.style.transform = k === farm.id ? 'scale(1.15)' : 'scale(1)';
+            pin.style.boxShadow = k === farm.id ? '0 0 0 4px rgba(201,162,99,.3), 0 4px 12px rgba(0,0,0,.5)' : '0 4px 12px rgba(0,0,0,.5)';
+            pin.style.border = k === farm.id ? '2px solid #fff' : '2px solid #c9a263';
+          }
+        }
+      });
+    }
+
+    // Filter buttons
+    var filterBtns = document.querySelectorAll('#origFilters .orig-filter-btn');
+    filterBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        filterBtns.forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        var showFarm = farms[0];
+        if (btn.dataset.filter === 'natural') showFarm = farms[1];
+        else if (btn.dataset.filter === 'fermentado') showFarm = farms[0];
+        selectFarm(showFarm);
+      });
+    });
+
+    // Select first farm by default
+    if (farms.length > 0) selectFarm(farms[0]);
+
+    // Handle resize for flex direction
+    function handleResize() {
+      var flex = document.querySelector('#mapa-origem .orig-map-flex');
+      if (flex) {
+        flex.style.flexDirection = window.innerWidth >= 1024 ? 'row' : 'column';
+      }
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    initMap();
+
+    // Wire up "No Mapa" buttons in producers section
+    setTimeout(function() {
+      var noMapaBtns = document.querySelectorAll('#produtores a[href="#mapa-origem"]');
+      noMapaBtns.forEach(function(btn, idx) {
+        if (idx < farms.length) {
+          (function(farm) {
+            btn.addEventListener('click', function(e) {
+              e.preventDefault();
+              mapFns[farm.id](farm);
+              var y = document.getElementById('mapa-origem').getBoundingClientRect().top + window.scrollY - 80;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+            });
+          })(farms[idx]);
+        }
+      });
+    }, 500);
+  });
+})();
+</script>
+<style>
+.cof-origem .orig-map-placeholder .leaflet-container{background:#0a0a0a;width:100%;height:100%;z-index:1}
+.orig-pin{transition:transform .3s,box-shadow .3s,border-color .3s}
+</style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
