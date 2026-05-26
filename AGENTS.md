@@ -5,17 +5,19 @@
 Tema Shopify da CofCof.co.
 
 - Loja: `cof-cof-co.myshopify.com`
-- Tema seguro: `Arthur Desenv.` (`156243919006`)
-- Tema proibido/live: `Craft` (`155205337246`)
-- Branch principal de trabalho: `codex/correcao-cofcof`
+- Admin: `https://admin.shopify.com/store/cof-cof-co`
+- Tema seguro/live: `Arthur Desenv.` (`156243919006`)
+- Tema proibido: `Craft` (`155205337246`)
+- Branch principal: `codex/correcao-cofcof`
 - Repositorio: `https://github.com/ArthurAlvesZz/cofcof-shopify-theme`
+- Fonte visual React: `C:\Users\TAY\AppData\Local\Temp\opencode\wrong-repo\src` (ArthurAlvesZzz/COFCOF.CO-Shopfy)
 
 ## Regras Fixas
 
 - Ler este arquivo antes de iniciar novas tarefas.
 - Nao usar `--live`.
-- Nao alterar nem enviar arquivos para o tema `Craft`/live (`155205337246`).
-- Trabalhar no tema seguro `Arthur Desenv.` (`156243919006`).
+- Nao alterar nem enviar arquivos para o tema `Craft` (`155205337246`).
+- Trabalhar no tema `Arthur Desenv.` (`156243919006`).
 - Nao quebrar checkout, carrinho, produtos, colecoes, payment widgets ou apps Shopify.
 - Nao apagar `/pages/assinatura`.
 - Nao remover videos, cards ou modal existentes sem pedido explicito.
@@ -28,6 +30,13 @@ Tema Shopify da CofCof.co.
 - Fazer push para GitHub apos commit aprovado/validado.
 - Subir somente para o tema seguro com:
   `shopify theme push --store=cof-cof-co.myshopify.com --theme=156243919006`
+
+## Fonte de verdade
+
+- **Repositorio fonte (React/TSX)**: `ArthurAlvesZzz/COFCOF.CO-Shopfy` (3 Z's)
+- Local (referencia): `C:\Users\TAY\AppData\Local\Temp\opencode\wrong-repo\src`
+- Contem 7 paginas React completas + componentes modulares que sao referencia visual/funcional obrigatoria.
+- Nao usar o repositorio `ArthurAlvesZz/COFCOF.git` (2 Z's) como fonte principal — esta desatualizado.
 
 ## Validacao Padrao
 
@@ -51,14 +60,13 @@ Tema Shopify da CofCof.co.
 - Colecoes: `/collections/all`
 - Carrinho: `/cart`
 
-Padronizar como `/pages/onde-encontrar`; nao usar `/pages/aonde-encontrar` como rota principal.
-
 ## Pendencias Conhecidas
 
-- As paginas Shopify Admin para `/pages/origem` e `/pages/onde-encontrar` podem precisar ser criadas manualmente caso retornem 404.
+- Paginas Shopify Admin para `/pages/origem` e `/pages/onde-encontrar` podem precisar ser criadas manualmente caso retornem 404.
 - Handles esperados:
   - `origem` com template `page.origem`
   - `onde-encontrar` com template `page.onde-encontrar`
+- O tema `Arthur Desenv.` esta publicado como live. Cuidado com pushes diretos.
 
 ## Resposta ao Usuario
 
@@ -68,4 +76,3 @@ Nas proximas tarefas, nao repetir todo o contexto do projeto. Responder de forma
 2. Execucao feita.
 3. Validacao.
 4. Pendencias, se houver.
-

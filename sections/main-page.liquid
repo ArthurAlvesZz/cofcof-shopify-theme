@@ -217,20 +217,8 @@
       endif
 
       if page.handle == 'assinatura' or page.handle == 'nossos-cafes' or page.handle == 'cafes' or page.handle == 'empresas' or page.handle == 'quem-somos' or page.handle == 'contato'
-        capture cofcof_nav_button_css
+        capture cofcof_page_btn_css
           echo '<style>.section-'
-          echo section.id
-          echo '-padding .nv-l{color:var(--sand,#f6f1eb)!important}.section-'
-          echo section.id
-          echo '-padding .nv-r a,.section-'
-          echo section.id
-          echo '-padding .mo a{color:rgba(246,241,235,.68)!important}.section-'
-          echo section.id
-          echo '-padding .nv-r a:hover,.section-'
-          echo section.id
-          echo '-padding .mo a:hover,.section-'
-          echo section.id
-          echo '-padding .nv-r a.act{color:var(--sand,#f6f1eb)!important}.section-'
           echo section.id
           echo '-padding .btn>span,.section-'
           echo section.id
@@ -244,11 +232,7 @@
           echo section.id
           echo '-padding .btn-ds,.section-'
           echo section.id
-          echo '-padding .pl-btn,.section-'
-          echo section.id
-          echo '-padding .nv-c,.section-'
-          echo section.id
-          echo '-padding .mo-c{background:var(--sand,#f6f1eb)!important;border-color:var(--sand,#f6f1eb)!important;color:var(--black,#0a0a0a)!important}.section-'
+          echo '-padding .pl-btn{background:var(--sand,#f6f1eb)!important;border-color:var(--sand,#f6f1eb)!important;color:var(--black,#0a0a0a)!important}.section-'
           echo section.id
           echo '-padding .btn-os:hover,.section-'
           echo section.id
@@ -256,23 +240,11 @@
           echo section.id
           echo '-padding .pl-btn:hover{color:var(--black,#0a0a0a)!important}.section-'
           echo section.id
-          echo '-padding .nv-c:hover,.section-'
-          echo section.id
-          echo '-padding .mo-c:hover{background:transparent!important;border-color:var(--sand,#f6f1eb)!important;color:var(--sand,#f6f1eb)!important}.section-'
-          echo section.id
-          echo '-padding .nv-c:focus-visible,.section-'
-          echo section.id
-          echo '-padding .mo-c:focus-visible{background:transparent!important;border-color:var(--sand,#f6f1eb)!important;color:var(--sand,#f6f1eb)!important}.section-'
-          echo section.id
-          echo '-padding .nv-c *,.section-'
-          echo section.id
-          echo '-padding .mo-c *{color:inherit!important}.section-'
-          echo section.id
           echo '-padding .ae a:focus-visible,.section-'
           echo section.id
           echo '-padding .ae button:focus-visible{outline:2px solid var(--sand,#f6f1eb);outline-offset:4px}</style>'
         endcapture
-        assign page_content = page_content | append: cofcof_nav_button_css
+        assign page_content = page_content | append: cofcof_page_btn_css
       endif
     -%}
     {{ page_content }}

@@ -16,7 +16,9 @@
   }
 
   var searchEl = document.getElementById('cpSearch');
+  var searchClear = document.getElementById('cpSearchClear');
   var listEl = document.getElementById('cpList');
+  var ctaCard = document.getElementById('cpCTACard');
   var filtersEl = document.getElementById('cpFilters');
   var previewEl = document.getElementById('cpPreview');
   var previewClose = document.getElementById('cpPreviewClose');
@@ -163,14 +165,62 @@
     document.getElementById('cpPreviewAddrLine').textContent = p.address || '';
     document.getElementById('cpPreviewAddrSub').textContent = (p.neighborhood ? p.neighborhood + ' · ' : '') + p.city + '/' + p.state;
     document.getElementById('cpPreviewHoursText').textContent = p.openingHours || 'Horario nao informado';
+
     var imgEl = document.getElementById('cpPreviewImg');
-    imgEl.innerHTML = (p.image ? '<img src="' + p.image + '" alt="' + p.name + '" style="width:100%;height:100%;object-fit:cover;display:block">' : '') + '<button class="cp-preview-close" id="cpPreviewClose" aria-label="Fechar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>';
+    if (p.image) {
+      imgEl.innerHTML = '<img src="' + p.image + '" alt="' + p.name + '" style="width:100%;height:100%;object-fit:cover;display:block">';
+    } else {
+      var cat = (p.category || '').toLowerCase();
+      var showBg = '';
+      if (cat === 'posto' || cat === 'rota cofcof') showBg = ' style="background:#1a1a2e"';
+      else if (cat === 'cafeteria') showBg = ' style="background:#2d1b0e"';
+      else if (cat === 'emporio' || cat === 'revenda' || cat === 'delicatessen') showBg = ' style="background:#1e2a1e"';
+      else if (cat === 'restaurante') showBg = ' style="background:#2e1a1a"';
+      imgEl.innerHTML = '<div class="cp-preview-img-fallback"' + showBg + '>' + getCategoryIconSVG(p.category) + '</div>';
+    }
+    imgEl.innerHTML += '<button class="cp-preview-close" id="cpPreviewClose" aria-label="Fechar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>';
     document.getElementById('cpPreviewClose').addEventListener('click', closePreview);
+
     var routeBtn = document.getElementById('cpPreviewRoute');
     routeBtn.href = (Number.isFinite(p.lat) && Number.isFinite(p.lng)) ? 'https://www.google.com/maps/dir/?api=1&destination=' + p.lat + ',' + p.lng : 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p.address || p.name);
+
     var profileBtn = document.getElementById('cpPreviewProfile');
     if (p.profileUrl) { profileBtn.href = p.profileUrl; profileBtn.style.display = ''; }
     else { profileBtn.style.display = 'none'; }
+
+    // Badges
+    var badgesEl = document.getElementById('cpPreviewBadges');
+    var badgeRoute = document.getElementById('cpBadgeRoute');
+    var badge24h = document.getElementById('cpBadge24h');
+    var showBadge = false;
+    if (cat === 'posto' || cat === 'rota cofcof' || p.showRouteBadge) {
+      badgeRoute.hidden = false; showBadge = true;
+    } else { badgeRoute.hidden = true; }
+    if (p.isOpen24h || (p.openingHours && p.openingHours.toLowerCase().includes('24'))) {
+      badge24h.hidden = false; showBadge = true;
+    } else { badge24h.hidden = true; }
+    badgesEl.hidden = !showBadge;
+
+    // Social: Instagram
+    var instaEl = document.getElementById('cpSocialInsta');
+    if (p.instagram) { instaEl.href = p.instagram; instaEl.hidden = false; }
+    else { instaEl.hidden = true; }
+
+    // Social: WhatsApp
+    var whatsEl = document.getElementById('cpSocialWhats');
+    if (p.whatsapp) { whatsEl.href = p.whatsapp; whatsEl.hidden = false; }
+    else { whatsEl.hidden = true; }
+
+    // Social: Share
+    var shareEl = document.getElementById('cpSocialShare');
+    if (navigator.share) {
+      shareEl.hidden = false;
+      shareEl.onclick = function(e) {
+        e.preventDefault();
+        var shareData = { title: p.name, text: p.description || 'Conheca ' + p.name, url: p.profileUrl || window.location.href };
+        navigator.share(shareData).catch(function(){});
+      };
+    } else { shareEl.hidden = true; }
   }
 
   function closePreview() {
@@ -237,7 +287,16 @@
   // Event listeners
   searchEl.addEventListener('input', function() {
     searchTerm = this.value;
+    searchClear.style.display = this.value ? '' : 'none';
     renderList(getFiltered());
+  });
+
+  searchClear.addEventListener('click', function() {
+    searchEl.value = '';
+    searchTerm = '';
+    searchClear.style.display = 'none';
+    renderList(getFiltered());
+    searchEl.focus();
   });
 
   filtersEl.addEventListener('click', function(e) {
