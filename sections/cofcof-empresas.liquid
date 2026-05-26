@@ -101,7 +101,7 @@
     <p class="body-p">Fornecimento recorrente para cafeterias, escrit&oacute;rios, hot&eacute;is, restaurantes e neg&oacute;cios que querem servir caf&eacute;s premiados, frescos e rastre&aacute;veis.</p>
     <div class="pg-hero-cta">
       <a href="https://wa.me/5534998728882?text=Ol%C3%A1!%20Tenho%20interesse%20no%20plano%20Empresas%20da%20COFCOF.CO." target="_blank" rel="noopener noreferrer" class="btn btn-sd" style="padding:22px 42px;font-size:14px"><span>Falar com comercial &rarr;</span></a>
-      <a href="#exportacao" class="btn" style="border:1.5px solid rgba(246,241,235,.4);color:rgba(246,241,235,.8);padding:22px 36px;font-size:13px"><span>Exporta&ccedil;&atilde;o &rarr;</span></a>
+      <a href="#exportacao" data-scroll-to="exportacao" class="btn" style="border:1.5px solid rgba(246,241,235,.4);color:rgba(246,241,235,.8);padding:22px 36px;font-size:13px"><span>Exporta&ccedil;&atilde;o &rarr;</span></a>
     </div>
   </div>
 </section>
@@ -187,7 +187,7 @@
         <svg class="sg-svg" viewBox="0 0 40 40"><circle cx="20" cy="20" r="14"/><path d="M12 20h16M20 12v16"/><path d="M6 20h4M30 20h4M20 6v4M20 30v4"/></svg>
         <div class="sg-t">Exporta&ccedil;&atilde;o &amp; Grandes volumes</div>
         <p class="sg-d">Fornecimento recorrente para opera&ccedil;&otilde;es maiores e pedidos sob consulta.</p>
-        <a href="#exportacao" class="sg-lnk">Falar sobre grandes volumes &rarr;</a>
+        <a href="#exportacao" data-scroll-to="exportacao" class="sg-lnk">Falar sobre grandes volumes &rarr;</a>
       </div>
     </div>
   </div>
@@ -441,7 +441,7 @@
       <div class="sg-i" style="padding:clamp(32px,3vw,40px);background:rgba(246,241,235,.03)">
         <div class="sg-t" style="font-size:clamp(28px,3vw,36px);color:var(--clay)">Exporta&ccedil;&atilde;o</div>
         <p class="sg-d" style="font-size:14px">Grandes volumes e opera&ccedil;&otilde;es sob consulta.</p>
-        <a href="#exportacao" class="sg-lnk">Falar sobre exporta&ccedil;&atilde;o &rarr;</a>
+        <a href="#exportacao" data-scroll-to="exportacao" class="sg-lnk">Falar sobre exporta&ccedil;&atilde;o &rarr;</a>
       </div>
     </div>
   </div>
@@ -501,6 +501,18 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   var elements = document.querySelectorAll('.fi');
   for (var i = 0; i < elements.length; i++) { observer.observe(elements[i]); }
+
+  // Smooth scroll for data-scroll-to links
+  document.querySelectorAll('[data-scroll-to]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.getElementById(this.getAttribute('data-scroll-to'));
+      if (target) {
+        var y = target.getBoundingClientRect().top + window.scrollY - 100;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    });
+  });
 })();
 </script>
 
