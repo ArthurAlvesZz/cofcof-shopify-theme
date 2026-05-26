@@ -194,8 +194,11 @@
 </div>
 
 <script id="cpPartnerData" type="application/json">[
+{%- assign first_active = true %}
 {%- for block in section.blocks %}
   {%- if block.settings.active %}
+  {%- unless first_active %},{% endunless %}
+  {%- assign first_active = false %}
   {
     "id": {{ block.id | json }},
     "name": {{ block.settings.name | json }},
@@ -214,12 +217,13 @@
     "instagram": {{ block.settings.instagram | json }},
     "image": {% if block.settings.image %}{{ block.settings.image | image_url: width: 240 | json }}{% else %}""{% endif %},
     "profileUrl": {{ block.settings.profile_url | json }}
-  }{% unless forloop.last %},{% endunless %}
+  }
   {%- endif %}
 {%- endfor %}
 ]</script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+<script>window.__cofcofLeafletLoading = true;</script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer onload="window.__cofcofLeafletLoading = false;" onerror="console.warn('Leaflet CDN failed to load');window.__cofcofLeafletLoading = false;"></script>
 <script src="{{ 'cofcof-partner-map.js' | asset_url }}" defer></script>
 
 {% schema %}

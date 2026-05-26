@@ -1,34 +1,47 @@
 (function() {
   'use strict';
 
-  var root = document.querySelector('[data-cof-partner-root]');
-  if (!root) return;
-
-  var partnerData = [];
-  try {
-    var script = document.getElementById('cpPartnerData');
-    if (script) partnerData = JSON.parse(script.textContent);
-  } catch(e) { console.warn('Invalid partner data', e); }
-
-  partnerData = partnerData.map(function(p) {
-    p.lat = parseFloat(String(p.lat || '').replace(',', '.'));
-    p.lng = parseFloat(String(p.lng || '').replace(',', '.'));
-    return p;
-  });
-
-  if (!partnerData.length) {
-    document.getElementById('cpList').innerHTML = '<div class="cp-empty"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><h3 class="display">Nenhum parceiro cadastrado.</h3><p class="body-p">Adicione parceiros pelo editor do tema.</p></div>';
-    return;
+  function ready(fn) {
+    if (document.readyState !== 'loading') setTimeout(fn, 0);
+    else document.addEventListener('DOMContentLoaded', fn);
   }
 
-  var searchEl = document.getElementById('cpSearch');
-  var searchClear = document.getElementById('cpSearchClear');
-  var listEl = document.getElementById('cpList');
-  var ctaCard = document.getElementById('cpCTACard');
-  var filtersEl = document.getElementById('cpFilters');
-  var previewEl = document.getElementById('cpPreview');
-  var previewClose = document.getElementById('cpPreviewClose');
-  var mapEl = document.getElementById('cpMap');
+  ready(function() {
+    var root = document.querySelector('[data-cof-partner-root]');
+    if (!root) return;
+
+    var partnerData = [];
+    try {
+      var script = document.getElementById('cpPartnerData');
+      if (script) partnerData = JSON.parse(script.textContent);
+    } catch(e) { console.warn('Invalid partner data', e); }
+
+    partnerData = partnerData.map(function(p) {
+      p.lat = parseFloat(String(p.lat || '').replace(',', '.'));
+      p.lng = parseFloat(String(p.lng || '').replace(',', '.'));
+      return p;
+    });
+
+    var $ = function(id) { return document.getElementById(id); };
+
+    var searchEl = $('cpSearch');
+    var searchClear = $('cpSearchClear');
+    var listEl = $('cpList');
+    var ctaCard = $('cpCTACard');
+    var filtersEl = $('cpFilters');
+    var previewEl = $('cpPreview');
+    var mapEl = $('cpMap');
+
+    if (!searchEl || !listEl || !filtersEl || !mapEl) {
+      if (listEl) listEl.innerHTML = '<div class="cp-empty"><p>Erro ao carregar parceiros.</p></div>';
+      if (mapEl) mapEl.innerHTML = '<div style="padding:24px;color:rgba(246,241,235,.68)">Mapa indisponivel no momento.</div>';
+      return;
+    }
+
+    if (!partnerData.length) {
+      listEl.innerHTML = '<div class="cp-empty"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><h3 class="display">Nenhum parceiro cadastrado.</h3><p class="body-p">Adicione parceiros pelo editor do tema.</p></div>';
+      return;
+    }
 
   var activeCat = 'Todos';
   var searchTerm = '';
@@ -320,17 +333,19 @@
   // Event listeners
   searchEl.addEventListener('input', function() {
     searchTerm = this.value;
-    searchClear.style.display = this.value ? '' : 'none';
+    if (searchClear) searchClear.style.display = this.value ? '' : 'none';
     applyFilters();
   });
 
-  searchClear.addEventListener('click', function() {
-    searchEl.value = '';
-    searchTerm = '';
-    searchClear.style.display = 'none';
-    applyFilters();
-    searchEl.focus();
-  });
+  if (searchClear) {
+    searchClear.addEventListener('click', function() {
+      searchEl.value = '';
+      searchTerm = '';
+      searchClear.style.display = 'none';
+      applyFilters();
+      searchEl.focus();
+    });
+  }
 
   filtersEl.addEventListener('click', function(e) {
     var btn = e.target.closest('button');
@@ -339,7 +354,12 @@
     applyFilters();
   });
 
-  previewClose.addEventListener('click', closePreview);
+  // Preview close via event delegation (avoids duplicate id)
+  if (previewEl) {
+    previewEl.addEventListener('click', function(e) {
+      if (e.target.closest('.cp-preview-close')) closePreview();
+    });
+  }
 
   // Update filter counts
   var filterBtns = filtersEl.querySelectorAll('button');
@@ -350,11 +370,17 @@
     btn.appendChild(span);
   });
 
-  // Init
+  // Init: render list immediately
   applyFilters();
-  var waitForLeaflet = function() {
-    if (window.L) initMap();
-    else window.setTimeout(waitForLeaflet, 120);
-  };
-  waitForLeaflet();
+
+  // Init map when Leaflet is ready
+  function tryInitMap() {
+    if (window.L && !window.__cofcofLeafletLoading) {
+      initMap();
+    } else {
+      setTimeout(tryInitMap, 120);
+    }
+  }
+  tryInitMap();
+  }); // end ready
 })();
