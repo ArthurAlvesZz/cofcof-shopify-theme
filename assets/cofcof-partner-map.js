@@ -205,7 +205,7 @@
   }
 
   function showPreview(p) {
-    previewEl.hidden = false;
+    previewEl.classList.remove('cp-hidden');
     document.getElementById('cpPreviewName').textContent = p.name;
     document.getElementById('cpPreviewDesc').textContent = p.description || '';
     document.getElementById('cpPreviewAddrLine').textContent = p.address || '';
@@ -213,10 +213,10 @@
     document.getElementById('cpPreviewHoursText').textContent = p.openingHours || 'Horario nao informado';
 
     var imgEl = document.getElementById('cpPreviewImg');
+    var cat = (p.category || '').toLowerCase();
     if (p.image) {
       imgEl.innerHTML = '<img src="' + p.image + '" alt="' + p.name + '" style="width:100%;height:100%;object-fit:cover;display:block">';
     } else {
-      var cat = (p.category || '').toLowerCase();
       var showBg = '';
       if (cat === 'posto' || cat === 'rota cofcof') showBg = ' style="background:#1a1a2e"';
       else if (cat === 'cafeteria') showBg = ' style="background:#2d1b0e"';
@@ -224,8 +224,7 @@
       else if (cat === 'restaurante') showBg = ' style="background:#2e1a1a"';
       imgEl.innerHTML = '<div class="cp-preview-img-fallback"' + showBg + '>' + getCategoryIconSVG(p.category) + '</div>';
     }
-    imgEl.innerHTML += '<button class="cp-preview-close" id="cpPreviewClose" aria-label="Fechar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>';
-    document.getElementById('cpPreviewClose').addEventListener('click', closePreview);
+    imgEl.innerHTML += '<button class="cp-preview-close" aria-label="Fechar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>';
 
     var routeBtn = document.getElementById('cpPreviewRoute');
     routeBtn.href = (Number.isFinite(p.lat) && Number.isFinite(p.lng)) ? 'https://www.google.com/maps/dir/?api=1&destination=' + p.lat + ',' + p.lng : 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p.address || p.name);
@@ -272,7 +271,7 @@
   function closePreview() {
     hasUserClosed = true;
     activePartner = null;
-    previewEl.hidden = true;
+    previewEl.classList.add('cp-hidden');
     renderList(getFiltered());
     if (map) {
       markers.forEach(function(m) {
