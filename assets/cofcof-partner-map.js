@@ -300,7 +300,7 @@
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png', {
       maxZoom: 19
     }).addTo(map);
-    new L.ZoomControl({ position: 'bottomright' }).addTo(map);
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
 
     var valid = partnerData.filter(function(p) { return Number.isFinite(p.lat) && Number.isFinite(p.lng); });
 
