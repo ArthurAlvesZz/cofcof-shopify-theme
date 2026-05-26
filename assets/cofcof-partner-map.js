@@ -35,25 +35,27 @@
 
   function getCategory(partner) {
     var cat = (partner.category || '').toLowerCase();
-    if (cat === 'emporio' || cat === 'revenda' || cat === 'delicatessen') return 'Emporios';
+    if (cat === 'emporio' || cat === 'delicatessen') return 'Empórios';
+    if (cat === 'revenda') return 'Revendas';
     if (cat === 'restaurante') return 'Restaurantes';
     if (cat === 'padaria' || cat === 'confeitaria') return 'Padarias';
-    if (cat === 'hotel') return 'Hoteis';
+    if (cat === 'hotel') return 'Hotéis';
     if (cat === 'posto' || cat === 'rota cofcof') return 'Postos';
-    if (cat === 'conveniencia') return 'Conveniencia';
+    if (cat === 'conveniencia') return 'Conveniência';
     if (cat === 'cafeteria') return 'Cafeterias';
     return 'Outros';
   }
 
   function getCategoryLabel(partner) {
     var cat = (partner.category || '').toLowerCase();
-    if (cat === 'emporio' || cat === 'delicatessen') return 'Emporio';
+    if (cat === 'emporio' || cat === 'delicatessen') return 'Empório';
+    if (cat === 'revenda') return 'Revenda';
     if (cat === 'padaria' || cat === 'confeitaria') return 'Padaria';
     if (cat === 'posto' || cat === 'rota cofcof') return 'Rota CofCof';
     if (cat === 'cafeteria') return 'Cafeteria';
     if (cat === 'restaurante') return 'Restaurante';
     if (cat === 'hotel') return 'Hotel';
-    if (cat === 'conveniencia') return 'Conveniencia';
+    if (cat === 'conveniencia') return 'Conveniência';
     return partner.category || 'Outros';
   }
 
@@ -110,7 +112,7 @@
   function renderList(items) {
     listEl.innerHTML = '';
     if (!items.length) {
-      listEl.innerHTML = '<div class="cp-empty"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><h3 class="display">Nenhum parceiro encontrado.</h3><p class="body-p">Tente buscar por cidade, bairro ou nome.</p></div>';
+      listEl.innerHTML = '<div class="cp-empty"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><h3 class="display">Nenhum parceiro encontrado.</h3><p class="body-p">Você pode comprar online ou indicar um ponto.</p><a href="/pages/cafes" class="btn btn-sd" style="font-size:10px;padding:16px;display:block;text-align:center;margin-top:16px"><span>Comprar online</span></a></div>';
       return;
     }
     items.forEach(function(p) {
