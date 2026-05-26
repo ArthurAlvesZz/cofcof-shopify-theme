@@ -94,7 +94,7 @@
   <div class="bx pg-hero-in">
     <div class="eyebrow">Contato</div>
     <h1 class="display">Fale com a <span class="ital">COFCOF.CO</span>.</h1>
-    <p class="body-p">Duuvidas sobre assinatura, pedidos, parcerias comerciais ou exportacao. A gente responde rapido — sem atendente virtual, sem burocracia.</p>
+    <p class="body-p">Duvidas sobre assinatura, pedidos, parcerias comerciais ou exportacao. A gente responde rapido — sem atendente virtual, sem burocracia.</p>
   </div>
 </section>
 
@@ -105,7 +105,7 @@
       <div class="ct-i fi">
         <svg class="ct-svg" viewBox="0 0 32 32"><path d="M4 7h24v18H4z"/><path d="M4 7l12 11L28 7"/></svg>
         <div class="ct-t">E-mail</div>
-        <p class="ct-d">Duuvidas gerais, suporte ao assinante e solicitacoes formais. Respondemos em ate 24h.</p>
+        <p class="ct-d">Duvidas gerais, suporte ao assinante e solicitacoes formais. Respondemos em ate 24h.</p>
         <a href="mailto:contato@cofcof.co" class="lnk ct-link">contato@cofcof.co &rarr;</a>
       </div>
       <div class="ct-i fi">
@@ -142,7 +142,7 @@
         </div>
       </div>
       <div class="info-col">
-        <div class="eyebrow">Duuvidas rapidas</div>
+        <div class="eyebrow">Duvidas rapidas</div>
         <h2 class="display" style="color:var(--black)">Perguntas <span class="ital">comuns</span>.</h2>
         <div class="fq">
           <div class="fq-i">
@@ -196,6 +196,20 @@
   </div>
 </section>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('v');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.cof-contato .fi').forEach(function(el) { observer.observe(el); });
+});
+</script>
 
 {% schema %}
 {
