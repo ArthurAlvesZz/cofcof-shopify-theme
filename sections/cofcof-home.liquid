@@ -100,11 +100,10 @@ body{font-family:var(--fn);font-weight:400;font-size:15px;line-height:1.65;color
 <section class="pg-hero fi v">
   <div class="pg-hero-grid"></div>
   <div class="pg-hero-spot"></div>
-  <div class="bx pg-hero-in" style="border-radius:16px;border:1px solid rgba(246,241,235,.1);padding:clamp(48px,6vw,80px);min-height:600px;box-shadow:0 32px 64px rgba(0,0,0,.5);overflow:hidden">
-    <video autoplay loop muted playsinline
-      src="{{ 'cofcof-hero-background.mp4' | asset_url }}"
-      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background-color:var(--black);">
-    </video>
+  <div class="bx pg-hero-in" style="border-radius:16px;border:1px solid rgba(246,241,235,.1);padding:clamp(48px,6vw,80px);min-height:600px;box-shadow:0 32px 64px rgba(0,0,0,.5);overflow:hidden;background-image:url('{{ 'cofcof-home-section-01-background.png' | asset_url }}');background-size:cover;background-position:center;">
+    <img src="{{ 'cofcof-home-media-hero-main.png' | asset_url }}"
+      alt="CofCof cafe especial" width="1920" height="1080"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background-color:var(--black);display:block;">
     <div style="position:absolute;inset:0;background-image:linear-gradient(to right,rgba(10,10,10,.95) 0%,rgba(10,10,10,.7) 60%,rgba(10,10,10,0) 100%);z-index:1;"></div>
     <div style="position:relative;z-index:2;">
       <div class="eyebrow" style="margin-bottom:24px;">
@@ -199,7 +198,7 @@ body{font-family:var(--fn);font-weight:400;font-size:15px;line-height:1.65;color
 <section class="sec sec-p fi">
   <div class="bx hm-kit">
     <div class="hm-kit-img">
-      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80" alt="Kit Primeira Xicara CofCof" width="800" height="1000" loading="lazy">
+      <img src="{{ 'cofcof-home-section-04-kit.png' | asset_url }}" alt="Kit CofCof com cafes especiais" width="800" height="1000" loading="lazy">
     </div>
     <div class="hm-kit-txt">
       <div class="eyebrow" style="margin-bottom:24px;">Iniciantes no especial</div>
@@ -313,7 +312,7 @@ body{font-family:var(--fn);font-weight:400;font-size:15px;line-height:1.65;color
       <p class="body-p" style="margin-top:24px;font-size:20px;color:rgba(246,241,235,.75);line-height:1.6;">A diferença entre tomar café por hábito e por escolha.</p>
     </div>
     <div class="hm-cmp" style="border:1px solid var(--rule-w);">
-      <div class="hm-cmp-i" style="padding:clamp(48px,6vw,80px);">
+      <div class="hm-cmp-i" style="padding:clamp(48px,6vw,80px);background-image:url('{{ 'cofcof-home-section-06-experience.png' | asset_url }}');background-size:cover;background-position:center;">
         <h3 style="font-size:28px;margin-bottom:40px;">Café Comum</h3>
         <ul class="hm-cmp-ul" style="gap:24px;">
           <li style="font-size:18px;">Origem genérica e não rastreável</li>
