@@ -10,6 +10,12 @@
     if (script) partnerData = JSON.parse(script.textContent);
   } catch(e) { console.warn('Invalid partner data', e); }
 
+  partnerData = partnerData.map(function(p) {
+    p.lat = parseFloat(String(p.lat || '').replace(',', '.'));
+    p.lng = parseFloat(String(p.lng || '').replace(',', '.'));
+    return p;
+  });
+
   if (!partnerData.length) {
     document.getElementById('cpList').innerHTML = '<div class="cp-empty"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><h3 class="display">Nenhum parceiro cadastrado.</h3><p class="body-p">Adicione parceiros pelo editor do tema.</p></div>';
     return;
@@ -107,6 +113,31 @@
     btns.forEach(function(btn) {
       btn.classList.toggle('active', btn.dataset.cat === activeCat);
     });
+  }
+
+  function updateMarkerVisibility(items) {
+    if (!markers.length) return;
+    var visibleIds = {};
+    items.forEach(function(p) { visibleIds[p.id] = true; });
+
+    markers.forEach(function(marker) {
+      var isVisible = !!visibleIds[marker._partnerId];
+      marker.setOpacity(isVisible ? 1 : 0.15);
+      if (marker.getElement()) {
+        marker.getElement().style.pointerEvents = isVisible ? '' : 'none';
+      }
+    });
+  }
+
+  function applyFilters() {
+    var items = getFiltered();
+    if (activePartner && !items.some(function(p) { return p.id === activePartner.id; })) {
+      previewEl.hidden = true;
+      activePartner = null;
+    }
+    renderFilters();
+    renderList(items);
+    updateMarkerVisibility(items);
   }
 
   function renderList(items) {
@@ -290,14 +321,14 @@
   searchEl.addEventListener('input', function() {
     searchTerm = this.value;
     searchClear.style.display = this.value ? '' : 'none';
-    renderList(getFiltered());
+    applyFilters();
   });
 
   searchClear.addEventListener('click', function() {
     searchEl.value = '';
     searchTerm = '';
     searchClear.style.display = 'none';
-    renderList(getFiltered());
+    applyFilters();
     searchEl.focus();
   });
 
@@ -305,8 +336,7 @@
     var btn = e.target.closest('button');
     if (!btn || !btn.dataset.cat) return;
     activeCat = btn.dataset.cat;
-    renderFilters();
-    renderList(getFiltered());
+    applyFilters();
   });
 
   previewClose.addEventListener('click', closePreview);
@@ -321,6 +351,7 @@
   });
 
   // Init
+  applyFilters();
   var waitForLeaflet = function() {
     if (window.L) initMap();
     else window.setTimeout(waitForLeaflet, 120);
