@@ -29,7 +29,7 @@
 .cof-origem .label{font-family:var(--fl);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
 
 /* Hero */
-.cof-origem .pg-hero{padding:130px 0 72px;background:var(--black);color:var(--sand);position:relative;overflow:hidden}
+.cof-origem .pg-hero{padding:130px 0 72px;background:var(--black);color:var(--sand);position:relative;overflow:hidden;min-height:70vh;display:flex;align-items:center}
 @media(min-width:768px){.cof-origem .pg-hero{padding:160px 0 96px}}
 .cof-origem .pg-hero-grid{position:absolute;inset:0;background-image:linear-gradient(to right,var(--rule-w) 1px,transparent 1px);background-size:25% 100%;opacity:.5;pointer-events:none}
 .cof-origem .pg-hero-spot{position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:80%;height:70%;background:radial-gradient(ellipse at center,rgba(122,102,84,.16) 0%,transparent 60%);filter:blur(40px);pointer-events:none}
@@ -140,7 +140,7 @@
       <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12c0-2.76 2.24-5 5-5s5 2.24 5 5-2.24 5-5 5-5-2.24-5-5z"/><path d="M4 8c0-2.21 1.79-4 4-4s4 1.79 4 4"/><path d="M4 16c0 2.21 1.79 4 4 4s4-1.79 4-4"/></svg> Torra sob demanda</span>
     </div>
     <div class="pg-hero-cta" style="justify-content:center">
-      <a href="#mapa-origem" class="btn btn-ds" style="font-size:12px;padding:20px 42px"><span>Explorar mapa da origem</span></a>
+      <a href="#mapa-origem" data-scroll-to="mapa-origem" class="btn btn-ds" style="font-size:12px;padding:20px 42px"><span>Explorar mapa da origem</span></a>
       <a href="/cafes" class="btn btn-sd" style="font-size:12px;padding:20px 42px"><span>Comprar cafes do Cerrado &rarr;</span></a>
     </div>
   </div>
@@ -185,7 +185,7 @@
       </div>
     </div>
     <div style="text-align:center;margin-top:48px">
-      <a href="#mapa-origem" class="btn btn-sd" style="font-size:11px;padding:16px 32px"><span>Explorar origens no mapa &rarr;</span></a>
+      <a href="#mapa-origem" data-scroll-to="mapa-origem" class="btn btn-sd" style="font-size:11px;padding:16px 32px"><span>Explorar origens no mapa &rarr;</span></a>
     </div>
   </div>
 </section>
@@ -200,10 +200,14 @@
       </p>
 
       <div class="orig-map-filter" id="origFilters">
-        <button class="orig-filter-btn active" data-filter="todos">Todos <span>3</span></button>
-        <button class="orig-filter-btn" data-filter="sca">86+ SCA <span>3</span></button>
-        <button class="orig-filter-btn" data-filter="natural">Natural <span>2</span></button>
-        <button class="orig-filter-btn" data-filter="fermentado">Fermentado <span>1</span></button>
+        <button class="orig-filter-btn active" data-filter="todos">Todos <span>0</span></button>
+        <button class="orig-filter-btn" data-filter="sca">86+ SCA <span>0</span></button>
+        <button class="orig-filter-btn" data-filter="natural">Natural <span>0</span></button>
+        <button class="orig-filter-btn" data-filter="fermentado">Fermentado <span>0</span></button>
+        <button class="orig-filter-btn" data-filter="coexcellence">Cup of Excellence <span>0</span></button>
+        <button class="orig-filter-btn" data-filter="doce">Mais Doce <span>0</span></button>
+        <button class="orig-filter-btn" data-filter="floral">Mais Floral <span>0</span></button>
+        <button class="orig-filter-btn" data-filter="frutado">Mais Frutado <span>0</span></button>
       </div>
 
       <!-- Farm cards (dados injetados via JS) -->
@@ -347,7 +351,7 @@
 
     <div class="prd-grid">
       <!-- Product 1 -->
-      <div class="prd-i" style="border:1px solid var(--clay)">
+      <div class="prd-i" data-product-slug="lote-01-paraiso">
         <div class="prd-head">
           <div class="prd-reg">Serra do Salitre - MG</div>
           <div class="prd-badge">86+ SCA</div>
@@ -361,7 +365,7 @@
       </div>
 
       <!-- Product 2 -->
-      <div class="prd-i">
+      <div class="prd-i" data-product-slug="lote-02-topazio">
         <div class="prd-head">
           <div class="prd-reg">Patrocinio - MG</div>
           <div class="prd-badge">86+ SCA</div>
@@ -375,20 +379,7 @@
       </div>
 
       <!-- Product 3 -->
-      <div class="prd-i">
-        <div class="prd-head">
-          <div class="prd-reg">Coromandel - MG</div>
-        </div>
-        <h3 class="prd-t">Lote 04 — Rubi</h3>
-        <p class="prd-n">Caramelo • Cacau • Nozes.</p>
-        <div class="prd-b">
-          <div class="prd-pr">R$ 82,00</div>
-          <a href="/cafes/lote-04-rubi" class="prd-lnk">Detalhes</a>
-        </div>
-      </div>
-
-      <!-- Product 4 -->
-      <div class="prd-i">
+      <div class="prd-i" data-product-slug="lote-03-arara">
         <div class="prd-head">
           <div class="prd-reg">Monte Carmelo - MG</div>
         </div>
@@ -397,6 +388,19 @@
         <div class="prd-b">
           <div class="prd-pr">R$ 82,00</div>
           <a href="/cafes/lote-03-arara" class="prd-lnk">Detalhes</a>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="prd-i" data-product-slug="lote-04-rubi">
+        <div class="prd-head">
+          <div class="prd-reg">Coromandel - MG</div>
+        </div>
+        <h3 class="prd-t">Lote 04 — Rubi</h3>
+        <p class="prd-n">Caramelo • Cacau • Nozes.</p>
+        <div class="prd-b">
+          <div class="prd-pr">R$ 82,00</div>
+          <a href="/cafes/lote-04-rubi" class="prd-lnk">Detalhes</a>
         </div>
       </div>
     </div>
@@ -461,7 +465,7 @@
         '<div class="farm-detail-row"><span class="farm-detail-key">Altitude</span><span class="farm-detail-val">'+farm.alt+'</span></div>'+
         '<div class="farm-detail-row"><span class="farm-detail-key">Processo</span><span class="farm-detail-val">'+farm.process+'</span></div>'+
         '<div class="farm-detail-row"><span class="farm-detail-key">Pontuacao</span><span class="farm-detail-val highlight">'+farm.sca+' SCA</span></div>'+
-        '<div style="display:flex;gap:16px;margin-top:24px"><a href="/cafes/'+farm.slug+'" class="btn btn-sd" style="flex:1;text-align:center;font-size:10px"><span>Ver Cafe do Lote</span></a><a href="#produtores" class="btn btn-ds" style="flex:1;border:1px solid var(--rule-w);font-size:10px;text-align:center"><span>Ver Produtor</span></a></div></div>';
+        '<div style="display:flex;gap:16px;margin-top:24px"><a href="/cafes/'+farm.slug+'" class="btn btn-sd" style="flex:1;text-align:center;font-size:10px"><span>Ver Cafe do Lote</span></a><a href="#produtores" data-scroll-to="produtores" class="btn btn-ds" style="flex:1;border:1px solid var(--rule-w);font-size:10px;text-align:center"><span>Ver Produtor</span></a></div></div>';
       document.getElementById('origFarmCards').innerHTML = cardHtml;
       Object.keys(markers).forEach(function(k) {
         var el = markers[k].getElement();
@@ -474,6 +478,40 @@
           }
         }
       });
+      // Update product highlights based on active farm
+      document.querySelectorAll('.prd-i').forEach(function(el) {
+        var slug = el.getAttribute('data-product-slug');
+        if (slug && farm.slug === slug) {
+          el.style.border = '1px solid var(--clay)';
+        } else {
+          el.style.border = '';
+        }
+      });
+    }
+
+    // Filter definitions
+    var filterFns = {
+      todos: function(f) { return true; },
+      sca: function(f) { return parseFloat(f.sca) >= 86; },
+      natural: function(f) { return f.process.toLowerCase().indexOf('natural') !== -1; },
+      fermentado: function(f) { return f.process.toLowerCase().indexOf('fermenta') !== -1; },
+      coexcellence: function(f) { return f.featured; },
+      doce: function(f) { return f.id === 'farm-2' || f.id === 'farm-3'; },
+      floral: function(f) { return f.id === 'farm-1'; },
+      frutado: function(f) { return f.id === 'farm-1' || f.id === 'farm-2'; }
+    };
+
+    // Update filter counts
+    function updateFilterCounts() {
+      var btns = document.querySelectorAll('#origFilters .orig-filter-btn');
+      btns.forEach(function(btn) {
+        var filter = btn.dataset.filter;
+        if (filter && filterFns[filter]) {
+          var count = farms.filter(filterFns[filter]).length;
+          var span = btn.querySelector('span');
+          if (span) span.textContent = count;
+        }
+      });
     }
 
     // Filter buttons
@@ -482,12 +520,45 @@
       btn.addEventListener('click', function() {
         filterBtns.forEach(function(b){ b.classList.remove('active'); });
         btn.classList.add('active');
-        var showFarm = farms[0];
-        if (btn.dataset.filter === 'natural') showFarm = farms[1];
-        else if (btn.dataset.filter === 'fermentado') showFarm = farms[0];
-        selectFarm(showFarm);
+        var filter = btn.dataset.filter;
+        var matchingFarms = farms.filter(filterFns[filter]);
+
+        // Update marker visibility
+        Object.keys(markers).forEach(function(k) {
+          var isVisible = matchingFarms.some(function(mf) { return mf.id === k; });
+          var el = markers[k].getElement();
+          if (el) {
+            var pin = el.querySelector('.orig-pin');
+            if (pin) {
+              pin.style.opacity = isVisible ? '1' : '0.15';
+              pin.style.pointerEvents = isVisible ? 'auto' : 'none';
+            }
+          }
+        });
+
+        // Show first matching farm or empty state
+        if (matchingFarms.length > 0) {
+          if (activeFarmId) {
+            var stillActive = matchingFarms.some(function(mf) { return mf.id === activeFarmId; });
+            if (stillActive) {
+              var activeFarm = farms.filter(function(f) { return f.id === activeFarmId; })[0];
+              selectFarm(activeFarm);
+            } else {
+              selectFarm(matchingFarms[0]);
+            }
+          } else {
+            selectFarm(matchingFarms[0]);
+          }
+          document.getElementById('origFarmEmpty').style.display = 'none';
+        } else {
+          document.getElementById('origFarmCards').innerHTML = '';
+          document.getElementById('origFarmEmpty').style.display = 'block';
+        }
       });
     });
+
+    // Update counts on init
+    updateFilterCounts();
 
     // Select first farm by default
     if (farms.length > 0) selectFarm(farms[0]);
@@ -505,6 +576,18 @@
 
   document.addEventListener('DOMContentLoaded', function() {
     initMap();
+
+    // Smooth scroll for data-scroll-to links
+    document.querySelectorAll('[data-scroll-to]').forEach(function(el) {
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.getElementById(this.getAttribute('data-scroll-to'));
+        if (target) {
+          var y = target.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      });
+    });
 
     // Wire up "No Mapa" buttons in producers section
     setTimeout(function() {
