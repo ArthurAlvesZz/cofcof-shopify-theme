@@ -95,11 +95,13 @@ body{font-family:var(--fn);font-weight:400;font-size:15px;line-height:1.65;color
 .cta-end .btn::before{background:var(--sand)}
 .cta-end .btn:hover{color:var(--black)}
 
-/* Hero legibility — solid bg for badge, darker overlay for badge-right, lighter metrics */
+/* Hero legibility — text shadow, solid badge, darker overlay, lighter metrics */
+.pg-hero .display{text-shadow:0 2px 16px rgba(0,0,0,.45)}
+.pg-hero .body-p{text-shadow:0 1px 8px rgba(0,0,0,.3)}
+.pg-hero .hero-content>div:last-child .label{color:rgba(246,241,235,.9);text-shadow:0 1px 6px rgba(0,0,0,.25)}
 .pg-hero .eyebrow span{background-color:rgba(10,10,10,.55)!important;border-color:rgba(246,241,235,.2)!important;color:var(--sand)!important}
 .hero-right-badge{opacity:1;background:radial-gradient(circle,rgba(10,10,10,.65)0%,rgba(10,10,10,.4)70%)}
 .hero-right-badge .hrb-inner{color:var(--sand)}
-.pg-hero .hero-content>div:last-child .label{color:rgba(246,241,235,.85)}
 </style>
 
 <!-- 1. HERO -->
@@ -119,7 +121,7 @@ body{font-family:var(--fn);font-weight:400;font-size:15px;line-height:1.65;color
       <div class="hero-content-wrapper">
         <div class="hero-content">
           <h1 class="display" style="color:var(--sand);line-height:1.05;max-width:900px;">CAFÉS ESPECIAIS PREMIADOS DO BRASIL, TORRADOS SOB DEMANDA.</h1>
-          <p class="body-p" style="font-size:clamp(18px,1.5vw,22px);max-width:580px;color:rgba(246,241,235,.75);line-height:1.6;">Talvez o melhor café do Brasil ainda não esteja na sua xícara.</p>
+          <p class="body-p" style="font-size:clamp(18px,1.5vw,22px);max-width:580px;color:rgba(246,241,235,.88);line-height:1.6;">Talvez o melhor café do Brasil ainda não esteja na sua xícara.</p>
           <div class="pg-hero-cta">
             <a href="/pages/cafes" class="btn btn-sd hero-btn-main"><span>Comprar cafés premiados &rarr;</span></a>
             <a href="/pages/assinatura" class="btn btn-ds hero-btn-sec"><span>Entrar para o Clube</span></a>
@@ -137,7 +139,8 @@ body{font-family:var(--fn);font-weight:400;font-size:15px;line-height:1.65;color
         </div>
       </div>
     </div>
-    <div style="position:absolute;left:0;right:0;bottom:0;height:clamp(120px,18vh,220px);background:linear-gradient(to bottom,transparent 0%,var(--black) 60%);pointer-events:none;z-index:1;"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:clamp(140px,20vh,240px);background:linear-gradient(to bottom,transparent 0%,rgba(10,10,10,.82) 50%,var(--black) 100%);pointer-events:none;z-index:1;"></div>
+    <div style="position:absolute;right:0;bottom:0;width:clamp(120px,16vw,200px);height:clamp(120px,16vw,200px);background:radial-gradient(circle at bottom right,rgba(10,10,10,.92) 0%,rgba(10,10,10,.55) 30%,transparent 58%);pointer-events:none;z-index:1;"></div>
   </div>
 </section>
 
