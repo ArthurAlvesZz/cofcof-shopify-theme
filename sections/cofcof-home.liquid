@@ -77,9 +77,12 @@ body{font-family:var(--fn);font-weight:400;font-size:15px;line-height:1.65;color
 .hm-cmp-ul{list-style:none;display:flex;flex-direction:column;gap:16px;padding:0;margin:0}
 .hm-cmp-ul li{font-family:var(--fn);font-weight:300;font-size:16px;display:flex;align-items:center;gap:16px}
 .hm-cmp-ul.cof li{color:var(--sand);font-weight:500}
-.hm-rvw{display:grid;gap:2px;background:var(--rule-w);border:1px solid var(--rule-w);margin-top:clamp(40px,6vh,60px)}
-@media(min-width:768px){.hm-rvw{grid-template-columns:repeat(3,1fr)}}
-.hm-rvw-i{background:var(--black);padding:clamp(32px,4vw,40px);display:flex;flex-direction:column}
+.hm-rvw{overflow:hidden;position:relative;margin-top:clamp(40px,6vh,60px)}
+.hm-rvw-track{display:flex;gap:clamp(16px,2vw,24px);min-width:max-content;animation:hm-rvw-scroll 48s linear infinite;padding:4px 0}
+.hm-rvw-track:hover{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.hm-rvw-track{animation:none;overflow-x:auto;-webkit-overflow-scrolling:touch}}
+.hm-rvw-i{flex:0 0 auto;width:min(380px,82vw);background:var(--black);padding:clamp(28px,3vw,40px);display:flex;flex-direction:column}
+@keyframes hm-rvw-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .hm-rvw-q{font-family:var(--fn);font-weight:300;font-style:italic;font-size:16px;line-height:1.7;color:var(--sand);margin-bottom:32px}
 .hm-rvw-n{margin-top:auto;border-top:1px solid var(--rule-w);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-family:var(--fl)}
 .hm-rvw-n strong{font-weight:700;font-size:12px;color:var(--sand)}
@@ -364,25 +367,119 @@ body{font-family:var(--fn);font-weight:400;font-size:15px;line-height:1.65;color
       </div>
     </div>
     <div class="hm-rvw">
-      <div class="hm-rvw-i">
-        <p class="hm-rvw-q">"Foi o primeiro café que não precisei adoçar. O cuidado com a torra é perceptível em cada xícara. Mudou meu padrão."</p>
-        <div class="hm-rvw-n">
-          <strong>Marcelo T.</strong>
-          <span>Uberlândia, MG</span>
+      <div class="hm-rvw-track">
+        <div class="hm-rvw-i">
+          <p class="hm-rvw-q">"Foi o primeiro café que não precisei adoçar. O cuidado com a torra é perceptível em cada xícara. Mudou meu padrão."</p>
+          <div class="hm-rvw-n">
+            <strong>Marcelo T.</strong>
+            <span>Uberlândia, MG</span>
+          </div>
         </div>
-      </div>
-      <div class="hm-rvw-i">
-        <p class="hm-rvw-q">"Sensacional a experiência de conhecer a fazenda e a história de quem produziu antes mesmo de abrir o pacote."</p>
-        <div class="hm-rvw-n">
-          <strong>Camila R.</strong>
-          <span>São Paulo, SP</span>
+        <div class="hm-rvw-i">
+          <p class="hm-rvw-q">"Sensacional a experiência de conhecer a fazenda e a história de quem produziu antes mesmo de abrir o pacote."</p>
+          <div class="hm-rvw-n">
+            <strong>Camila R.</strong>
+            <span>São Paulo, SP</span>
+          </div>
         </div>
-      </div>
-      <div class="hm-rvw-i">
-        <p class="hm-rvw-q">"Passamos a servir CofCof no nosso escritório de arquitetura e a diferença no impacto dos clientes foi imediata."</p>
-        <div class="hm-rvw-n">
-          <strong>Roberto & Assoc.</strong>
-          <span>Curitiba, PR</span>
+        <div class="hm-rvw-i">
+          <p class="hm-rvw-q">"Passamos a servir CofCof no nosso escritório de arquitetura e a diferença no impacto dos clientes foi imediata."</p>
+          <div class="hm-rvw-n">
+            <strong>Roberto & Assoc.</strong>
+            <span>Curitiba, PR</span>
+          </div>
+        </div>
+        <div class="hm-rvw-i">
+          <p class="hm-rvw-q">"Comprei para experimentar e virei cliente fiel. Entrega rápida e grãos que fazem diferença no paladar."</p>
+          <div class="hm-rvw-n">
+            <strong>Ana L.</strong>
+            <span>Brasília, DF</span>
+          </div>
+        </div>
+        <div class="hm-rvw-i">
+          <p class="hm-rvw-q">"O lote Paraíso é o melhor café que já tomei na vida. A torra é precisa, o sabor limpo e a doçura natural impressiona."</p>
+          <div class="hm-rvw-n">
+            <strong>Thiago M.</strong>
+            <span>Rio de Janeiro, RJ</span>
+          </div>
+        </div>
+        <div class="hm-rvw-i">
+          <p class="hm-rvw-q">"Assinei o clube e todo mês é uma surpresa boa. Nunca repeti um lote e cada um tem uma personalidade única."</p>
+          <div class="hm-rvw-n">
+            <strong>Juliana S.</strong>
+            <span>Belo Horizonte, MG</span>
+          </div>
+        </div>
+        <div class="hm-rvw-i">
+          <p class="hm-rvw-q">"Uso no meu café da manhã todos os dias. A doçura natural é tão marcante que não preciso de açúcar nem adoçante."</p>
+          <div class="hm-rvw-n">
+            <strong>Fernando C.</strong>
+            <span>Campinas, SP</span>
+          </div>
+        </div>
+        <div class="hm-rvw-i">
+          <p class="hm-rvw-q">"Presenteei clientes com o kit e o feedback foi unânime: 'onde comprar?' Agora todo mundo quer saber da CofCof."</p>
+          <div class="hm-rvw-n">
+            <strong>Patricia K.</strong>
+            <span>Florianópolis, SC</span>
+          </div>
+        </div>
+        <!-- Duplicate for seamless loop -->
+        <div class="hm-rvw-i">
+          <p class="hm-rvw-q">"Foi o primeiro café que não precisei adoçar. O cuidado com a torra é perceptível em cada xícara. Mudou meu padrão."</p>
+          <div class="hm-rvw-n">
+            <strong>Marcelo T.</strong>
+            <span>Uberlândia, MG</span>
+          </div>
+        </div>
+        <div class="hm-rvw-i">
+          <p class="hm-rvw-q">"Sensacional a experiência de conhecer a fazenda e a história de quem produziu antes mesmo de abrir o pacote."</p>
+          <div class="hm-rvw-n">
+            <strong>Camila R.</strong>
+            <span>São Paulo, SP</span>
+          </div>
+        </div>
+        <div class="hm-rvw-i">
+          <p class="hm-rvw-q">"Passamos a servir CofCof no nosso escritório de arquitetura e a diferença no impacto dos clientes foi imediata."</p>
+          <div class="hm-rvw-n">
+            <strong>Roberto & Assoc.</strong>
+            <span>Curitiba, PR</span>
+          </div>
+        </div>
+        <div class="hm-rvw-i">
+          <p class="hm-rvw-q">"Comprei para experimentar e virei cliente fiel. Entrega rápida e grãos que fazem diferença no paladar."</p>
+          <div class="hm-rvw-n">
+            <strong>Ana L.</strong>
+            <span>Brasília, DF</span>
+          </div>
+        </div>
+        <div class="hm-rvw-i">
+          <p class="hm-rvw-q">"O lote Paraíso é o melhor café que já tomei na vida. A torra é precisa, o sabor limpo e a doçura natural impressiona."</p>
+          <div class="hm-rvw-n">
+            <strong>Thiago M.</strong>
+            <span>Rio de Janeiro, RJ</span>
+          </div>
+        </div>
+        <div class="hm-rvw-i">
+          <p class="hm-rvw-q">"Assinei o clube e todo mês é uma surpresa boa. Nunca repeti um lote e cada um tem uma personalidade única."</p>
+          <div class="hm-rvw-n">
+            <strong>Juliana S.</strong>
+            <span>Belo Horizonte, MG</span>
+          </div>
+        </div>
+        <div class="hm-rvw-i">
+          <p class="hm-rvw-q">"Uso no meu café da manhã todos os dias. A doçura natural é tão marcante que não preciso de açúcar nem adoçante."</p>
+          <div class="hm-rvw-n">
+            <strong>Fernando C.</strong>
+            <span>Campinas, SP</span>
+          </div>
+        </div>
+        <div class="hm-rvw-i">
+          <p class="hm-rvw-q">"Presenteei clientes com o kit e o feedback foi unânime: 'onde comprar?' Agora todo mundo quer saber da CofCof."</p>
+          <div class="hm-rvw-n">
+            <strong>Patricia K.</strong>
+            <span>Florianópolis, SC</span>
+          </div>
         </div>
       </div>
     </div>
