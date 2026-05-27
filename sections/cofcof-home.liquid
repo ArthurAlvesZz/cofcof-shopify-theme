@@ -2,12 +2,14 @@
 <style>
 :root{--black:#0A0A0A;--sand:#F6F1EB;--sand-2:#EFE7DB;--parch:#E8E0D4;--stone:#252525;--clay:#7A6654;--txt:#0A0A0A;--sub:#6B6B6B;--dim:#999;--rule:rgba(10,10,10,.12);--rule-w:rgba(246,241,235,.14);--fn:'DM Sans',Helvetica,sans-serif;--fl:'Montserrat',sans-serif}
 html,body{background:var(--sand);width:100%;min-height:100%;overflow-x:hidden}
-body{font-family:var(--fn);font-weight:400;font-size:15px;line-height:1.65;color:var(--txt);-webkit-font-smoothing:antialiased}
+body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color:var(--txt);-webkit-font-smoothing:antialiased}
 *{box-sizing:border-box}a{color:inherit;text-decoration:none}button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .ae{display:flex;flex-direction:column;min-height:100vh}
 .ae .bx{max-width:1340px;margin:0 auto;padding:0 28px}
 @media(min-width:768px){.ae .bx{padding:0 56px}}
 .ae .fi{opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}.hm-cmp-i>div:empty{display:block}
+.hm-kit-benefits>div:hover{transform:translateY(-2px);background:#181818!important}
+.sec-d .hm-kit-benefits>div:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.12)}
 .ae .fi.v{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.ae .fi{opacity:1;transform:none;transition:none}}.eyebrow{font-family:var(--fl);font-weight:700;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--clay)}
 .label{font-family:var(--fl);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
@@ -59,17 +61,19 @@ body{font-family:var(--fn);font-weight:400;font-size:15px;line-height:1.65;color
 .hm-kit-img{position:relative;aspect-ratio:4/5;background:var(--parch);overflow:border-radius}
 .hm-kit-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s ease-out}
 .hm-kit:hover .hm-kit-img img{transform:scale(1.05)}
-.hm-prd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2px;background:var(--rule-w);border:1px solid var(--rule-w);margin-top:clamp(40px,6vh,60px)}
-.hm-prd-i{background:var(--black);padding:32px;display:flex;flex-direction:column;transition:background .3s}
-.hm-prd-i:hover{background:#111}
-.hm-prd-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px}
-.hm-prd-reg{font-family:var(--fl);font-weight:700;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);border:1px solid var(--rule-w);padding:4px 10px;border-radius:4px}
-.hm-prd-t{font-family:var(--fl);font-weight:800;font-size:24px;color:var(--sand);margin-bottom:8px}
-.hm-prd-n{font-family:var(--fn);font-weight:300;font-size:14px;color:rgba(246,241,235,.6);line-height:1.5;margin-bottom:32px}
-.hm-prd-b{margin-top:auto;display:flex;justify-content:space-between;align-items:center}
-.hm-prd-pr{font-family:var(--fl);font-weight:700;font-size:16px;color:var(--sand)}
+.hm-prd-grid{display:grid;gap:2px;background:var(--rule-w);border:1px solid var(--rule-w);margin-top:clamp(40px,6vh,60px);grid-template-columns:1fr}
+@media(min-width:768px){.hm-prd-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1200px){.hm-prd-grid{grid-template-columns:repeat(4,1fr)}}
+.hm-prd-i{background:var(--black);padding:clamp(40px,5vw,56px);min-height:340px;display:flex;flex-direction:column;transition:background .4s,transform .4s cubic-bezier(.2,.7,.2,1)}.hm-prd-i:hover{background:#151515;transform:translateY(-2px)}
+.hm-prd-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:40px}
+.hm-prd-reg{font-family:var(--fl);font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--clay);border:1px solid var(--rule-w);padding:6px 14px;border-radius:4px}
+.hm-prd-t{font-family:var(--fl);font-weight:800;font-size:28px;color:var(--sand);margin-bottom:16px}
+.hm-prd-n{font-family:var(--fn);font-weight:300;font-size:17px;color:rgba(246,241,235,.65);line-height:1.55;margin-bottom:auto;min-height:clamp(80px,10vw,120px)}
+.hm-prd-b{margin-top:48px;display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--rule-w)}
+.hm-prd-pr{font-family:var(--fl);font-weight:800;font-size:24px;color:var(--sand);letter-spacing:-.01em}
 .hm-cmp{display:grid;gap:2px;background:var(--rule);border:1px solid var(--rule)}
 @media(min-width:768px){.hm-cmp{grid-template-columns:1fr 1fr}}
+.hm-cert-i{transition:background .3s,transform .4s cubic-bezier(.2,.7,.2,1)}.hm-cert-i:hover{background:var(--parch)!important;transform:translateY(-2px)}.hm-cert-icon{margin-bottom:32px;opacity:.85;transition:opacity .3s,transform .4s cubic-bezier(.2,.7,.2,1)}.hm-cert-i:hover .hm-cert-icon{opacity:1;transform:scale(1.06)}
 .hm-cmp-i{background:var(--sand);padding:clamp(32px,5vw,64px);position:relative;overflow:hidden}
 .hm-cmp-i h3{font-family:var(--fl);font-weight:800;font-size:24px;margin-bottom:32px;border-bottom:1px solid var(--rule);padding-bottom:24px}
 .hm-cmp-i.cof{background:var(--black);color:var(--sand)}
@@ -89,6 +93,7 @@ body{font-family:var(--fn);font-weight:400;font-size:15px;line-height:1.65;color
 .hm-rvw-n span{font-weight:700;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--clay)}
 .head{display:flex;flex-direction:column;gap:16px}
 @media(min-width:768px){.head{flex-direction:row;justify-content:space-between;align-items:flex-end}}
+.sec-d [style*="background:var(--black);padding:32px"]:hover{background:#141414!important}
 .cta-end{background:var(--clay);padding:clamp(80px,12vh,140px) 0;text-align:center;position:relative;overflow:hidden}
 .cta-end-in{position:relative;z-index:1;max-width:800px;margin:0 auto}
 .cta-end h2{font-size:clamp(2.5rem,5vw,4.5rem);line-height:1.02;color:var(--sand);margin-bottom:24px}
@@ -168,36 +173,36 @@ body{font-family:var(--fn);font-weight:400;font-size:15px;line-height:1.65;color
         <h2 class="display" style="color:var(--black);font-size:clamp(2.5rem,4vw,3.4rem);">A confiança é<br/><span class="ital">verificada</span>.</h2>
       </div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2px;background:var(--rule);border:1px solid var(--rule);">
-      <div style="background:var(--sand);padding:clamp(40px,5vw,56px);" class="fi">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--clay)" stroke-width="2" style="margin-bottom:32px"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
-        <div class="label" style="margin-bottom:16px;font-size:15px;">Cup of Excellence</div>
-        <p class="body-p" style="font-size:16px;color:var(--txt);">Excelência para cafés de qualidade excepcional.</p>
+    <div class="hm-cert" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px;background:var(--rule);border:1px solid var(--rule);">
+      <div class="hm-cert-i" style="background:var(--sand);padding:clamp(44px,5.5vw,64px);" class="fi">
+        <div class="hm-cert-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--clay)" stroke-width="1.5"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+        <div class="label" style="margin-bottom:12px;font-size:16px;color:var(--black);">Cup of Excellence</div>
+        <p class="body-p" style="font-size:17px;color:var(--sub);line-height:1.6;">Excelência para cafés de qualidade excepcional.</p>
       </div>
-      <div style="background:var(--sand);padding:clamp(40px,5vw,56px);" class="fi">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" style="color:var(--clay);margin-bottom:32px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <div class="label" style="margin-bottom:16px;font-size:15px;">Pontuação 86+ SCA</div>
-        <p class="body-p" style="font-size:16px;color:var(--txt);">Metodologia internacional de cafés especiais.</p>
+      <div class="hm-cert-i" style="background:var(--sand);padding:clamp(44px,5.5vw,64px);" class="fi">
+        <div class="hm-cert-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="var(--clay)" style="color:var(--clay)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div class="label" style="margin-bottom:12px;font-size:16px;color:var(--black);">Pontuação 86+ SCA</div>
+        <p class="body-p" style="font-size:17px;color:var(--sub);line-height:1.6;">Metodologia internacional de cafés especiais.</p>
       </div>
-      <div style="background:var(--sand);padding:clamp(40px,5vw,56px);" class="fi">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--clay)" stroke-width="2" style="margin-bottom:32px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <div class="label" style="margin-bottom:16px;font-size:15px;">Cerrado Mineiro D.O.</div>
-        <p class="body-p" style="font-size:16px;color:var(--txt);">Origem protegida pelo terroir reconhecido.</p>
+      <div class="hm-cert-i" style="background:var(--sand);padding:clamp(44px,5.5vw,64px);" class="fi">
+        <div class="hm-cert-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--clay)" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="label" style="margin-bottom:12px;font-size:16px;color:var(--black);">Cerrado Mineiro D.O.</div>
+        <p class="body-p" style="font-size:17px;color:var(--sub);line-height:1.6;">Origem protegida pelo terroir reconhecido.</p>
       </div>
-      <div style="background:var(--sand);padding:clamp(40px,5vw,56px);" class="fi">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--clay)" stroke-width="2" style="margin-bottom:32px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        <div class="label" style="margin-bottom:16px;font-size:15px;">Q-Grader Oficial</div>
-        <p class="body-p" style="font-size:16px;color:var(--txt);">Avaliação sensorial feita por especialista global.</p>
+      <div class="hm-cert-i" style="background:var(--sand);padding:clamp(44px,5.5vw,64px);" class="fi">
+        <div class="hm-cert-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--clay)" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div class="label" style="margin-bottom:12px;font-size:16px;color:var(--black);">Q-Grader Oficial</div>
+        <p class="body-p" style="font-size:17px;color:var(--sub);line-height:1.6;">Avaliação sensorial feita por especialista global.</p>
       </div>
-      <div style="background:var(--sand);padding:clamp(40px,5vw,56px);" class="fi">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--clay)" stroke-width="2" style="margin-bottom:32px"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
-        <div class="label" style="margin-bottom:16px;font-size:15px;">Torra Sob Demanda</div>
-        <p class="body-p" style="font-size:16px;color:var(--txt);">Pequenos lotes torrados para máxima frescura e controle.</p>
+      <div class="hm-cert-i" style="background:var(--sand);padding:clamp(44px,5.5vw,64px);" class="fi">
+        <div class="hm-cert-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--clay)" stroke-width="1.5"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div>
+        <div class="label" style="margin-bottom:12px;font-size:16px;color:var(--black);">Torra Sob Demanda</div>
+        <p class="body-p" style="font-size:17px;color:var(--sub);line-height:1.6;">Pequenos lotes torrados para máxima frescura e controle.</p>
       </div>
-      <div style="background:var(--sand);padding:clamp(40px,5vw,56px);" class="fi">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--clay)" stroke-width="2" style="margin-bottom:32px"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="8" y1="8" x2="12" y2="12"/><line x1="16" y1="8" x2="8" y2="16"/></svg>
-        <div class="label" style="margin-bottom:16px;font-size:15px;">Rastreabilidade de Origem</div>
-        <p class="body-p" style="font-size:16px;color:var(--txt);">Fazenda, processo e perfil sensorial com transparência total.</p>
+      <div class="hm-cert-i" style="background:var(--sand);padding:clamp(44px,5.5vw,64px);" class="fi">
+        <div class="hm-cert-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--clay)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="8" y1="8" x2="12" y2="12"/><line x1="16" y1="8" x2="8" y2="16"/></svg></div>
+        <div class="label" style="margin-bottom:12px;font-size:16px;color:var(--black);">Rastreabilidade de Origem</div>
+        <p class="body-p" style="font-size:17px;color:var(--sub);line-height:1.6;">Fazenda, processo e perfil sensorial com transparência total.</p>
       </div>
     </div>
   </div>
@@ -218,17 +223,17 @@ body{font-family:var(--fn);font-weight:400;font-size:15px;line-height:1.65;color
       <div class="eyebrow" style="margin-bottom:24px;">Iniciantes no especial</div>
       <h2 class="display" style="color:var(--black);margin-bottom:32px;font-size:clamp(2.5rem,5vw,4.5rem);">Não sabe escolher?<br/>Comece pelo <span class="ital">Kit</span>.</h2>
       <p class="body-p" style="font-size:18px;color:var(--sub);max-width:520px;margin-bottom:48px;line-height:1.6;">Para quem quer sentir a diferença do café especial sem precisar entender de SCA, variedade ou processo. Uma introdução guiada ao universo CofCof.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:64px;">
-        <div style="background:var(--black);color:var(--sand);padding:20px 24px;border-radius:4px;"><div class="label" style="font-size:12px;">Menos amargor</div></div>
-        <div style="background:var(--black);color:var(--sand);padding:20px 24px;border-radius:4px;"><div class="label" style="font-size:12px;">Doçura natural</div></div>
-        <div style="background:var(--black);color:var(--sand);padding:20px 24px;border-radius:4px;"><div class="label" style="font-size:12px;">Origem rastreada</div></div>
-        <div style="background:var(--black);color:var(--sand);padding:20px 24px;border-radius:4px;"><div class="label" style="font-size:12px;">Torra correta</div></div>
+      <div class="hm-kit-benefits" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:64px;">
+        <div style="background:var(--black);color:var(--sand);padding:20px 24px;border-radius:6px;transition:transform .35s ease,background .35s;cursor:default;"><div class="label" style="font-size:13px;">Menos amargor</div></div>
+        <div style="background:var(--black);color:var(--sand);padding:20px 24px;border-radius:6px;transition:transform .35s ease,background .35s;cursor:default;"><div class="label" style="font-size:13px;">Doçura natural</div></div>
+        <div style="background:var(--black);color:var(--sand);padding:20px 24px;border-radius:6px;transition:transform .35s ease,background .35s;cursor:default;"><div class="label" style="font-size:13px;">Origem rastreada</div></div>
+        <div style="background:var(--black);color:var(--sand);padding:20px 24px;border-radius:6px;transition:transform .35s ease,background .35s;cursor:default;"><div class="label" style="font-size:13px;">Torra correta</div></div>
       </div>
-      <div style="display:flex;align-items:center;gap:32px;flex-wrap:wrap;">
-        <a href="/pages/cafes" class="btn" style="background:var(--black);color:var(--sand);padding:24px 56px;font-size:13px;"><span>Garantir meu kit &rarr;</span></a>
+      <div style="display:flex;align-items:center;gap:40px;flex-wrap:wrap;">
+        <a href="/pages/cafes" class="btn" style="background:var(--black);color:var(--sand);padding:26px 60px;font-size:14px;border-radius:6px;"><span>Garantir meu kit &rarr;</span></a>
         <div>
           <div class="eyebrow" style="color:var(--sub);margin-bottom:8px;">Valor Especial</div>
-          <div class="display" style="font-size:24px;color:var(--black);">R$ 89,00</div>
+          <div class="display" style="font-size:28px;color:var(--black);letter-spacing:-.01em;">R$ 89,00</div>
         </div>
       </div>
     </div>
@@ -253,64 +258,64 @@ body{font-family:var(--fn);font-weight:400;font-size:15px;line-height:1.65;color
         <a href="/pages/cafes" class="btn btn-sd" style="font-size:13px;padding:20px 42px;"><span>Ver catálogo completo &rarr;</span></a>
       </div>
     </div>
-    <div class="hm-prd-grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2px;">
-      <div class="hm-prd-i" style="padding:clamp(40px,5vw,56px);min-height:320px;">
-        <div class="hm-prd-head" style="margin-bottom:40px;">
-          <div class="hm-prd-reg" style="font-size:11px;padding:6px 14px;">Serra do Salitre - MG</div>
-          <div class="label" style="color:var(--sand);font-size:11px;">86+ SCA</div>
+    <div class="hm-prd-grid">
+      <div class="hm-prd-i">
+        <div class="hm-prd-head">
+          <div class="hm-prd-reg">Serra do Salitre - MG</div>
+          <div class="label" style="color:var(--sand);font-size:12px;">86+ SCA</div>
         </div>
-        <h3 class="hm-prd-t" style="font-size:32px;margin-bottom:16px;">Lote 01 — Paraiso</h3>
-        <p class="hm-prd-n" style="font-size:16px;margin-bottom:48px;">Jasmim · Mel · Frutas Amarelas.</p>
-        <div class="hm-prd-b" style="margin-top:auto;">
-          <div class="hm-prd-pr" style="font-size:20px;">R$ 95,00</div>
+        <h3 class="hm-prd-t">Lote 01 — Paraiso</h3>
+        <p class="hm-prd-n">Jasmim · Mel · Frutas Amarelas.</p>
+        <div class="hm-prd-b">
+          <div class="hm-prd-pr">R$ 95,00</div>
           <div style="display:flex;gap:24px;">
-            <a href="/pages/cafes" class="lnk" style="font-size:12px;color:var(--clay);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Detalhes</a>
-            <a href="/pages/cafes" class="lnk" style="font-size:12px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Adicionar</a>
+            <a href="/pages/cafes" class="lnk" style="font-size:13px;color:var(--clay);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Detalhes</a>
+            <a href="/pages/cafes" class="lnk" style="font-size:13px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Adicionar</a>
           </div>
         </div>
       </div>
-      <div class="hm-prd-i" style="padding:clamp(40px,5vw,56px);min-height:320px;">
-        <div class="hm-prd-head" style="margin-bottom:40px;">
-          <div class="hm-prd-reg" style="font-size:11px;padding:6px 14px;">Patrocinio - MG</div>
-          <div class="label" style="color:var(--sand);font-size:11px;">86+ SCA</div>
+      <div class="hm-prd-i">
+        <div class="hm-prd-head">
+          <div class="hm-prd-reg">Patrocinio - MG</div>
+          <div class="label" style="color:var(--sand);font-size:12px;">86+ SCA</div>
         </div>
-        <h3 class="hm-prd-t" style="font-size:32px;margin-bottom:16px;">Lote 02 — Topazio</h3>
-        <p class="hm-prd-n" style="font-size:16px;margin-bottom:48px;">Frutas Vermelhas · Melaco · Licoroso.</p>
-        <div class="hm-prd-b" style="margin-top:auto;">
-          <div class="hm-prd-pr" style="font-size:20px;">R$ 88,00</div>
+        <h3 class="hm-prd-t">Lote 02 — Topazio</h3>
+        <p class="hm-prd-n">Frutas Vermelhas · Melaco · Licoroso.</p>
+        <div class="hm-prd-b">
+          <div class="hm-prd-pr">R$ 88,00</div>
           <div style="display:flex;gap:24px;">
-            <a href="/pages/cafes" class="lnk" style="font-size:12px;color:var(--clay);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Detalhes</a>
-            <a href="/pages/cafes" class="lnk" style="font-size:12px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Adicionar</a>
+            <a href="/pages/cafes" class="lnk" style="font-size:13px;color:var(--clay);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Detalhes</a>
+            <a href="/pages/cafes" class="lnk" style="font-size:13px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Adicionar</a>
           </div>
         </div>
       </div>
-      <div class="hm-prd-i" style="padding:clamp(40px,5vw,56px);min-height:320px;">
-        <div class="hm-prd-head" style="margin-bottom:40px;">
-          <div class="hm-prd-reg" style="font-size:11px;padding:6px 14px;">Carmo do Paranaiba - MG</div>
-          <div class="label" style="color:var(--sand);font-size:11px;">86+ SCA</div>
+      <div class="hm-prd-i">
+        <div class="hm-prd-head">
+          <div class="hm-prd-reg">Carmo do Paranaiba - MG</div>
+          <div class="label" style="color:var(--sand);font-size:12px;">86+ SCA</div>
         </div>
-        <h3 class="hm-prd-t" style="font-size:32px;margin-bottom:16px;">Lote 03 — Citrico</h3>
-        <p class="hm-prd-n" style="font-size:16px;margin-bottom:48px;">Limao Siciliano · Acucar Mascavo · Floral.</p>
-        <div class="hm-prd-b" style="margin-top:auto;">
-          <div class="hm-prd-pr" style="font-size:20px;">R$ 92,00</div>
+        <h3 class="hm-prd-t">Lote 03 — Citrico</h3>
+        <p class="hm-prd-n">Limao Siciliano · Acucar Mascavo · Floral.</p>
+        <div class="hm-prd-b">
+          <div class="hm-prd-pr">R$ 92,00</div>
           <div style="display:flex;gap:24px;">
-            <a href="/pages/cafes" class="lnk" style="font-size:12px;color:var(--clay);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Detalhes</a>
-            <a href="/pages/cafes" class="lnk" style="font-size:12px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Adicionar</a>
+            <a href="/pages/cafes" class="lnk" style="font-size:13px;color:var(--clay);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Detalhes</a>
+            <a href="/pages/cafes" class="lnk" style="font-size:13px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Adicionar</a>
           </div>
         </div>
       </div>
-      <div class="hm-prd-i" style="padding:clamp(40px,5vw,56px);min-height:320px;">
-        <div class="hm-prd-head" style="margin-bottom:40px;">
-          <div class="hm-prd-reg" style="font-size:11px;padding:6px 14px;">Monte Carmelo - MG</div>
-          <div class="label" style="color:var(--sand);font-size:11px;">86+ SCA</div>
+      <div class="hm-prd-i">
+        <div class="hm-prd-head">
+          <div class="hm-prd-reg">Monte Carmelo - MG</div>
+          <div class="label" style="color:var(--sand);font-size:12px;">86+ SCA</div>
         </div>
-        <h3 class="hm-prd-t" style="font-size:32px;margin-bottom:16px;">Lote 04 — Chocolate</h3>
-        <p class="hm-prd-n" style="font-size:16px;margin-bottom:48px;">Chocolate Amargo · Nozes · Caramelo.</p>
-        <div class="hm-prd-b" style="margin-top:auto;">
-          <div class="hm-prd-pr" style="font-size:20px;">R$ 96,00</div>
+        <h3 class="hm-prd-t">Lote 04 — Chocolate</h3>
+        <p class="hm-prd-n">Chocolate Amargo · Nozes · Caramelo.</p>
+        <div class="hm-prd-b">
+          <div class="hm-prd-pr">R$ 96,00</div>
           <div style="display:flex;gap:24px;">
-            <a href="/pages/cafes" class="lnk" style="font-size:12px;color:var(--clay);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Detalhes</a>
-            <a href="/pages/cafes" class="lnk" style="font-size:12px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Adicionar</a>
+            <a href="/pages/cafes" class="lnk" style="font-size:13px;color:var(--clay);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Detalhes</a>
+            <a href="/pages/cafes" class="lnk" style="font-size:13px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Adicionar</a>
           </div>
         </div>
       </div>
@@ -325,23 +330,23 @@ body{font-family:var(--fn);font-weight:400;font-size:15px;line-height:1.65;color
       <h2 class="display" style="color:var(--sand);font-size:clamp(2.5rem,5vw,4rem);">Não é só outro café<br/>na <span class="ital">prateleira</span>.</h2>
       <p class="body-p" style="margin-top:24px;font-size:20px;color:rgba(246,241,235,.75);line-height:1.6;">A diferença entre tomar café por hábito e por escolha.</p>
     </div>
-    <div class="hm-cmp" style="border:1px solid var(--rule-w);">
+    <div class="hm-cmp">
       <div class="hm-cmp-i" style="padding:0;">
-        <div style="background-image:url('{{ 'cofcof-home-section-06-experience.png' | asset_url }}');background-size:cover;background-position:center;min-height:clamp(280px,45vw,440px);display:block;"></div>
+        <div style="background-image:url('{{ 'cofcof-home-section-06-experience.png' | asset_url }}');background-size:cover;background-position:center;min-height:clamp(280px,45vw,480px);display:block;"></div>
       </div>
-      <div class="hm-cmp-i cof" style="padding:clamp(48px,6vw,80px);">
-        <h3 style="font-size:28px;margin-bottom:40px;">CofCof.co</h3>
-        <ul class="hm-cmp-ul cof" style="gap:24px;">
-          <li style="font-size:18px;">100% rastreado até a fazenda</li>
-          <li style="font-size:18px;">Torra precisa para ressaltar a doçura</li>
-          <li style="font-size:18px;">Torrado fresco sob demanda</li>
-          <li style="font-size:18px;">Lotes exclusivos SCA 86+</li>
-          <li style="font-size:18px;">Sabor limpo — sem adoçantes</li>
+      <div class="hm-cmp-i cof" style="padding:clamp(56px,7vw,88px);">
+        <h3 style="font-size:32px;margin-bottom:48px;border-bottom-color:var(--rule-w);padding-bottom:28px;">CofCof.co</h3>
+        <ul class="hm-cmp-ul cof" style="gap:28px;">
+          <li style="font-size:19px;line-height:1.5;">100% rastreado até a fazenda</li>
+          <li style="font-size:19px;line-height:1.5;">Torra precisa para ressaltar a doçura</li>
+          <li style="font-size:19px;line-height:1.5;">Torrado fresco sob demanda</li>
+          <li style="font-size:19px;line-height:1.5;">Lotes exclusivos SCA 86+</li>
+          <li style="font-size:19px;line-height:1.5;">Sabor limpo — sem adoçantes</li>
         </ul>
       </div>
     </div>
     <div style="text-align:center;margin-top:64px;">
-      <a href="/pages/quem-somos" class="btn" style="border:1px solid var(--rule-w);color:var(--sand);padding:24px 56px;font-size:13px;"><span>Entender o nosso processo &rarr;</span></a>
+      <a href="/pages/quem-somos" class="btn" style="border:1px solid var(--rule-w);color:var(--sand);padding:26px 60px;font-size:14px;"><span>Entender o nosso processo &rarr;</span></a>
     </div>
   </div>
 </section>
@@ -495,12 +500,12 @@ body{font-family:var(--fn);font-weight:400;font-size:15px;line-height:1.65;color
       </div>
       <h2 class="display" style="color:var(--sand);font-size:clamp(3rem,6vw,5rem);margin-bottom:24px;">Do Cerrado Mineiro<br/>para sua <span class="ital">xícara</span>.</h2>
       <p class="body-p" style="font-size:20px;color:rgba(246,241,235,.75);max-width:680px;line-height:1.6;">Altitude ideal, clima seco na colheita e produtores premiados criam cafés mais doces, limpos e totalmente rastreáveis.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2px;background:var(--rule-w);border:1px solid var(--rule-w);margin-top:56px;margin-bottom:56px;">
-        <div style="background:var(--black);padding:32px;"><div class="label" style="color:var(--clay);font-size:11px;margin-bottom:12px;">Altitude</div><div style="font-family:var(--fl);font-weight:800;color:var(--sand);font-size:24px;">1.100m+</div></div>
-        <div style="background:var(--black);padding:32px;"><div class="label" style="color:var(--clay);font-size:11px;margin-bottom:12px;">Variedade</div><div style="font-family:var(--fl);font-weight:800;color:var(--sand);font-size:24px;">Catuai 144</div></div>
-        <div style="background:var(--black);padding:32px;"><div class="label" style="color:var(--clay);font-size:11px;margin-bottom:12px;">Processo</div><div style="font-family:var(--fl);font-weight:800;color:var(--sand);font-size:24px;">Natural</div></div>
-        <div style="background:var(--black);padding:32px;"><div class="label" style="color:var(--clay);font-size:11px;margin-bottom:12px;">Safra</div><div style="font-family:var(--fl);font-weight:800;color:var(--sand);font-size:24px;">Fresco</div></div>
-        <div style="background:var(--black);padding:32px;"><div class="label" style="color:var(--clay);font-size:11px;margin-bottom:12px;">Pontuação</div><div style="font-family:var(--fl);font-weight:800;color:var(--sand);font-size:24px;">86+ SCA</div></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:2px;background:var(--rule-w);border:1px solid var(--rule-w);margin-top:56px;margin-bottom:56px;">
+        <div style="background:var(--black);padding:32px 36px;transition:background .3s;"><div class="label" style="color:var(--clay);font-size:12px;margin-bottom:16px;letter-spacing:.2em;">Altitude</div><div style="font-family:var(--fl);font-weight:800;color:var(--sand);font-size:28px;letter-spacing:-.01em;">1.100m+</div></div>
+        <div style="background:var(--black);padding:32px 36px;transition:background .3s;"><div class="label" style="color:var(--clay);font-size:12px;margin-bottom:16px;letter-spacing:.2em;">Variedade</div><div style="font-family:var(--fl);font-weight:800;color:var(--sand);font-size:28px;letter-spacing:-.01em;">Catuai 144</div></div>
+        <div style="background:var(--black);padding:32px 36px;transition:background .3s;"><div class="label" style="color:var(--clay);font-size:12px;margin-bottom:16px;letter-spacing:.2em;">Processo</div><div style="font-family:var(--fl);font-weight:800;color:var(--sand);font-size:28px;letter-spacing:-.01em;">Natural</div></div>
+        <div style="background:var(--black);padding:32px 36px;transition:background .3s;"><div class="label" style="color:var(--clay);font-size:12px;margin-bottom:16px;letter-spacing:.2em;">Safra</div><div style="font-family:var(--fl);font-weight:800;color:var(--sand);font-size:28px;letter-spacing:-.01em;">Fresco</div></div>
+        <div style="background:var(--black);padding:32px 36px;transition:background .3s;"><div class="label" style="color:var(--clay);font-size:12px;margin-bottom:16px;letter-spacing:.2em;">Pontuação</div><div style="font-family:var(--fl);font-weight:800;color:var(--sand);font-size:28px;letter-spacing:-.01em;">86+ SCA</div></div>
       </div>
       <a href="/pages/origem" class="btn btn-sd" style="font-size:13px;padding:24px 56px;"><span>Descobrir a origem &rarr;</span></a>
     </div>
@@ -514,14 +519,14 @@ body{font-family:var(--fn);font-weight:400;font-size:15px;line-height:1.65;color
       <div class="eyebrow" style="margin-bottom:24px;">Clube de Assinatura</div>
       <h2 class="display" style="color:var(--black);margin-bottom:32px;font-size:clamp(2.5rem,5vw,4.5rem);">Cafés premiados antes de todo <span class="ital">mundo</span>.</h2>
       <p class="body-p" style="font-size:18px;color:var(--sub);max-width:520px;margin-bottom:48px;line-height:1.6;">Curadoria pronta, todo mês, sem você ter que escolher. Sem fidelidade, cancele ou pause quando precisar.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:64px;">
-        <div style="background:var(--black);color:var(--sand);padding:20px 24px;border-radius:4px;"><div class="label" style="font-size:12px;">Curadoria sensorial</div></div>
-        <div style="background:var(--black);color:var(--sand);padding:20px 24px;border-radius:4px;"><div class="label" style="font-size:12px;">Rastreabilidade total</div></div>
-        <div style="background:var(--black);color:var(--sand);padding:20px 24px;border-radius:4px;"><div class="label" style="font-size:12px;">Torra fresca mensal</div></div>
-        <div style="background:var(--black);color:var(--sand);padding:20px 24px;border-radius:4px;"><div class="label" style="font-size:12px;">Flexibilidade total</div></div>
+      <div class="hm-kit-benefits" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:64px;">
+        <div style="background:var(--black);color:var(--sand);padding:20px 24px;border-radius:6px;transition:transform .35s ease,background .35s;cursor:default;"><div class="label" style="font-size:13px;">Curadoria sensorial</div></div>
+        <div style="background:var(--black);color:var(--sand);padding:20px 24px;border-radius:6px;transition:transform .35s ease,background .35s;cursor:default;"><div class="label" style="font-size:13px;">Rastreabilidade total</div></div>
+        <div style="background:var(--black);color:var(--sand);padding:20px 24px;border-radius:6px;transition:transform .35s ease,background .35s;cursor:default;"><div class="label" style="font-size:13px;">Torra fresca mensal</div></div>
+        <div style="background:var(--black);color:var(--sand);padding:20px 24px;border-radius:6px;transition:transform .35s ease,background .35s;cursor:default;"><div class="label" style="font-size:13px;">Flexibilidade total</div></div>
       </div>
       <div style="display:flex;align-items:center;gap:32px;flex-wrap:wrap;">
-        <a href="/pages/assinatura" class="btn" style="background:var(--black);color:var(--sand);padding:24px 56px;font-size:13px;"><span>Ver planos do clube &rarr;</span></a>
+        <a href="/pages/assinatura" class="btn" style="background:var(--black);color:var(--sand);padding:26px 60px;font-size:14px;border-radius:6px;"><span>Ver planos do clube &rarr;</span></a>
       </div>
     </div>
     <div class="hm-kit-img">
@@ -540,14 +545,14 @@ body{font-family:var(--fn);font-weight:400;font-size:15px;line-height:1.65;color
       <div class="eyebrow" style="margin-bottom:24px;">CofCof Empresas</div>
       <h2 class="display" style="color:var(--sand);margin-bottom:32px;font-size:clamp(2.5rem,5vw,4.5rem);">O cuidado antes da primeira <span class="ital">reunião</span>.</h2>
       <p class="body-p" style="font-size:18px;color:rgba(246,241,235,.75);max-width:520px;margin-bottom:48px;line-height:1.6;">Para clínicas, escritórios, hotéis, restaurantes e empresas que entendem que o café servido diz muito sobre a marca.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:64px;">
-        <div style="background:var(--sand);padding:20px 24px;border-radius:4px;"><div class="label" style="font-size:12px;">Preço corporativo</div></div>
-        <div style="background:var(--sand);padding:20px 24px;border-radius:4px;"><div class="label" style="font-size:12px;">10kg+ / mês</div></div>
-        <div style="background:var(--sand);padding:20px 24px;border-radius:4px;"><div class="label" style="font-size:12px;">NFC-e automática</div></div>
-        <div style="background:var(--sand);padding:20px 24px;border-radius:4px;"><div class="label" style="font-size:12px;">Atendimento focado</div></div>
+      <div class="hm-kit-benefits" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:64px;">
+        <div style="background:var(--sand);padding:20px 24px;border-radius:6px;transition:transform .35s ease,box-shadow .35s;cursor:default;"><div class="label" style="font-size:13px;">Preço corporativo</div></div>
+        <div style="background:var(--sand);padding:20px 24px;border-radius:6px;transition:transform .35s ease,box-shadow .35s;cursor:default;"><div class="label" style="font-size:13px;">10kg+ / mês</div></div>
+        <div style="background:var(--sand);padding:20px 24px;border-radius:6px;transition:transform .35s ease,box-shadow .35s;cursor:default;"><div class="label" style="font-size:13px;">NFC-e automática</div></div>
+        <div style="background:var(--sand);padding:20px 24px;border-radius:6px;transition:transform .35s ease,box-shadow .35s;cursor:default;"><div class="label" style="font-size:13px;">Atendimento focado</div></div>
       </div>
       <div style="display:flex;align-items:center;gap:32px;flex-wrap:wrap;">
-        <a href="/pages/empresas" class="btn btn-sd" style="padding:24px 56px;font-size:13px;"><span>Solicitar proposta B2B &rarr;</span></a>
+        <a href="/pages/empresas" class="btn btn-sd" style="padding:26px 60px;font-size:14px;border-radius:6px;"><span>Solicitar proposta B2B &rarr;</span></a>
       </div>
     </div>
   </div>
