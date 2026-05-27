@@ -74,7 +74,7 @@
 </section>
 
 <!-- 2. TICKER -->
-<section data-shopify-section="cafes-ticker" class="tk fi">
+<section data-shopify-section="cafes-ticker" class="tk">
   <div class="tk-i">
     {% assign claims = "Cup of Excellence|86+ pts SCA|Cerrado Mineiro D.O.|Torra sob demanda|Rastreabilidade QR|8 produtores" | split: "|" %}
     {% for i in (1..2) %}
@@ -243,7 +243,7 @@
     {% assign pills = 'Frutado, Caramelo, Chocolate, Cremoso' %}
     {% assign sweet = 84 %}{% assign acid = 52 %}{% assign body = 78 %}{% assign aroma = 80 %}
   {% endif %}
-<section data-shopify-section="cafe-lote-{{ num }}" class="cf fi" id="lote-{{ num }}">
+<section data-shopify-section="cafe-lote-{{ num }}" class="cf fi{% if num == '01' or num == '02' %} v{% endif %}" id="lote-{{ num }}">
   <div class="cof-catalog__wrap">
     <div class="cf-grid">
       <div class="cf-media">
@@ -271,7 +271,7 @@
           <div class="cf-vid-grain"></div>
           <div class="cf-vid-tag">Entrevista com produtor</div>
           <div class="cf-vid-play">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path></svg>
           </div>
         </div>
       </div>
