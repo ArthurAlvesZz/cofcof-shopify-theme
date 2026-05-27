@@ -19,7 +19,14 @@
 .pg-hero-in{position:relative;z-index:2}
 .pg-hero h1{font-size:clamp(2.5rem,5.5vw,4.5rem);color:var(--cof-sand);font-weight:800;margin-top:20px;max-width:1100px;line-height:1.1;letter-spacing:-.02em}
 .pg-hero .body-p{font-size:clamp(16px,1.5vw,20px);color:rgba(246,241,235,.75);margin-top:24px;max-width:680px;line-height:1.6}
-.pg-hero-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:24px;padding:32px 0 0;margin-top:56px;border-top:1px solid rgba(246,241,235,.15)}.pg-hero-meta>div>.eyebrow{margin-bottom:8px;font-size:11px}.pg-hero-meta>div>.label{color:var(--cof-sand);font-size:16px}
+.pg-hero-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:24px;padding:32px 24px;margin-top:56px;margin-left:-24px;margin-right:-24px;border-top:1px solid rgba(246,241,235,.22);background:linear-gradient(to right,rgba(10,10,10,.38),rgba(10,10,10,.14));backdrop-filter:blur(4px)}@media(min-width:768px){.pg-hero-meta{padding:32px 40px;margin-left:-40px;margin-right:-40px}}.pg-hero-meta>div>.eyebrow{margin-bottom:8px;font-size:11px}.pg-hero-meta>div>.label{color:var(--cof-sand);font-size:16px}
+
+/* Hero legibility */
+.pg-hero .ital{color:rgba(246,241,235,.92);text-shadow:0 2px 14px rgba(0,0,0,.55)}
+.pg-hero h1,.pg-hero .display{text-shadow:0 2px 16px rgba(0,0,0,.58),0 1px 2px rgba(0,0,0,.36)}
+.pg-hero .body-p{color:rgba(246,241,235,.92);text-shadow:0 1px 10px rgba(0,0,0,.46)}
+.pg-hero .eyebrow{text-shadow:0 1px 6px rgba(0,0,0,.35)}
+.pg-hero-meta>div>.label{text-shadow:0 1px 8px rgba(0,0,0,.5)}
 
 /* Ticker */
 .tk{background:var(--cof-sand);border-bottom:1px solid rgba(10,10,10,.12);padding:16px 0;overflow:hidden;display:flex;align-items:center}.tk-i{display:flex;white-space:nowrap;animation:tk-scroll 25s linear infinite}.tk-item{font:700 10px/1 Montserrat,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--cof-clay);display:flex;align-items:center;margin-right:48px}.tk-item span{font-size:8px;margin-left:48px;opacity:.4}@keyframes tk-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
@@ -50,7 +57,7 @@
   <div class="pg-hero-grid"></div>
   <div class="pg-hero-spot"></div>
   <div class="pg-hero-grain"></div>
-  <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.85) 0%,rgba(10,10,10,.5) 40%,rgba(10,10,10,.15) 70%,transparent 100%),linear-gradient(to bottom,rgba(10,10,10,.18) 0%,transparent 30%,rgba(10,10,10,.35) 70%,rgba(10,10,10,.58) 100%);z-index:1;pointer-events:none;"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.88) 0%,rgba(10,10,10,.72) 38%,rgba(10,10,10,.35) 68%,rgba(10,10,10,.08) 100%),linear-gradient(180deg,rgba(10,10,10,.16) 0%,rgba(10,10,10,0) 36%,rgba(10,10,10,.64) 100%);z-index:1;pointer-events:none;"></div>
   <div class="cof-catalog__wrap pg-hero-in">
     <div class="eyebrow">Curadoria · Safra 25</div>
     <h1 class="display">8 lotes premiados.<br />8 produtores do <span class="ital">Cerrado</span>.</h1>
