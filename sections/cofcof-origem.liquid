@@ -6,8 +6,9 @@
 .cof-origem button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .cof-origem .bx{max-width:1340px;margin:0 auto;padding:0 28px}
 @media(min-width:768px){.cof-origem .bx{padding:0 56px}}
-.cof-origem .fi{opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.cof-origem .fi{opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);will-change:opacity,transform}
 .cof-origem .fi.v{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.cof-origem .fi{opacity:1;transform:none;transition:none}}
 .cof-origem .eyebrow{font-family:var(--fl);font-weight:700;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--clay)}
 .cof-origem .display{font-family:var(--fl);font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:.96}
 .cof-origem .ital{font-family:var(--fl);font-weight:800;font-style:italic;text-transform:lowercase;letter-spacing:-.005em;color:var(--clay)}
@@ -29,13 +30,15 @@
 .cof-origem .label{font-family:var(--fl);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
 
 /* Hero */
-.cof-origem .pg-hero{padding:130px 0 72px;background:var(--black);color:var(--sand);position:relative;overflow:hidden;min-height:70vh;display:flex;align-items:center}
-@media(min-width:768px){.cof-origem .pg-hero{padding:160px 0 96px}}
-.cof-origem .pg-hero-grid{position:absolute;inset:0;background-image:linear-gradient(to right,var(--rule-w) 1px,transparent 1px);background-size:25% 100%;opacity:.5;pointer-events:none}
-.cof-origem .pg-hero-spot{position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:80%;height:70%;background:radial-gradient(ellipse at center,rgba(122,102,84,.16) 0%,transparent 60%);filter:blur(40px);pointer-events:none}
+.cof-origem .pg-hero{padding:100px 0 56px;color:var(--sand);position:relative;overflow:hidden;min-height:70vh;display:flex;align-items:center;background-color:var(--black);background-image:linear-gradient(90deg,rgba(10,10,10,.88) 0%,rgba(10,10,10,.52) 40%,rgba(10,10,10,.18) 100%),linear-gradient(180deg,rgba(10,10,10,.28) 0%,rgba(10,10,10,.72) 100%);background-size:cover;background-position:center 32%}
+@media(min-width:768px){.cof-origem .pg-hero{padding:140px 0 80px;background-position:center 30%}}
+.cof-origem .pg-hero-bg{position:absolute;inset:0;background-image:url('{{ 'cofcof-origem-hero-background.png' | asset_url }}');background-size:cover;background-position:center 32%;z-index:0}
+@media(min-width:768px){.cof-origem .pg-hero-bg{background-position:center 30%}}
+.cof-origem .pg-hero-grid{position:absolute;inset:0;background-image:linear-gradient(to right,var(--rule-w) 1px,transparent 1px);background-size:25% 100%;opacity:.5;pointer-events:none;z-index:1}
+.cof-origem .pg-hero-spot{position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:80%;height:70%;background:radial-gradient(ellipse at center,rgba(122,102,84,.16) 0%,transparent 60%);filter:blur(40px);pointer-events:none;z-index:1}
 .cof-origem .pg-hero-in{position:relative;z-index:2}
-.cof-origem .pg-hero h1{font-size:clamp(2.2rem,5vw,4.2rem);color:var(--sand);font-weight:800;margin-top:20px}
-.cof-origem .pg-hero .body-p{font-size:clamp(16px,1.2vw,18px);color:rgba(246,241,235,.7);margin-top:24px}
+.cof-origem .pg-hero h1{font-size:clamp(2.2rem,5vw,4.2rem);color:var(--sand);font-weight:800;margin-top:20px;text-shadow:0 1px 6px rgba(0,0,0,.3)}
+.cof-origem .pg-hero .body-p{font-size:clamp(16px,1.2vw,18px);color:rgba(246,241,235,.75);margin-top:24px;text-shadow:0 1px 4px rgba(0,0,0,.25)}
 .cof-origem .pg-hero-cta{margin-top:48px;display:flex;flex-direction:column;gap:16px}
 @media(min-width:600px){.cof-origem .pg-hero-cta{flex-direction:row;flex-wrap:wrap}}
 
@@ -43,6 +46,9 @@
 .cof-origem .hero-badge{display:inline-flex;align-items:center;border:1px solid rgba(201,162,99,.3);color:var(--clay);padding:6px 16px;border-radius:40px;background:rgba(201,162,99,.05);font-family:var(--fl);font-weight:700;font-size:10px;letter-spacing:.24em;text-transform:uppercase}
 .cof-origem .hero-meta{display:flex;flex-wrap:wrap;gap:24px;color:var(--clay);font-family:var(--fl);font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:800;margin-top:40px;justify-content:center}
 .cof-origem .hero-meta span{display:flex;align-items:center;gap:6px}
+
+/* Filter category */
+.cof-origem .orig-filter-cat{font-family:var(--fl);font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sub);margin-bottom:4px}
 
 /* Why grid */
 .cof-origem .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;background:var(--rule);border:1px solid var(--rule)}
@@ -59,7 +65,11 @@
 .cof-origem .orig-map-panel{padding:clamp(32px,4vw,64px);background:var(--black)}
 @media(min-width:1024px){.cof-origem .orig-map-panel{flex:1;border-right:1px solid var(--rule-w)}}
 .cof-origem .orig-map-filter{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-.cof-origem .orig-filter-btn{padding:6px 12px;border-radius:40px;font-family:var(--fl);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;border:1px solid var(--rule-w);background:var(--black);color:var(--clay);transition:all .2s}
+.cof-origem .orig-filter-btn{padding:6px 12px;border-radius:40px;font-family:var(--fl);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;border:1px solid var(--rule-w);background:var(--black);color:var(--clay);transition:all .2s;cursor:pointer;display:flex;align-items:center;gap:6px}
+.cof-origem .orig-filter-btn.active{background:var(--sand);color:var(--black);border-color:var(--sand)}
+.cof-origem .orig-filter-btn:hover:not(.active){border-color:var(--clay);color:var(--sand)}
+.cof-origem .orig-filter-btn span{font-size:8px;background:rgba(0,0,0,.2);padding:2px 4px;border-radius:4px}
+.cof-origem .orig-filter-btn.active span{background:rgba(255,255,255,.2)}
 .cof-origem .orig-farm-card{border:1px solid var(--rule-w);background:var(--black);padding:24px;display:flex;flex-direction:column;margin-bottom:16px}
 .cof-origem .orig-farm-card.selected{border-color:var(--clay)}
 .cof-origem .farm-detail-row{display:flex;justify-content:space-between;border-bottom:1px solid var(--rule);padding:12px 0;font-size:14px}
@@ -120,6 +130,7 @@
 
 <!-- HERO -->
 <section class="pg-hero fi v">
+  <div class="pg-hero-bg"></div>
   <div class="pg-hero-grid"></div>
   <div class="pg-hero-spot"></div>
   <div class="bx pg-hero-in" style="text-align:center">
@@ -199,15 +210,24 @@
         Explore as fazendas por tras dos nossos lotes. Cada ponto representa uma origem selecionada: produtores, microlotes e cafes rastreaveis que compoem a curadoria CofCof.
       </p>
 
-      <div class="orig-map-filter" id="origFilters">
-        <button class="orig-filter-btn active" data-filter="todos">Todos <span>0</span></button>
-        <button class="orig-filter-btn" data-filter="sca">86+ SCA <span>0</span></button>
-        <button class="orig-filter-btn" data-filter="natural">Natural <span>0</span></button>
-        <button class="orig-filter-btn" data-filter="fermentado">Fermentado <span>0</span></button>
-        <button class="orig-filter-btn" data-filter="coexcellence">Cup of Excellence <span>0</span></button>
-        <button class="orig-filter-btn" data-filter="doce">Mais Doce <span>0</span></button>
-        <button class="orig-filter-btn" data-filter="floral">Mais Floral <span>0</span></button>
-        <button class="orig-filter-btn" data-filter="frutado">Mais Frutado <span>0</span></button>
+      <div id="origFilters">
+        <div class="orig-filter-cat">Situacao</div>
+        <div class="orig-map-filter">
+          <button class="orig-filter-btn active" data-filter="todos">Todos <span>0</span></button>
+          <button class="orig-filter-btn" data-filter="sca">86+ SCA <span>0</span></button>
+        </div>
+        <div class="orig-filter-cat" style="margin-top:16px">Sensorial</div>
+        <div class="orig-map-filter">
+          <button class="orig-filter-btn" data-filter="doce">Mais Doce <span>0</span></button>
+          <button class="orig-filter-btn" data-filter="floral">Mais Floral <span>0</span></button>
+          <button class="orig-filter-btn" data-filter="frutado">Mais Frutado <span>0</span></button>
+        </div>
+        <div class="orig-filter-cat" style="margin-top:16px">Processo</div>
+        <div class="orig-map-filter">
+          <button class="orig-filter-btn" data-filter="natural">Natural <span>0</span></button>
+          <button class="orig-filter-btn" data-filter="fermentado">Fermentado <span>0</span></button>
+          <button class="orig-filter-btn" data-filter="coexcellence">Cup of Excellence <span>0</span></button>
+        </div>
       </div>
 
       <!-- Farm cards (dados injetados via JS) -->
@@ -428,7 +448,10 @@
       center: [-18.85, -47.0],
       zoom: 7.5,
       zoomControl: false,
-      scrollWheelZoom: true
+      scrollWheelZoom: window.innerWidth >= 1024,
+      dragging: window.innerWidth >= 1024,
+      touchZoom: window.innerWidth >= 1024,
+      doubleClickZoom: window.innerWidth >= 1024
     });
     L.control.zoom({ position:'bottomright' }).addTo(map);
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
@@ -563,6 +586,25 @@
     // Select first farm by default
     if (farms.length > 0) selectFarm(farms[0]);
 
+    // Mobile map scroll lock
+    var isMobile = window.innerWidth < 1024;
+    var mapWrap = container.closest('#mapa-origem');
+    if (isMobile && mapWrap) {
+      mapWrap.classList.add('cof-map-locked');
+      var unlockBtn = document.createElement('button');
+      unlockBtn.className = 'cof-map-unlock-btn';
+      unlockBtn.textContent = 'Usar mapa';
+      unlockBtn.addEventListener('click', function() {
+        mapWrap.classList.remove('cof-map-locked');
+        unlockBtn.classList.add('active');
+        map.dragging.enable();
+        map.touchZoom.enable();
+        map.doubleClickZoom.enable();
+        map.scrollWheelZoom.enable();
+      });
+      container.appendChild(unlockBtn);
+    }
+
     // Handle resize for flex direction
     function handleResize() {
       var flex = document.querySelector('#mapa-origem .orig-map-flex');
@@ -609,8 +651,52 @@
 })();
 </script>
 <style>
-.cof-origem .orig-map-placeholder .leaflet-container{background:#0a0a0a;width:100%;height:100%;z-index:1}
+.cof-origem .orig-map-placeholder .leaflet-container{background:#0a0a0a;width:100%;height:100%}
+.cof-origem .orig-map-placeholder .leaflet-pane{z-index:10}
+.cof-origem .orig-map-placeholder .leaflet-top,.cof-origem .orig-map-placeholder .leaflet-bottom{z-index:20}
+.cof-origem .orig-map-placeholder .leaflet-control-zoom{border:1px solid var(--rule-w);box-shadow:none;border-radius:0;overflow:hidden;margin-bottom:24px;margin-right:24px}
+.cof-origem .orig-map-placeholder .leaflet-control-zoom a{background-color:var(--black);color:var(--sand);transition:all .2s;border:none;border-bottom:1px solid var(--rule-w)}
+.cof-origem .orig-map-placeholder .leaflet-control-zoom a:hover{background-color:var(--rule-w);color:var(--clay)}
 .orig-pin{transition:transform .3s,box-shadow .3s,border-color .3s}
+
+/* Map mobile lock */
+.cof-origem .cof-map-locked .orig-map-placeholder .leaflet-container{pointer-events:none}
+.cof-origem .cof-map-unlock-btn{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:30;padding:12px 28px;background:var(--sand);color:var(--black);border-radius:40px;font-family:var(--fl);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border:none;cursor:pointer;transition:opacity .3s;box-shadow:0 4px 20px rgba(0,0,0,.5)}
+.cof-origem .cof-map-locked .cof-map-unlock-btn{display:block}
+.cof-origem .cof-map-unlock-btn.active{display:none}
+@media(min-width:1024px){.cof-origem .cof-map-unlock-btn{display:none!important}}
+
+/* Why grid hover */
+.cof-origem .why-i{background:var(--sand);padding:40px;transition:background .3s}
+.cof-origem .why-i:hover{background:#efe7db}
+
+/* Producer card polish */
+.cof-origem .prod-img{background:linear-gradient(135deg,var(--parch),#ddd5c9);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.cof-origem .prod-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(10,10,10,.06));pointer-events:none}
+.cof-origem .prod-img svg{opacity:.12;width:56px;height:56px;color:var(--clay)}
+.cof-origem .prod-actions .btn{padding:16px;font-size:10px;text-align:center;flex:1}
+.cof-origem .prod-actions .btn:last-child{border:1px solid var(--rule);color:var(--black);position:relative;overflow:hidden;display:inline-block;cursor:pointer;font-family:var(--fl);font-weight:700;letter-spacing:.2em;text-transform:uppercase;transition:color .38s}
+.cof-origem .prod-actions .btn:last-child::before{content:'';position:absolute;inset:0;background:var(--black);transform:translateY(101%);transition:transform .42s cubic-bezier(.2,.7,.2,1);z-index:0}
+.cof-origem .prod-actions .btn:last-child:hover::before{transform:translateY(0)}
+.cof-origem .prod-actions .btn:last-child:hover{color:var(--sand)}
+.cof-origem .prod-actions .btn:last-child>span{position:relative;z-index:1}
+
+/* Timeline polish */
+.cof-origem .tl-circle{width:80px;height:80px;border-radius:50%;background:var(--black);border:1px solid var(--rule-w);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;color:var(--clay);transition:transform .3s,box-shadow .3s}
+.cof-origem .tl-i:hover .tl-circle{transform:scale(1.08);box-shadow:0 0 0 3px rgba(201,162,99,.15)}
+.cof-origem .tl-i h4{font-family:var(--fl);font-weight:800;font-size:20px;color:var(--sand);margin-bottom:8px;line-height:.96}
+.cof-origem .tl-i p{font-family:var(--fn);font-weight:300;font-size:13px;color:rgba(246,241,235,.65);line-height:1.6}
+
+/* Product card polish */
+.cof-origem .prd-i{background:var(--parch);padding:32px;display:flex;flex-direction:column;transition:background .3s,transform .3s,box-shadow .3s}
+.cof-origem .prd-i:hover{background:#ddd5c9;transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.cof-origem .prd-pr{font-family:var(--fl);font-weight:700;font-size:16px;color:var(--black)}
+.cof-origem .prd-lnk{font-family:var(--fl);font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--clay);position:relative;display:inline-block;padding-bottom:2px}
+.cof-origem .prd-lnk::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform-origin:right;transform:scaleX(0);transition:transform .3s}
+.cof-origem .prd-lnk:hover::after{transform-origin:left;transform:scaleX(1)}
+
+/* Hero badge text shadow */
+.cof-origem .hero-badge{display:inline-flex;align-items:center;border:1px solid rgba(201,162,99,.3);color:var(--clay);padding:6px 16px;border-radius:40px;background:rgba(201,162,99,.05);font-family:var(--fl);font-weight:700;font-size:10px;letter-spacing:.24em;text-transform:uppercase}
 </style>
 
 <script>
