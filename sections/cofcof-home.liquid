@@ -94,6 +94,12 @@ body{font-family:var(--fn);font-weight:400;font-size:15px;line-height:1.65;color
 .cta-end .btn{font-size:13px;padding:24px 56px;background:var(--black);color:var(--sand)}
 .cta-end .btn::before{background:var(--sand)}
 .cta-end .btn:hover{color:var(--black)}
+
+/* Hero legibility — solid bg for badge, darker overlay for badge-right, lighter metrics */
+.pg-hero .eyebrow span{background-color:rgba(10,10,10,.55)!important;border-color:rgba(246,241,235,.2)!important;color:var(--sand)!important}
+.hero-right-badge{opacity:1;background:radial-gradient(circle,rgba(10,10,10,.65)0%,rgba(10,10,10,.4)70%)}
+.hero-right-badge .hrb-inner{color:var(--sand)}
+.pg-hero .hero-content>div:last-child .label{color:rgba(246,241,235,.85)}
 </style>
 
 <!-- 1. HERO -->
@@ -131,6 +137,7 @@ body{font-family:var(--fn);font-weight:400;font-size:15px;line-height:1.65;color
         </div>
       </div>
     </div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:clamp(120px,18vh,220px);background:linear-gradient(to bottom,transparent 0%,var(--black) 60%);pointer-events:none;z-index:1;"></div>
   </div>
 </section>
 
