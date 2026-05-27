@@ -296,6 +296,7 @@
 
     mapEl.innerHTML = '';
     map = L.map(mapEl, { scrollWheelZoom: true, zoomControl: false });
+    mapEl._leaflet_map = map;
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png', {
       maxZoom: 19
     }).addTo(map);
@@ -381,5 +382,25 @@
     }
   }
   tryInitMap();
+
+  // Mobile tab toggle (Lista / Mapa)
+  var tabsMobile = document.getElementById('cpTabsMobile');
+  if (tabsMobile) {
+    tabsMobile.addEventListener('click', function(e) {
+      var btn = e.target.closest('button');
+      if (!btn || !btn.dataset.tab) return;
+      var isList = btn.dataset.tab === 'lista';
+      tabsMobile.querySelectorAll('button').forEach(function(b) {
+        b.classList.toggle('active', b === btn);
+      });
+      if (listEl) listEl.style.display = isList ? '' : 'none';
+      if (mapEl) {
+        mapEl.style.display = isList ? 'none' : 'block';
+        if (!isList && mapEl._leaflet_map) {
+          setTimeout(function() { mapEl._leaflet_map.invalidateSize(); }, 200);
+        }
+      }
+    });
+  }
   }); // end ready
 })();

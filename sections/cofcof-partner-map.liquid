@@ -93,7 +93,17 @@
 
 @media(min-width:768px){.cof-partner-full .cp-preview{bottom:32px;right:32px;left:auto;width:420px}}
 @media(max-width:767px){.cof-partner-full .cp-preview{bottom:0;left:0;right:0;border-left:0;border-right:0;border-bottom:0;max-height:70vh;width:auto}}
-@media(max-width:767px){.cof-partner-full .cp-map-wrap{height:45vh}}
+@media(max-width:767px){
+  .cof-partner-full .cp-layout{flex-direction:column}
+  .cof-partner-full .cp-panel{max-height:100%;overflow-y:auto}
+  .cof-partner-full .cp-map-wrap{height:60vh;flex:none;display:none}
+  .cof-partner-full .cp-map-wrap.active{display:block}
+  .cof-partner-full .cp-list.active{display:flex}
+  .cof-partner-full .cp-list.hidden{display:none}
+  .cof-partner-full .cp-tabs-mobile{display:flex;gap:0;margin-bottom:16px;flex-shrink:0}
+  .cof-partner-full .cp-tabs-mobile button{flex:1;padding:10px;font-family:var(--fl);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--rule-w);background:var(--black);color:var(--clay);cursor:pointer;transition:all .2s}
+  .cof-partner-full .cp-tabs-mobile button.active{background:var(--sand);color:var(--black);border-color:var(--sand)}
+}
 
 /* Badges */
 .cof-partner-full .cp-preview-badges{display:flex;gap:8px;padding:0 24px 8px}
@@ -132,9 +142,14 @@
           <button data-cat="{{ cat }}"{% if cat == 'Todos' %} class="active"{% endif %}>{{ cat }}</button>
         {% endfor %}
       </div>
+
+      <div class="cp-tabs-mobile" id="cpTabsMobile">
+        <button class="active" data-tab="lista">Lista</button>
+        <button data-tab="mapa">Mapa</button>
+      </div>
     </div>
 
-    <div class="cp-list" id="cpList"></div>
+    <div class="cp-list active" id="cpList"></div>
     <div class="cp-cta-card" id="cpCTACard">
       <h3 class="display">Quer ser parceiro CofCof?</h3>
       <p class="body-p">Seu estabelecimento pode fazer parte da nossa rede.</p>
