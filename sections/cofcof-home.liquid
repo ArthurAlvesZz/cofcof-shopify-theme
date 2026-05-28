@@ -61,19 +61,29 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
 .hm-kit-img{position:relative;aspect-ratio:4/5;background:var(--parch);overflow:border-radius}
 .hm-kit-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s ease-out}
 .hm-kit:hover .hm-kit-img img{transform:scale(1.05)}
-.hm-prd-grid{display:grid;gap:2px;background:var(--rule-w);border:1px solid var(--rule-w);margin-top:clamp(40px,6vh,60px);grid-template-columns:1fr}
-@media(min-width:768px){.hm-prd-grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1200px){.hm-prd-grid{grid-template-columns:repeat(4,1fr)}}
-.hm-prd-i{background:var(--black);padding:clamp(40px,5vw,56px);min-height:340px;display:flex;flex-direction:column;transition:background .4s,transform .4s cubic-bezier(.2,.7,.2,1)}.hm-prd-i:hover{background:#151515;transform:translateY(-2px)}
+.hm-prd-grid{display:grid;gap:18px;margin-top:clamp(40px,6vh,60px);grid-template-columns:1fr}
+@media(min-width:768px){.hm-prd-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1200px){.hm-prd-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:1040px;margin-left:auto;margin-right:auto}}
+.hm-prd-i{background:linear-gradient(145deg,#090909 0%,#111 72%,#1a1511 100%);border:1px solid var(--rule-w);padding:clamp(32px,4.5vw,52px);min-height:360px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:border-color .4s,box-shadow .4s,transform .4s cubic-bezier(.2,.7,.2,1)}
+.hm-prd-i::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 88% 12%,rgba(201,162,99,.13),transparent 34%);opacity:.8;pointer-events:none}
+.hm-prd-i>*{position:relative;z-index:1}.hm-prd-i:hover{border-color:rgba(201,162,99,.38);box-shadow:0 18px 52px rgba(0,0,0,.28);transform:translateY(-3px)}
 .hm-prd-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:40px}
 .hm-prd-reg{font-family:var(--fl);font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--clay);border:1px solid var(--rule-w);padding:6px 14px;border-radius:4px}
 .hm-prd-t{font-family:var(--fl);font-weight:800;font-size:28px;color:var(--sand);margin-bottom:16px}
-.hm-prd-n{font-family:var(--fn);font-weight:300;font-size:17px;color:rgba(246,241,235,.65);line-height:1.55;margin-bottom:auto;min-height:clamp(80px,10vw,120px)}
+.hm-prd-n{font-family:var(--fn);font-weight:300;font-size:17px;color:rgba(246,241,235,.72);line-height:1.55;margin-bottom:auto;min-height:auto}
+.hm-prd-chip{display:inline-flex;width:max-content;margin-top:22px;border:1px solid rgba(201,162,99,.25);border-radius:999px;padding:7px 12px;color:rgba(246,241,235,.86);font-family:var(--fl);font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
 .hm-prd-b{margin-top:48px;display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--rule-w)}
 .hm-prd-pr{font-family:var(--fl);font-weight:800;font-size:24px;color:var(--sand);letter-spacing:-.01em}
 .hm-cmp{display:grid;gap:2px;background:var(--rule);border:1px solid var(--rule)}
 @media(min-width:768px){.hm-cmp{grid-template-columns:1fr 1fr}}
-.hm-cert{display:grid;gap:2px;background:var(--rule);border:1px solid var(--rule);grid-template-columns:repeat(2,1fr)}@media(min-width:768px){.hm-cert{grid-template-columns:repeat(3,1fr)}}.hm-cert-i{transition:background .3s,transform .4s cubic-bezier(.2,.7,.2,1)}.hm-cert-i:hover{background:var(--parch)!important;transform:translateY(-2px)}.hm-cert-icon{margin-bottom:32px;opacity:.85;transition:opacity .3s,transform .4s cubic-bezier(.2,.7,.2,1)}.hm-cert-i:hover .hm-cert-icon{opacity:1;transform:scale(1.06)}
+.hm-cert{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);grid-template-columns:1fr;overflow:hidden}
+@media(min-width:720px){.hm-cert{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1080px){.hm-cert{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.hm-cert-i{min-height:300px;position:relative;transition:background .3s,transform .4s cubic-bezier(.2,.7,.2,1)}
+.hm-cert-i::after{content:"";position:absolute;right:24px;bottom:20px;width:72px;height:72px;border-radius:50%;border:1px solid rgba(122,102,84,.14);opacity:.65}
+.hm-cert-i:hover{background:var(--parch)!important;transform:translateY(-2px)}
+.hm-cert-icon{margin-bottom:32px;opacity:.95;transition:opacity .3s,transform .4s cubic-bezier(.2,.7,.2,1)}
+.hm-cert-i:hover .hm-cert-icon{opacity:1;transform:scale(1.06)}
 .hm-cmp-i{background:var(--sand);padding:clamp(32px,5vw,64px);position:relative;overflow:hidden}
 .hm-cmp-i h3{font-family:var(--fl);font-weight:800;font-size:24px;margin-bottom:32px;border-bottom:1px solid var(--rule);padding-bottom:24px}
 .hm-cmp-i.cof{background:var(--black);color:var(--sand)}
@@ -81,11 +91,18 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
 .hm-cmp-ul{list-style:none;display:flex;flex-direction:column;gap:16px;padding:0;margin:0}
 .hm-cmp-ul li{font-family:var(--fn);font-weight:300;font-size:16px;display:flex;align-items:center;gap:16px}
 .hm-cmp-ul.cof li{color:var(--sand);font-weight:500}
-.hm-rvw{overflow:hidden;position:relative;margin-top:clamp(40px,6vh,60px)}
+.hm-rvw{overflow:hidden;position:relative;margin-top:clamp(40px,6vh,60px);mask-image:linear-gradient(to right,transparent 0,#000 7%,#000 93%,transparent 100%)}
 .hm-rvw-track{display:flex;gap:clamp(16px,2vw,24px);min-width:max-content;animation:hm-rvw-scroll 48s linear infinite;padding:4px 0;will-change:transform}
 .hm-rvw-track:hover{animation-play-state:paused}
 @media(prefers-reduced-motion:reduce){.hm-rvw-track{animation:none;overflow-x:auto;-webkit-overflow-scrolling:touch}}
-.hm-rvw-i{flex:0 0 auto;width:min(380px,82vw);background:var(--black);padding:clamp(28px,3vw,40px);display:flex;flex-direction:column}
+.hm-rvw-i{flex:0 0 auto;width:min(390px,84vw);background:linear-gradient(145deg,#0b0b0b,#15110e);border:1px solid var(--rule-w);padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;min-height:286px;box-shadow:0 16px 46px rgba(0,0,0,.16)}
+.hm-rvw-i::before{content:"\2605\2605\2605\2605\2605";color:#C9A263;font-family:var(--fl);font-size:11px;letter-spacing:.22em;margin-bottom:18px}
+.hm-rvw-i::after{content:"Prova social CofCof";display:inline-flex;width:max-content;margin-top:20px;border:1px solid rgba(201,162,99,.25);border-radius:999px;padding:6px 10px;color:rgba(246,241,235,.66);font-family:var(--fl);font-size:8px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+.hm-rvw-stars{color:#C9A263;font-family:var(--fl);font-size:11px;letter-spacing:.22em;margin-bottom:22px}
+.hm-rvw-tag{display:inline-flex;width:max-content;margin-top:18px;border:1px solid rgba(201,162,99,.25);border-radius:999px;padding:6px 10px;color:rgba(246,241,235,.66);font-family:var(--fl);font-size:8px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+.hm-rvw-i:nth-child(3n+1)::after{content:"Cliente CofCof"}
+.hm-rvw-i:nth-child(3n+2)::after{content:"Clube CofCof"}
+.hm-rvw-i:nth-child(3n+3)::after{content:"B2B / Presente"}
 @keyframes hm-rvw-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .hm-rvw-q{font-family:var(--fn);font-weight:300;font-style:italic;font-size:16px;line-height:1.7;color:var(--sand);margin-bottom:32px}
 .hm-rvw-n{margin-top:auto;border-top:1px solid var(--rule-w);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-family:var(--fl)}
@@ -113,11 +130,11 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
 .pg-hero .eyebrow,.pg-hero h1,.pg-hero .body-p,.pg-hero-cta,.pg-hero .hero-content>div:last-child{animation:hm-hero-rise .82s cubic-bezier(.2,.7,.2,1) both}
 .pg-hero h1{animation-delay:.08s}.pg-hero .body-p{animation-delay:.16s}.pg-hero-cta{animation-delay:.24s}.pg-hero .hero-content>div:last-child{animation-delay:.34s}
 @keyframes hm-hero-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-.hm-prd-i,.hm-ig-card{opacity:0;transform:translateY(22px);transition:opacity .78s cubic-bezier(.2,.7,.2,1),transform .78s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
-.hm-prd-i.v,.hm-ig-card.v{opacity:1;transform:none}
-.hm-prd-i:nth-child(2),.hm-ig-card:nth-child(2){transition-delay:.06s}
-.hm-prd-i:nth-child(3),.hm-ig-card:nth-child(3){transition-delay:.12s}
-.hm-prd-i:nth-child(4),.hm-ig-card:nth-child(4){transition-delay:.18s}
+.hm-prd-i,.hm-guide-card,.hm-ig-card{opacity:0;transform:translateY(22px);transition:opacity .78s cubic-bezier(.2,.7,.2,1),transform .78s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
+.hm-prd-i.v,.hm-guide-card.v,.hm-ig-card.v{opacity:1;transform:none}
+.hm-prd-i:nth-child(2),.hm-guide-card:nth-child(2),.hm-ig-card:nth-child(2){transition-delay:.06s}
+.hm-prd-i:nth-child(3),.hm-guide-card:nth-child(3),.hm-ig-card:nth-child(3){transition-delay:.12s}
+.hm-prd-i:nth-child(4),.hm-guide-card:nth-child(4),.hm-ig-card:nth-child(4){transition-delay:.18s}
 .hm-ig-section{background:var(--black);color:var(--sand);position:relative;overflow:hidden;padding:clamp(78px,10vw,128px) 0}
 .hm-ig-section::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 16% 0,rgba(122,102,84,.2),transparent 32%),radial-gradient(circle at 88% 18%,rgba(201,162,99,.1),transparent 28%),linear-gradient(180deg,#050505 0%,#0a0a0a 100%);pointer-events:none}
 .hm-ig-section .bx{position:relative;z-index:1}
@@ -139,8 +156,24 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
 .hm-ig-meta{margin-top:8px;font-family:var(--fl);font-size:8px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(246,241,235,.62)}
 .hm-ig-cta{display:inline-flex;margin-top:18px;font-family:var(--fl);font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--sand);border-bottom:1px solid rgba(246,241,235,.55)}
 .hm-ig-note{margin-top:18px;color:rgba(246,241,235,.5);font-size:13px}
-@media(max-width:640px){.hm-ig-section{padding:72px 0}.hm-ig-card{flex-basis:min(246px,76vw)}}
-@media(prefers-reduced-motion:reduce){.pg-hero .eyebrow,.pg-hero h1,.pg-hero .body-p,.pg-hero-cta,.pg-hero .hero-content>div:last-child{animation:none}.hm-prd-i,.hm-ig-card{opacity:1;transform:none;transition:none}}
+.hm-origin-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:2px;background:var(--rule-w);border:1px solid var(--rule-w);margin-top:56px;margin-bottom:56px}
+.hm-origin-stats>div{background:linear-gradient(145deg,#0a0a0a,#121212);padding:32px 36px;transition:background .3s,border-color .3s;border:1px solid transparent}
+.hm-origin-stats>div:hover{background:#151515;border-color:rgba(201,162,99,.25)}
+.hm-guide{background:var(--parch);padding:clamp(78px,10vw,128px) 0}
+.hm-guide-grid{display:grid;gap:16px;margin-top:42px}
+@media(min-width:760px){.hm-guide-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1120px){.hm-guide-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.hm-guide-card{min-height:300px;padding:30px;border:1px solid var(--rule);background:var(--sand);display:flex;flex-direction:column;transition:transform .35s,border-color .35s,box-shadow .35s}
+.hm-guide-card:nth-child(even){background:var(--black);color:var(--sand);border-color:var(--rule-w)}
+.hm-guide-card:hover{transform:translateY(-3px);border-color:rgba(122,102,84,.38);box-shadow:0 18px 50px rgba(10,10,10,.12)}
+.hm-guide-num{font-family:var(--fl);font-weight:800;font-size:12px;letter-spacing:.18em;color:var(--clay);margin-bottom:34px}
+.hm-guide-card h3{font-family:var(--fl);font-size:23px;line-height:1.08;text-transform:uppercase;margin:0 0 18px}
+.hm-guide-card p{color:var(--sub);font-size:15px;line-height:1.65;margin:0 0 34px}.hm-guide-card:nth-child(even) p{color:rgba(246,241,235,.68)}
+.hm-guide-card .lnk{margin-top:auto;font-family:var(--fl);font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--clay)}
+.hm-kit-benefits>div:hover{transform:translateY(-2px);background:#181818!important}
+.sec-d .hm-kit-benefits>div:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.12)}
+@media(max-width:640px){.sec{padding:72px 0}.hm-cert-i{min-height:auto}.hm-kit-benefits{grid-template-columns:1fr!important}.hm-prd-b{align-items:flex-start;gap:20px;flex-direction:column}.hm-rvw{mask-image:none}.hm-ig-section{padding:72px 0}.hm-ig-card{flex-basis:min(246px,76vw)}.hm-guide{padding:72px 0}.hm-guide-card{min-height:auto}.pg-hero{padding:64px 0 24px}.pg-hero-in{min-height:620px;padding:28px 22px;border-radius:0;margin-left:-28px;margin-right:-28px}.pg-hero h1{font-size:clamp(1.85rem,9.6vw,2.9rem);padding-right:0}.pg-hero .body-p{font-size:16px!important;margin-top:16px}.pg-hero-cta{margin-top:24px}.hero-btn-main,.hero-btn-sec{padding:18px 20px}.pg-hero .hero-content>div:last-child{margin-top:28px!important;gap:18px!important}.hero-content::before{inset:-18px -18px -20px}}
+@media(prefers-reduced-motion:reduce){.pg-hero .eyebrow,.pg-hero h1,.pg-hero .body-p,.pg-hero-cta,.pg-hero .hero-content>div:last-child{animation:none}.hm-prd-i,.hm-guide-card,.hm-ig-card{opacity:1;transform:none;transition:none}}
 </style>
 
 <!-- 1. HERO -->
@@ -164,7 +197,7 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
           <h1 class="display" style="color:var(--sand);line-height:1.02;max-width:680px;">CAFÉS ESPECIAIS PREMIADOS DO BRASIL, TORRADOS SOB DEMANDA.</h1>
           <p class="body-p" style="font-size:clamp(18px,1.5vw,22px);max-width:580px;color:rgba(246,241,235,.88);line-height:1.6;">Talvez o melhor café do Brasil ainda não esteja na sua xícara.</p>
           <div class="pg-hero-cta">
-            <a href="/pages/cafes" class="btn btn-sd hero-btn-main"><span>Comprar cafés premiados &rarr;</span></a>
+            <a href="/pages/nossos-cafes" class="btn btn-sd hero-btn-main"><span>Comprar cafés premiados &rarr;</span></a>
             <a href="/pages/assinatura" class="btn btn-ds hero-btn-sec"><span>Entrar para o Clube</span></a>
           </div>
           <div style="margin-top:44px;display:flex;flex-wrap:wrap;gap:32px;">
@@ -259,7 +292,7 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
         <div style="background:var(--black);color:var(--sand);padding:20px 24px;border-radius:6px;transition:transform .35s ease,background .35s;cursor:default;"><div class="label" style="font-size:13px;">Torra correta</div></div>
       </div>
       <div style="display:flex;align-items:center;gap:40px;flex-wrap:wrap;">
-        <a href="/pages/cafes" class="btn" style="background:var(--black);color:var(--sand);padding:26px 60px;font-size:14px;border-radius:6px;"><span>Garantir meu kit &rarr;</span></a>
+        <a href="/pages/nossos-cafes" class="btn" style="background:var(--black);color:var(--sand);padding:26px 60px;font-size:14px;border-radius:6px;"><span>Garantir meu kit &rarr;</span></a>
         <div>
           <div class="eyebrow" style="color:var(--sub);margin-bottom:8px;">Valor Especial</div>
           <div class="display" style="font-size:28px;color:var(--black);letter-spacing:-.01em;">R$ 89,00</div>
@@ -284,7 +317,7 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
         <p class="body-p" style="margin-top:24px;color:var(--sub);font-size:18px;">Selecionamos poucos lotes por vez para garantir o máximo frescor e qualidade na sua xícara.</p>
       </div>
       <div style="align-self:flex-end;margin-top:24px;">
-        <a href="/pages/cafes" class="btn btn-sd" style="font-size:13px;padding:20px 42px;"><span>Ver catálogo completo &rarr;</span></a>
+        <a href="/pages/nossos-cafes" class="btn btn-sd" style="font-size:13px;padding:20px 42px;"><span>Ver catálogo completo &rarr;</span></a>
       </div>
     </div>
     <div class="hm-prd-grid">
@@ -298,8 +331,8 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
         <div class="hm-prd-b">
           <div class="hm-prd-pr">R$ 95,00</div>
           <div style="display:flex;gap:24px;">
-            <a href="/pages/cafes" class="lnk" style="font-size:13px;color:var(--clay);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Detalhes</a>
-            <a href="/pages/cafes" class="lnk" style="font-size:13px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Adicionar</a>
+            <a href="/pages/nossos-cafes" class="lnk" style="font-size:13px;color:var(--clay);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Detalhes</a>
+            <a href="/pages/nossos-cafes" class="lnk" style="font-size:13px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Escolher lote</a>
           </div>
         </div>
       </div>
@@ -313,8 +346,8 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
         <div class="hm-prd-b">
           <div class="hm-prd-pr">R$ 88,00</div>
           <div style="display:flex;gap:24px;">
-            <a href="/pages/cafes" class="lnk" style="font-size:13px;color:var(--clay);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Detalhes</a>
-            <a href="/pages/cafes" class="lnk" style="font-size:13px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Adicionar</a>
+            <a href="/pages/nossos-cafes" class="lnk" style="font-size:13px;color:var(--clay);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Detalhes</a>
+            <a href="/pages/nossos-cafes" class="lnk" style="font-size:13px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Escolher lote</a>
           </div>
         </div>
       </div>
@@ -328,8 +361,8 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
         <div class="hm-prd-b">
           <div class="hm-prd-pr">R$ 92,00</div>
           <div style="display:flex;gap:24px;">
-            <a href="/pages/cafes" class="lnk" style="font-size:13px;color:var(--clay);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Detalhes</a>
-            <a href="/pages/cafes" class="lnk" style="font-size:13px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Adicionar</a>
+            <a href="/pages/nossos-cafes" class="lnk" style="font-size:13px;color:var(--clay);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Detalhes</a>
+            <a href="/pages/nossos-cafes" class="lnk" style="font-size:13px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Escolher lote</a>
           </div>
         </div>
       </div>
@@ -343,8 +376,8 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
         <div class="hm-prd-b">
           <div class="hm-prd-pr">R$ 96,00</div>
           <div style="display:flex;gap:24px;">
-            <a href="/pages/cafes" class="lnk" style="font-size:13px;color:var(--clay);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Detalhes</a>
-            <a href="/pages/cafes" class="lnk" style="font-size:13px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Adicionar</a>
+            <a href="/pages/nossos-cafes" class="lnk" style="font-size:13px;color:var(--clay);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Detalhes</a>
+            <a href="/pages/nossos-cafes" class="lnk" style="font-size:13px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Escolher lote</a>
           </div>
         </div>
       </div>
@@ -584,7 +617,7 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
       </div>
       <h2 class="display" style="color:var(--sand);font-size:clamp(3rem,6vw,5rem);margin-bottom:24px;">Do Cerrado Mineiro<br/>para sua <span class="ital">xícara</span>.</h2>
       <p class="body-p" style="font-size:20px;color:rgba(246,241,235,.75);max-width:680px;line-height:1.6;">Altitude ideal, clima seco na colheita e produtores premiados criam cafés mais doces, limpos e totalmente rastreáveis.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:2px;background:var(--rule-w);border:1px solid var(--rule-w);margin-top:56px;margin-bottom:56px;">
+      <div class="hm-origin-stats">
         <div style="background:var(--black);padding:32px 36px;transition:background .3s;"><div class="label" style="color:var(--clay);font-size:12px;margin-bottom:16px;letter-spacing:.2em;">Altitude</div><div style="font-family:var(--fl);font-weight:800;color:var(--sand);font-size:28px;letter-spacing:-.01em;">1.100m+</div></div>
         <div style="background:var(--black);padding:32px 36px;transition:background .3s;"><div class="label" style="color:var(--clay);font-size:12px;margin-bottom:16px;letter-spacing:.2em;">Variedade</div><div style="font-family:var(--fl);font-weight:800;color:var(--sand);font-size:28px;letter-spacing:-.01em;">Catuai 144</div></div>
         <div style="background:var(--black);padding:32px 36px;transition:background .3s;"><div class="label" style="color:var(--clay);font-size:12px;margin-bottom:16px;letter-spacing:.2em;">Processo</div><div style="font-family:var(--fl);font-weight:800;color:var(--sand);font-size:28px;letter-spacing:-.01em;">Natural</div></div>
@@ -642,12 +675,51 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
   </div>
 </section>
 
+
+<!-- 14. EDITORIAL GUIDE -->
+<section class="hm-guide fi">
+  <div class="bx">
+    <div class="head">
+      <div style="max-width:720px;">
+        <div class="eyebrow" style="margin-bottom:22px;">Conteudo que melhora a xicara</div>
+        <h2 class="display" style="color:var(--black);font-size:clamp(2.5rem,5vw,4rem);">Aprenda a beber cafe <span class="ital">melhor</span>.</h2>
+      </div>
+      <p class="body-p" style="max-width:420px;color:var(--sub);font-size:17px;">Um bom cafe vende melhor quando educa. Esta area cria autoridade, reduz duvidas e empurra o cliente certo para o lote ou para o clube.</p>
+    </div>
+    <div class="hm-guide-grid">
+      <article class="hm-guide-card">
+        <div class="hm-guide-num">01</div>
+        <h3>Por que cafe especial nao precisa de acucar</h3>
+        <p>Quando o grao e bem escolhido e a torra respeita o terroir, a docura aparece naturalmente.</p>
+        <a class="lnk" href="/pages/nossos-cafes">Ver lotes doces &rarr;</a>
+      </article>
+      <article class="hm-guide-card">
+        <div class="hm-guide-num">02</div>
+        <h3>Como escolher moagem sem errar</h3>
+        <p>O ponto de moagem muda corpo, acidez e amargor. A escolha certa deixa o preparo mais facil.</p>
+        <a class="lnk" href="/pages/nossos-cafes">Escolher meu cafe &rarr;</a>
+      </article>
+      <article class="hm-guide-card">
+        <div class="hm-guide-num">03</div>
+        <h3>O que significa 86+ SCA</h3>
+        <p>Uma pontuacao alta indica complexidade, limpeza sensorial e uma xicara fora do cafe comum.</p>
+        <a class="lnk" href="/pages/origem">Entender origem &rarr;</a>
+      </article>
+      <article class="hm-guide-card">
+        <div class="hm-guide-num">04</div>
+        <h3>Torra fresca vs cafe de prateleira</h3>
+        <p>O frescor preserva aroma e do�ura. Por isso a CofCof torra em pequenos lotes sob demanda.</p>
+        <a class="lnk" href="/pages/assinatura">Entrar no clube &rarr;</a>
+      </article>
+    </div>
+  </div>
+</section>
 <!-- 14. FINAL CTA -->
 <section class="cta-end fi">
   <div class="bx cta-end-in">
     <h2 class="display">Pare de beber café com<br/>gosto de <span class="ital">carvão</span>.</h2>
     <p class="body-p">Descubra o sabor verdadeiro de um café cultivado, colhido e torrado para entregar doçura máxima.</p>
-    <a href="/pages/cafes" class="btn"><span>Escolher meu CofCof &rarr;</span></a>
+    <a href="/pages/nossos-cafes" class="btn"><span>Escolher meu CofCof &rarr;</span></a>
   </div>
 </section>
 
@@ -661,7 +733,7 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
       }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  var elements = document.querySelectorAll('.fi');
+  var elements = document.querySelectorAll('.fi,.hm-prd-i,.hm-guide-card,.hm-ig-card');
   for (var i = 0; i < elements.length; i++) { observer.observe(elements[i]); }
 })();
 </script>
@@ -677,3 +749,10 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
   ]
 }
 {% endschema %}
+
+
+
+
+
+
+
