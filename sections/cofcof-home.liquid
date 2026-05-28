@@ -110,7 +110,38 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
 .hero-content{position:relative;isolation:isolate}.hero-content::before{content:"";position:absolute;inset:-28px -36px -30px -28px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 18% 45%,rgba(10,10,10,.58) 0%,rgba(10,10,10,.42) 42%,rgba(10,10,10,0) 72%);filter:blur(2px)}
 .pg-hero .hero-content>div:last-child .label{color:rgba(246,241,235,.94)!important;text-shadow:0 1px 8px rgba(0,0,0,.55)}
 .pg-hero .eyebrow span{background-color:rgba(10,10,10,.55)!important;border-color:rgba(246,241,235,.2)!important;color:var(--sand)!important}
-
+.pg-hero .eyebrow,.pg-hero h1,.pg-hero .body-p,.pg-hero-cta,.pg-hero .hero-content>div:last-child{animation:hm-hero-rise .82s cubic-bezier(.2,.7,.2,1) both}
+.pg-hero h1{animation-delay:.08s}.pg-hero .body-p{animation-delay:.16s}.pg-hero-cta{animation-delay:.24s}.pg-hero .hero-content>div:last-child{animation-delay:.34s}
+@keyframes hm-hero-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hm-prd-i,.hm-ig-card{opacity:0;transform:translateY(22px);transition:opacity .78s cubic-bezier(.2,.7,.2,1),transform .78s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
+.hm-prd-i.v,.hm-ig-card.v{opacity:1;transform:none}
+.hm-prd-i:nth-child(2),.hm-ig-card:nth-child(2){transition-delay:.06s}
+.hm-prd-i:nth-child(3),.hm-ig-card:nth-child(3){transition-delay:.12s}
+.hm-prd-i:nth-child(4),.hm-ig-card:nth-child(4){transition-delay:.18s}
+.hm-ig-section{background:var(--black);color:var(--sand);position:relative;overflow:hidden;padding:clamp(78px,10vw,128px) 0}
+.hm-ig-section::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 16% 0,rgba(122,102,84,.2),transparent 32%),radial-gradient(circle at 88% 18%,rgba(201,162,99,.1),transparent 28%),linear-gradient(180deg,#050505 0%,#0a0a0a 100%);pointer-events:none}
+.hm-ig-section .bx{position:relative;z-index:1}
+.hm-ig-head{display:flex;flex-direction:column;gap:24px;margin-bottom:42px}
+@media(min-width:880px){.hm-ig-head{flex-direction:row;align-items:flex-end;justify-content:space-between}}
+.hm-ig-copy{max-width:560px;color:rgba(246,241,235,.7)}
+.hm-ig-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 18px;scrollbar-width:none}
+.hm-ig-track::-webkit-scrollbar{display:none}
+.hm-ig-card{flex:0 0 min(264px,74vw);aspect-ratio:9/16;border:1px solid rgba(246,241,235,.16);border-radius:20px;overflow:hidden;position:relative;scroll-snap-align:start;background:#111;box-shadow:0 22px 64px rgba(0,0,0,.42);isolation:isolate}
+.hm-ig-poster{position:absolute;inset:0;background:var(--bg);background-size:cover;background-position:center;filter:saturate(.9) contrast(1.08);transform:scale(1.015)}
+.hm-ig-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.14) 0%,rgba(10,10,10,.1) 34%,rgba(10,10,10,.88) 100%);pointer-events:none}
+.hm-ig-top{position:absolute;top:16px;left:16px;right:16px;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.hm-ig-handle,.hm-ig-kind{font-family:var(--fl);font-size:8px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;border:1px solid rgba(246,241,235,.22);border-radius:999px;padding:7px 10px;background:rgba(10,10,10,.42);backdrop-filter:blur(8px)}
+.hm-ig-kind{color:#C9A263;border-color:rgba(201,162,99,.32)}
+.hm-ig-embed{position:absolute;inset:0;z-index:1;opacity:0;pointer-events:none;transition:opacity .35s}
+.hm-ig-card.is-embedded .hm-ig-embed{opacity:1;pointer-events:auto;background:#fff}
+.hm-ig-in{position:absolute;inset:auto 18px 18px;z-index:3}
+.hm-ig-play{width:44px;height:44px;border-radius:50%;border:1px solid rgba(246,241,235,.5);display:grid;place-items:center;margin-bottom:18px;background:rgba(10,10,10,.3);backdrop-filter:blur(8px)}
+.hm-ig-title{font-family:var(--fl);font-weight:800;font-size:16px;line-height:1.2;text-transform:uppercase;color:var(--sand)}
+.hm-ig-meta{margin-top:8px;font-family:var(--fl);font-size:8px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(246,241,235,.62)}
+.hm-ig-cta{display:inline-flex;margin-top:18px;font-family:var(--fl);font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--sand);border-bottom:1px solid rgba(246,241,235,.55)}
+.hm-ig-note{margin-top:18px;color:rgba(246,241,235,.5);font-size:13px}
+@media(max-width:640px){.hm-ig-section{padding:72px 0}.hm-ig-card{flex-basis:min(246px,76vw)}}
+@media(prefers-reduced-motion:reduce){.pg-hero .eyebrow,.pg-hero h1,.pg-hero .body-p,.pg-hero-cta,.pg-hero .hero-content>div:last-child{animation:none}.hm-prd-i,.hm-ig-card{opacity:1;transform:none;transition:none}}
 </style>
 
 <!-- 1. HERO -->
@@ -322,7 +353,62 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
   </div>
 </section>
 
-<!-- 8. COMPARE -->
+<!-- 8. DIRETO DA COFCOF / INSTAGRAM -->
+<section class="hm-ig-section fi" data-instagram-section>
+  <div class="bx">
+    <div class="hm-ig-head">
+      <div style="max-width:720px;">
+        <div class="eyebrow" style="margin-bottom:22px;">Direto da @cofcof.company</div>
+        <h2 class="display" style="font-size:clamp(2.4rem,5vw,4rem);color:var(--sand);">Bastidor real vende mais que <span class="ital">promessa</span>.</h2>
+      </div>
+      <p class="body-p hm-ig-copy">Conteudo social precisa parecer vivo: torra, origem, preparo e rotina real da marca. Estes cards ja aceitam URL de post/reel; enquanto o embed nao carrega, mantem poster, titulo e CTA.</p>
+    </div>
+    <div class="hm-ig-track" aria-label="Conteudos do Instagram @cofcof.company">
+      <article class="hm-ig-card" data-embed-url="https://www.instagram.com/p/DO08xbijvCg/" style="--bg:url('{{ 'cofcof-home-hero-background.png' | asset_url }}')">
+        <div class="hm-ig-poster"></div><div class="hm-ig-embed"></div>
+        <div class="hm-ig-top"><span class="hm-ig-handle">@cofcof.company</span><span class="hm-ig-kind">Unboxing</span></div>
+        <div class="hm-ig-in"><div class="hm-ig-play">▶</div><div class="hm-ig-title">Unboxing CofCof Co</div><div class="hm-ig-meta">A experiencia abrindo o kit</div><a class="hm-ig-cta" href="https://www.instagram.com/p/DO08xbijvCg/" target="_blank" rel="noopener noreferrer">Ver no Instagram</a></div>
+      </article>
+      <article class="hm-ig-card" data-embed-url="https://www.instagram.com/p/DTpybB3jeOf/" style="--bg:linear-gradient(145deg,#2a2119,#090909)">
+        <div class="hm-ig-poster"></div><div class="hm-ig-embed"></div>
+        <div class="hm-ig-top"><span class="hm-ig-handle">@cofcof.company</span><span class="hm-ig-kind">Confianca</span></div>
+        <div class="hm-ig-in"><div class="hm-ig-play">▶</div><div class="hm-ig-title">Cafe que eu amo e confio</div><div class="hm-ig-meta">Prova social real da marca</div><a class="hm-ig-cta" href="https://www.instagram.com/p/DTpybB3jeOf/" target="_blank" rel="noopener noreferrer">Ver no Instagram</a></div>
+      </article>
+      <article class="hm-ig-card" data-embed-url="https://www.instagram.com/p/DO0x1HQjgOY/" style="--bg:url('{{ 'cofcof-home-section-04-kit.png' | asset_url }}')">
+        <div class="hm-ig-poster"></div><div class="hm-ig-embed"></div>
+        <div class="hm-ig-top"><span class="hm-ig-handle">@cofcof.company</span><span class="hm-ig-kind">Humor</span></div>
+        <div class="hm-ig-in"><div class="hm-ig-play">▶</div><div class="hm-ig-title">Convencendo a esposa</div><div class="hm-ig-meta">Cafe, futebol e rotina real</div><a class="hm-ig-cta" href="https://www.instagram.com/p/DO0x1HQjgOY/" target="_blank" rel="noopener noreferrer">Ver no Instagram</a></div>
+      </article>
+      <article class="hm-ig-card" data-embed-url="https://www.instagram.com/p/DN6xrtjjPVR/" style="--bg:radial-gradient(circle at 50% 18%,#7a6654,#111 58%,#050505)">
+        <div class="hm-ig-poster"></div><div class="hm-ig-embed"></div>
+        <div class="hm-ig-top"><span class="hm-ig-handle">@cofcof.company</span><span class="hm-ig-kind">Parceiro</span></div>
+        <div class="hm-ig-in"><div class="hm-ig-play">▶</div><div class="hm-ig-title">Kantine em Uberlandia</div><div class="hm-ig-meta">Cafeteria especial da regiao</div><a class="hm-ig-cta" href="https://www.instagram.com/p/DN6xrtjjPVR/" target="_blank" rel="noopener noreferrer">Ver no Instagram</a></div>
+      </article>
+      <article class="hm-ig-card" data-embed-url="" style="--bg:radial-gradient(circle at 52% 18%,#2a2119,#0a0a0a 62%)">
+        <div class="hm-ig-poster"></div><div class="hm-ig-embed"></div>
+        <div class="hm-ig-top"><span class="hm-ig-handle">@cofcof.company</span><span class="hm-ig-kind">Clube</span></div>
+        <div class="hm-ig-in"><div class="hm-ig-play">▶</div><div class="hm-ig-title">Kit chegando</div><div class="hm-ig-meta">Primeira experiencia especial</div><a class="hm-ig-cta" href="https://www.instagram.com/cofcof.company/" target="_blank" rel="noopener noreferrer">Ver no Instagram</a></div>
+      </article>
+      <article class="hm-ig-card" data-embed-url="" style="--bg:linear-gradient(160deg,#0b0b0b,#3b2e23 58%,#090909)">
+        <div class="hm-ig-poster"></div><div class="hm-ig-embed"></div>
+        <div class="hm-ig-top"><span class="hm-ig-handle">@cofcof.company</span><span class="hm-ig-kind">Curadoria</span></div>
+        <div class="hm-ig-in"><div class="hm-ig-play">▶</div><div class="hm-ig-title">Notas sensoriais</div><div class="hm-ig-meta">Pontuacao, frescor e docura</div><a class="hm-ig-cta" href="https://www.instagram.com/cofcof.company/" target="_blank" rel="noopener noreferrer">Ver no Instagram</a></div>
+      </article>
+      <article class="hm-ig-card" data-embed-url="" style="--bg:radial-gradient(circle at 35% 20%,#efe7db,#7a6654 42%,#0a0a0a 76%)">
+        <div class="hm-ig-poster"></div><div class="hm-ig-embed"></div>
+        <div class="hm-ig-top"><span class="hm-ig-handle">@cofcof.company</span><span class="hm-ig-kind">Parceiro</span></div>
+        <div class="hm-ig-in"><div class="hm-ig-play">▶</div><div class="hm-ig-title">Servido por parceiros</div><div class="hm-ig-meta">Cafeterias e experiencias</div><a class="hm-ig-cta" href="https://www.instagram.com/cofcof.company/" target="_blank" rel="noopener noreferrer">Ver no Instagram</a></div>
+      </article>
+      <article class="hm-ig-card" data-embed-url="" style="--bg:linear-gradient(145deg,#17120f,#0a0a0a)">
+        <div class="hm-ig-poster"></div><div class="hm-ig-embed"></div>
+        <div class="hm-ig-top"><span class="hm-ig-handle">@cofcof.company</span><span class="hm-ig-kind">Rotina</span></div>
+        <div class="hm-ig-in"><div class="hm-ig-play">▶</div><div class="hm-ig-title">Cliente no ritual</div><div class="hm-ig-meta">Da caixa para a rotina</div><a class="hm-ig-cta" href="https://www.instagram.com/cofcof.company/" target="_blank" rel="noopener noreferrer">Ver no Instagram</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 9. COMPARE -->
 <section class="sec sec-d fi" style="padding-top:clamp(64px,8vw,96px);padding-bottom:clamp(64px,8vw,96px);">
   <div class="bx">
     <div style="text-align:center;max-width:800px;margin:0 auto 64px;">
@@ -578,6 +664,34 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   var elements = document.querySelectorAll('.fi');
   for (var i = 0; i < elements.length; i++) { observer.observe(elements[i]); }
+})();
+(function(){
+  var igSection = document.querySelector('[data-instagram-section]');
+  if (!igSection) return;
+  var igObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) return;
+      e.target.classList.add('v');
+      var cards = e.target.querySelectorAll('.hm-ig-card');
+      for (var i=0;i<cards.length;i++){
+        (function(card){
+          if (!card.getAttribute('data-embed-url')) return;
+          var wrapper = card.querySelector('.hm-ig-embed');
+          if (!wrapper) return;
+          var blockquote = document.createElement('blockquote');
+          blockquote.className = 'instagram-media';
+          blockquote.setAttribute('data-instgrm-captioned','');
+          blockquote.setAttribute('data-instgrm-permalink',card.getAttribute('data-embed-url'));
+          blockquote.setAttribute('data-instgrm-version','14');
+          wrapper.appendChild(blockquote);
+          card.classList.add('is-embedded');
+        })(cards[i]);
+      }
+      if (window.instgrm) { window.instgrm.Embeds.process(); }
+      igObserver.unobserve(e.target);
+    });
+  },{threshold:0.08,rootMargin:'0px 0px 80px 0px'});
+  igObserver.observe(igSection);
 })();
 </script>
 
