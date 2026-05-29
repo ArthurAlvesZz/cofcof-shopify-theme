@@ -1,0 +1,117 @@
+<style>
+.cof-wpp-btn{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:#25D366;border:none;cursor:pointer;z-index:99999;display:grid;place-items:center;box-shadow:0 4px 20px rgba(37,211,102,.35);transition:transform .3s,box-shadow .3s;padding:0}
+.cof-wpp-btn:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.45)}
+.cof-wpp-btn svg{width:28px;height:28px;fill:#fff}
+.cof-wpp-overlay{position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,.62);backdrop-filter:blur(4px);display:none;align-items:flex-end;justify-content:center}
+@media(min-width:480px){.cof-wpp-overlay{align-items:center}}
+.cof-wpp-overlay.open{display:flex}
+.cof-wpp-modal{background:#fff;border-radius:20px 20px 0 0;width:100%;max-width:440px;padding:32px 24px 24px;position:relative;max-height:90vh;overflow-y:auto;animation:cof-wpp-slide .35s ease}
+@media(min-width:480px){.cof-wpp-modal{border-radius:20px;margin:0}}
+@keyframes cof-wpp-slide{from{transform:translateY(60px);opacity:0}to{transform:none;opacity:1}}
+.cof-wpp-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;border:none;background:#f0f0f0;cursor:pointer;display:grid;place-items:center;font-size:18px;color:#333}
+.cof-wpp-modal h3{font-family:var(--fl,'Montserrat',sans-serif);font-size:20px;font-weight:800;color:#1a1a1a;margin:0 0 8px}
+.cof-wpp-modal p{font-family:var(--fn,'DM Sans',sans-serif);font-size:14px;color:#666;margin:0 0 24px;line-height:1.5}
+.cof-wpp-field{margin-bottom:16px}
+.cof-wpp-field label{display:block;font-family:var(--fl,'Montserrat',sans-serif);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:6px}
+.cof-wpp-field input,.cof-wpp-field select{width:100%;padding:14px 16px;border:1.5px solid #e0e0e0;border-radius:8px;font-size:15px;font-family:var(--fn,'DM Sans',sans-serif);background:#fafafa;transition:border-color .25s;box-sizing:border-box}
+.cof-wpp-field input:focus,.cof-wpp-field select:focus{outline:none;border-color:#25D366;background:#fff}
+.cof-wpp-step{display:none}.cof-wpp-step.active{display:block}
+.cof-wpp-btn-next,.cof-wpp-btn-send{width:100%;padding:16px;border:none;border-radius:8px;font-family:var(--fl,'Montserrat',sans-serif);font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:opacity .25s;margin-top:8px}
+.cof-wpp-btn-next{background:#1a1a1a;color:#fff}
+.cof-wpp-btn-send{background:#25D366;color:#fff}
+.cof-wpp-btn-next:hover,.cof-wpp-btn-send:hover{opacity:.88}
+.cof-wpp-btn-next:disabled,.cof-wpp-btn-send:disabled{opacity:.4;cursor:default}
+.cof-wpp-opt{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.cof-wpp-opt button{text-align:left;padding:14px 16px;border:1.5px solid #e0e0e0;border-radius:8px;background:#fafafa;cursor:pointer;font-family:var(--fn,'DM Sans',sans-serif);font-size:14px;color:#1a1a1a;transition:all .2s}
+.cof-wpp-opt button:hover,.cof-wpp-opt button.selected{border-color:#25D366;background:#f0faf2}
+.cof-wpp-opt button.selected{border-width:2px;font-weight:600}
+.cof-wpp-summary{background:#f7f7f7;border-radius:12px;padding:16px;margin-bottom:16px;font-family:var(--fn,'DM Sans',sans-serif);font-size:13px;color:#333;line-height:1.6}
+.cof-wpp-summary strong{font-weight:600;color:#1a1a1a}
+@media(max-width:480px){.cof-wpp-btn{bottom:16px;right:16px;width:52px;height:52px}.cof-wpp-btn svg{width:24px;height:24px}}
+</style>
+<button class="cof-wpp-btn" id="cof-wpp-btn" aria-label="Falar com CofCof no WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</button>
+<div class="cof-wpp-overlay" id="cof-wpp-overlay">
+  <div class="cof-wpp-modal">
+    <button class="cof-wpp-close" id="cof-wpp-close">&times;</button>
+    <h3>Falar com a CofCof</h3>
+    <p>Preencha seus dados e escolha seu interesse. Vamos te atender no WhatsApp.</p>
+    <form id="cof-wpp-form" onsubmit="return false;">
+      <div class="cof-wpp-step active" data-step="1">
+        <div class="cof-wpp-field"><label>Seu nome</label><input type="text" id="cof-wpp-nome" placeholder="Como podemos chamar você?" required></div>
+        <div class="cof-wpp-field"><label>Seu WhatsApp com DDD</label><input type="tel" id="cof-wpp-tel" placeholder="Ex: 34999887766" required></div>
+        <button type="button" class="cof-wpp-btn-next" id="cof-wpp-next1">Próximo</button>
+      </div>
+      <div class="cof-wpp-step" data-step="2">
+        <label style="display:block;font-family:var(--fl,'Montserrat',sans-serif);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:10px">Qual seu interesse?</label>
+        <div class="cof-wpp-opt" id="cof-wpp-interesse">
+          <button type="button" data-value="Assinar cafés premiados">Assinar cafés premiados</button>
+          <button type="button" data-value="Comprar café avulso">Comprar café avulso</button>
+          <button type="button" data-value="Presentear alguém">Presentear alguém</button>
+          <button type="button" data-value="Café para empresa">Café para empresa</button>
+          <button type="button" data-value="Falar com atendimento">Falar com atendimento</button>
+        </div>
+        <button type="button" class="cof-wpp-btn-next" id="cof-wpp-next2" disabled>Próximo</button>
+      </div>
+      <div class="cof-wpp-step" data-step="3">
+        <label style="display:block;font-family:var(--fl,'Montserrat',sans-serif);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:10px">Qual seu perfil?</label>
+        <div class="cof-wpp-opt" id="cof-wpp-perfil">
+          <button type="button" data-value="Estou começando no café especial">Estou começando no café especial</button>
+          <button type="button" data-value="Já compro café especial">Já compro café especial</button>
+          <button type="button" data-value="Quero receber todo mês">Quero receber todo mês</button>
+          <button type="button" data-value="Quero conhecer os lotes primeiro">Quero conhecer os lotes primeiro</button>
+          <button type="button" data-value="Quero proposta B2B">Quero proposta B2B</button>
+        </div>
+        <button type="button" class="cof-wpp-btn-next" id="cof-wpp-next3" disabled>Próximo</button>
+      </div>
+      <div class="cof-wpp-step" data-step="4">
+        <div class="cof-wpp-summary" id="cof-wpp-resumo"></div>
+        <button type="button" class="cof-wpp-btn-send" id="cof-wpp-send">Chamar no WhatsApp</button>
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+(function(){
+  var wppData = { nome: '', tel: '', interesse: '', perfil: '' };
+  var btn = document.getElementById('cof-wpp-btn');
+  var overlay = document.getElementById('cof-wpp-overlay');
+  var close = document.getElementById('cof-wpp-close');
+  btn.addEventListener('click', function(){ overlay.classList.add('open'); });
+  function fechar(){ overlay.classList.remove('open'); }
+  close.addEventListener('click', fechar);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) fechar(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') fechar(); });
+  function showStep(n){ document.querySelectorAll('.cof-wpp-step').forEach(function(el){ el.classList.toggle('active', el.dataset.step == n); }); }
+  function optClick(container, key, nextBtnId){
+    container.addEventListener('click', function(e){
+      var bt = e.target.closest('button');
+      if(!bt) return;
+      container.querySelectorAll('button').forEach(function(b){ b.classList.remove('selected'); });
+      bt.classList.add('selected');
+      wppData[key] = bt.dataset.value;
+      document.getElementById(nextBtnId).disabled = false;
+    });
+  }
+  optClick(document.getElementById('cof-wpp-interesse'), 'interesse', 'cof-wpp-next2');
+  optClick(document.getElementById('cof-wpp-perfil'), 'perfil', 'cof-wpp-next3');
+  document.getElementById('cof-wpp-next1').addEventListener('click', function(){
+    var nome = document.getElementById('cof-wpp-nome').value.trim();
+    var tel = document.getElementById('cof-wpp-tel').value.trim();
+    if(!nome || !tel || tel.length < 10){ alert('Preencha nome e WhatsApp com DDD.'); return; }
+    wppData.nome = nome; wppData.tel = tel;
+    showStep(2);
+  });
+  document.getElementById('cof-wpp-next2').addEventListener('click', function(){ showStep(3); });
+  document.getElementById('cof-wpp-next3').addEventListener('click', function(){
+    var resumo = document.getElementById('cof-wpp-resumo');
+    resumo.innerHTML = '<strong>Nome:</strong> ' + wppData.nome + '<br><strong>WhatsApp:</strong> ' + wppData.tel + '<br><strong>Interesse:</strong> ' + wppData.interesse + '<br><strong>Perfil:</strong> ' + wppData.perfil;
+    showStep(4);
+  });
+  document.getElementById('cof-wpp-send').addEventListener('click', function(){
+    var msg = 'Olá, meu nome é ' + wppData.nome + '. Meu WhatsApp é ' + wppData.tel + '. Tenho interesse em: ' + wppData.interesse + '. Meu perfil: ' + wppData.perfil + '. Vim pelo site da CofCof.';
+    window.open('https://wa.me/5534998728882?text=' + encodeURIComponent(msg), '_blank');
+  });
+})();
+</script>
