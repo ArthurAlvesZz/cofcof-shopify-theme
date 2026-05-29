@@ -130,11 +130,12 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
 .pg-hero .eyebrow,.pg-hero h1,.pg-hero .body-p,.pg-hero-cta,.pg-hero .hero-content>div:last-child{animation:hm-hero-rise .82s cubic-bezier(.2,.7,.2,1) both}
 .pg-hero h1{animation-delay:.08s}.pg-hero .body-p{animation-delay:.16s}.pg-hero-cta{animation-delay:.24s}.pg-hero .hero-content>div:last-child{animation-delay:.34s}
 @keyframes hm-hero-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-.hm-prd-i,.hm-guide-card,.hm-ig-card{opacity:0;transform:translateY(22px);transition:opacity .78s cubic-bezier(.2,.7,.2,1),transform .78s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
-.hm-prd-i.v,.hm-guide-card.v,.hm-ig-card.v{opacity:1;transform:none}
-.hm-prd-i:nth-child(2),.hm-guide-card:nth-child(2),.hm-ig-card:nth-child(2){transition-delay:.06s}
-.hm-prd-i:nth-child(3),.hm-guide-card:nth-child(3),.hm-ig-card:nth-child(3){transition-delay:.12s}
-.hm-prd-i:nth-child(4),.hm-guide-card:nth-child(4),.hm-ig-card:nth-child(4){transition-delay:.18s}
+.hm-prd-i,.hm-guide-card{opacity:0;transform:translateY(22px);transition:opacity .78s cubic-bezier(.2,.7,.2,1),transform .78s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
+.hm-prd-i.v,.hm-guide-card.v{opacity:1;transform:none}
+.hm-prd-i:nth-child(2),.hm-guide-card:nth-child(2){transition-delay:.06s}
+.hm-prd-i:nth-child(3),.hm-guide-card:nth-child(3){transition-delay:.12s}
+.hm-prd-i:nth-child(4),.hm-guide-card:nth-child(4){transition-delay:.18s}
+.hm-ig-card{transition:border-color .35s,box-shadow .35s}
 .hm-ig-section{background:var(--black);color:var(--sand);position:relative;overflow:hidden;padding:clamp(78px,10vw,128px) 0}
 .hm-ig-section::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 16% 0,rgba(122,102,84,.2),transparent 32%),radial-gradient(circle at 88% 18%,rgba(201,162,99,.1),transparent 28%),linear-gradient(180deg,#050505 0%,#0a0a0a 100%);pointer-events:none}
 .hm-ig-section .bx{position:relative;z-index:1}
@@ -173,7 +174,7 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
 .hm-kit-benefits>div:hover{transform:translateY(-2px);background:#181818!important}
 .sec-d .hm-kit-benefits>div:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.12)}
 @media(max-width:640px){.sec{padding:72px 0}.hm-cert-i{min-height:auto}.hm-kit-benefits{grid-template-columns:1fr!important}.hm-prd-b{align-items:flex-start;gap:20px;flex-direction:column}.hm-rvw{mask-image:none}.hm-ig-section{padding:72px 0}.hm-ig-card{flex-basis:min(246px,76vw)}.hm-guide{padding:72px 0}.hm-guide-card{min-height:auto}.pg-hero{padding:64px 0 24px}.pg-hero-in{min-height:620px;padding:28px 22px;border-radius:0;margin-left:-28px;margin-right:-28px}.pg-hero h1{font-size:clamp(1.85rem,9.6vw,2.9rem);padding-right:0}.pg-hero .body-p{font-size:16px!important;margin-top:16px}.pg-hero-cta{margin-top:24px}.hero-btn-main,.hero-btn-sec{padding:18px 20px}.pg-hero .hero-content>div:last-child{margin-top:28px!important;gap:18px!important}.hero-content::before{inset:-18px -18px -20px}}
-@media(prefers-reduced-motion:reduce){.pg-hero .eyebrow,.pg-hero h1,.pg-hero .body-p,.pg-hero-cta,.pg-hero .hero-content>div:last-child{animation:none}.hm-prd-i,.hm-guide-card,.hm-ig-card{opacity:1;transform:none;transition:none}}
+@media(prefers-reduced-motion:reduce){.pg-hero .eyebrow,.pg-hero h1,.pg-hero .body-p,.pg-hero-cta,.pg-hero .hero-content>div:last-child{animation:none}.hm-prd-i,.hm-guide-card{opacity:1;transform:none;transition:none}}
 </style>
 
 <!-- 1. HERO -->
@@ -198,7 +199,7 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
           <p class="body-p" style="font-size:clamp(18px,1.5vw,22px);max-width:580px;color:rgba(246,241,235,.88);line-height:1.6;">Talvez o melhor café do Brasil ainda não esteja na sua xícara.</p>
           <div class="pg-hero-cta">
             <a href="/pages/nossos-cafes" class="btn btn-sd hero-btn-main"><span>Comprar cafés premiados &rarr;</span></a>
-            <a href="/pages/assinatura" class="btn btn-ds hero-btn-sec"><span>Entrar para o Clube</span></a>
+            <a href="/pages/nossos-cafes" class="btn btn-ds hero-btn-sec"><span>Ver lotes deste m�s</span></a>
           </div>
           <div style="margin-top:44px;display:flex;flex-wrap:wrap;gap:32px;">
             <div class="label" style="display:flex;align-items:center;gap:8px;font-size:10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(246,241,235,.7)" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>86–88.5 SCA</div>
@@ -282,7 +283,7 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
       <img src="{{ 'cofcof-home-section-04-kit.png' | asset_url }}" alt="Kit CofCof com cafes especiais" width="800" height="1000" loading="lazy" decoding="async">
     </div>
     <div class="hm-kit-txt">
-      <div class="eyebrow" style="margin-bottom:24px;">Iniciantes no especial</div>
+      <div class="eyebrow" style="margin-bottom:24px;">Entrada para assinantes</div>
       <h2 class="display" style="color:var(--black);margin-bottom:32px;font-size:clamp(2.5rem,5vw,4.5rem);">Não sabe escolher?<br/>Comece pelo <span class="ital">Kit</span>.</h2>
       <p class="body-p" style="font-size:18px;color:var(--sub);max-width:520px;margin-bottom:48px;line-height:1.6;">Para quem quer sentir a diferença do café especial sem precisar entender de SCA, variedade ou processo. Uma introdução guiada ao universo CofCof.</p>
       <div class="hm-kit-benefits" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:64px;">
@@ -292,7 +293,7 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
         <div style="background:var(--black);color:var(--sand);padding:20px 24px;border-radius:6px;transition:transform .35s ease,background .35s;cursor:default;"><div class="label" style="font-size:13px;">Torra correta</div></div>
       </div>
       <div style="display:flex;align-items:center;gap:40px;flex-wrap:wrap;">
-        <a href="/pages/nossos-cafes" class="btn" style="background:var(--black);color:var(--sand);padding:26px 60px;font-size:14px;border-radius:6px;"><span>Garantir meu kit &rarr;</span></a>
+        <a href="/pages/assinatura" class="btn" style="background:var(--black);color:var(--sand);padding:26px 60px;font-size:14px;border-radius:6px;"><span>Assinar e ganhar o kit &rarr;</span></a>
         <div>
           <div class="eyebrow" style="color:var(--sub);margin-bottom:8px;">Valor Especial</div>
           <div class="display" style="font-size:28px;color:var(--black);letter-spacing:-.01em;">R$ 89,00</div>
@@ -332,7 +333,7 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
           <div class="hm-prd-pr">R$ 95,00</div>
           <div style="display:flex;gap:24px;">
             <a href="/pages/nossos-cafes" class="lnk" style="font-size:13px;color:var(--clay);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Detalhes</a>
-            <a href="/pages/nossos-cafes" class="lnk" style="font-size:13px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Escolher lote</a>
+            <a href="/pages/nossos-cafes" class="lnk" style="font-size:13px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Receber no clube</a>
           </div>
         </div>
       </div>
@@ -347,7 +348,7 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
           <div class="hm-prd-pr">R$ 88,00</div>
           <div style="display:flex;gap:24px;">
             <a href="/pages/nossos-cafes" class="lnk" style="font-size:13px;color:var(--clay);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Detalhes</a>
-            <a href="/pages/nossos-cafes" class="lnk" style="font-size:13px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Escolher lote</a>
+            <a href="/pages/nossos-cafes" class="lnk" style="font-size:13px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Receber no clube</a>
           </div>
         </div>
       </div>
@@ -362,7 +363,7 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
           <div class="hm-prd-pr">R$ 92,00</div>
           <div style="display:flex;gap:24px;">
             <a href="/pages/nossos-cafes" class="lnk" style="font-size:13px;color:var(--clay);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Detalhes</a>
-            <a href="/pages/nossos-cafes" class="lnk" style="font-size:13px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Escolher lote</a>
+            <a href="/pages/nossos-cafes" class="lnk" style="font-size:13px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Receber no clube</a>
           </div>
         </div>
       </div>
@@ -377,7 +378,7 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
           <div class="hm-prd-pr">R$ 96,00</div>
           <div style="display:flex;gap:24px;">
             <a href="/pages/nossos-cafes" class="lnk" style="font-size:13px;color:var(--clay);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Detalhes</a>
-            <a href="/pages/nossos-cafes" class="lnk" style="font-size:13px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Escolher lote</a>
+            <a href="/pages/nossos-cafes" class="lnk" style="font-size:13px;color:var(--sand);font-weight:700;text-transform:uppercase;letter-spacing:.12em;">Receber no clube</a>
           </div>
         </div>
       </div>
@@ -424,7 +425,7 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
       <article class="hm-ig-card" data-embed-url="" style="--bg:linear-gradient(160deg,#0b0b0b,#3b2e23 58%,#090909)">
         <div class="hm-ig-poster"></div>
         <div class="hm-ig-top"><span class="hm-ig-handle">@cofcof.company</span><span class="hm-ig-kind">Curadoria</span></div>
-        <div class="hm-ig-in"><div class="hm-ig-play">▶</div><div class="hm-ig-title">Notas sensoriais</div><div class="hm-ig-meta">Pontuacao, frescor e docura</div><a class="hm-ig-cta" href="https://www.instagram.com/cofcof.company/" target="_blank" rel="noopener noreferrer">Ver no Instagram</a></div>
+        <div class="hm-ig-in"><div class="hm-ig-play">▶</div><div class="hm-ig-title">Notas sensoriais</div><div class="hm-ig-meta">Pontua��o, frescor e docura</div><a class="hm-ig-cta" href="https://www.instagram.com/cofcof.company/" target="_blank" rel="noopener noreferrer">Ver no Instagram</a></div>
       </article>
       <article class="hm-ig-card" data-embed-url="" style="--bg:radial-gradient(circle at 35% 20%,#efe7db,#7a6654 42%,#0a0a0a 76%)">
         <div class="hm-ig-poster"></div>
@@ -463,7 +464,7 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
       </div>
     </div>
     <div style="text-align:center;margin-top:64px;">
-      <a href="/pages/quem-somos" class="btn" style="border:1px solid var(--rule-w);color:var(--sand);padding:26px 60px;font-size:14px;"><span>Entender o nosso processo &rarr;</span></a>
+      <a href="/pages/assinatura" class="btn" style="border:1px solid var(--rule-w);color:var(--sand);padding:26px 60px;font-size:14px;"><span>Assinar agora &rarr;</span></a>
     </div>
   </div>
 </section>
@@ -702,7 +703,7 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
       <article class="hm-guide-card">
         <div class="hm-guide-num">03</div>
         <h3>O que significa 86+ SCA</h3>
-        <p>Uma pontuacao alta indica complexidade, limpeza sensorial e uma xicara fora do cafe comum.</p>
+        <p>Uma Pontua��o alta indica complexidade, limpeza sensorial e uma xicara fora do cafe comum.</p>
         <a class="lnk" href="/pages/origem">Entender origem &rarr;</a>
       </article>
       <article class="hm-guide-card">
@@ -719,7 +720,7 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
   <div class="bx cta-end-in">
     <h2 class="display">Pare de beber café com<br/>gosto de <span class="ital">carvão</span>.</h2>
     <p class="body-p">Descubra o sabor verdadeiro de um café cultivado, colhido e torrado para entregar doçura máxima.</p>
-    <a href="/pages/nossos-cafes" class="btn"><span>Escolher meu CofCof &rarr;</span></a>
+    <a href="/pages/assinatura" class="btn"><span>Assinar agora &rarr;</span></a>
   </div>
 </section>
 
@@ -733,7 +734,7 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
       }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  var elements = document.querySelectorAll('.fi,.hm-prd-i,.hm-guide-card,.hm-ig-card');
+  var elements = document.querySelectorAll('.fi,.hm-prd-i,.hm-guide-card');
   for (var i = 0; i < elements.length; i++) { observer.observe(elements[i]); }
 })();
 </script>
@@ -749,6 +750,10 @@ body{font-family:var(--fn);font-weight:400;font-size:16px;line-height:1.65;color
   ]
 }
 {% endschema %}
+
+
+
+
 
 
 
